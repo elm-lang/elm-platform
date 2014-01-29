@@ -20,6 +20,9 @@ mkdir -p $scriptsdir
 cp $installerdir/Info.plist $contentsdir
 cp $installerdir/postinstall $scriptsdir
 
+cp $installerdir/uninstall.sh $bindir
+cp $installerdir/elm-startup.sh $bindir
+
 for bin in elm elm-get elm-server elm-repl elm-doc
 do
 	whichbin=$(which $bin) || echo ""

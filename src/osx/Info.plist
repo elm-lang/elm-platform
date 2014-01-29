@@ -5,7 +5,7 @@
   <key>CFBundleGetInfoString</key>
   <string>Elm</string>
   <key>CFBundleExecutable</key>
-  <string>elm</string>
+  <string>elm-startup.sh</string>
   <key>CFBundleIdentifier</key>
   <string>org.elm-lang.pkg</string>
   <key>CFBundleName</key>
