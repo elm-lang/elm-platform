@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -ex
+
+appdir=/Applications/Elm.app
+bindir=$appdir/Contents/MacOS
+installdir=/usr/local/bin
+
+sudo ln -s $bindir/elm $installdir/elm
+sudo ln -s $bindir/elm-server $installdir/elm-server
