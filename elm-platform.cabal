@@ -26,5 +26,6 @@ source-repository head
 
 Library
   Build-depends:       Elm,
+                       elm-get,
                        elm-repl,
-                       elm-get
+                       elm-server
