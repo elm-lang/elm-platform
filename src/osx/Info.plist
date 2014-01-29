@@ -11,7 +11,7 @@
   <key>CFBundleName</key>
   <string>elm</string>
   <key>CFBundleIconFile</key>
-  <string>elm.icns</string>
+  <string>elm</string>
   <key>CFBundleShortVersionString</key>
   <string>0.01</string>
   <key>CFBundleInfoDictionaryVersion</key>
