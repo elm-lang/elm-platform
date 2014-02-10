@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+export ELM_HOME=/usr/local/share/elm
+/usr/local/bin/elm-compiler $*

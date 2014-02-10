@@ -2,15 +2,4 @@
 
 set -ex
 
-appdir=/Applications/Elm.app
-bindir=$appdir/Contents/MacOS
-installdir=/usr/local/bin
-
-for bin in elm elm-get elm-server elm-repl elm-doc
-do
-	if [ -f $installdir/$bin ]; then
-		sudo rm -f $installdir/$bin
-	fi
-
-	sudo ln -s $bindir/$bin $installdir/$bin
-done
+echo "$(date)" > /tmp/elm-installer.log

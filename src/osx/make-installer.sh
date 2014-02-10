@@ -7,23 +7,22 @@ tmpdir=$(mktemp -d -t elm)
 
 installerdir=$(pwd)
 
-appdir=$tmpdir/Elm.app
-contentsdir=$appdir/Contents
+appdir=$tmpdir
+contentsdir=$appdir
 scriptsdir=$contentsdir/Scripts
-bindir=$contentsdir/MacOS
-resourcesdir=$contentsdir/Resources
+bindir=$contentsdir
+resourcesdir=$contentsdir
 
 mkdir -p $bindir
 mkdir -p $resourcesdir
 mkdir -p $scriptsdir
 
-cp $installerdir/Info.plist $contentsdir
 cp $installerdir/postinstall $scriptsdir
 
-cp $installerdir/uninstall.sh $bindir
-cp $installerdir/elm-startup.sh $bindir
+cp $installerdir/wrapper/elm $bindir
 
-for bin in elm elm-get elm-server elm-repl elm-doc
+# This is not nice! You should download Elm and build everything from scratch
+for bin in elm-compiler elm-get elm-server elm-repl elm-doc
 do
 	whichbin=$(which $bin) || echo ""
 	if [ "$whichbin" = "" ]; then
@@ -38,9 +37,11 @@ do
  	cp $(which $bin) $bindir 
 done
 
-iconutil -c icns -o $resourcesdir/elm.icns elm.iconset
+pkgbuild --identifier org.elm-lang.share.pkg --install-location /usr/local/share/elm --root ../share share.pkg
+pkgbuild --identifier org.elm-lang.bin.pkg --install-location /usr/local/bin --scripts $scriptsdir --filter 'Scripts.*' --root $tmpdir bin.pkg
 
-pkgbuild --identifier org.elm-lang.pkg.app --install-location /Applications --root $tmpdir --scripts $scriptsdir Elm.pkg
+productbuild --distribution Distribution.xml --package-path . --resources Resources ElmInstaller.pkg
 
-rm -rf $tmpdir
+
+# rm -rf $tmpdir
 
