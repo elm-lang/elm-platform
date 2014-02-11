@@ -2,19 +2,15 @@
 
 set -e
 
-
 tmpdir=$(mktemp -d -t elm)
 
 installerdir=$(pwd)
 
-appdir=$tmpdir
-contentsdir=$appdir
+contentsdir=$tmpdir
 scriptsdir=$contentsdir/Scripts
 bindir=$contentsdir
-resourcesdir=$contentsdir
 
 mkdir -p $bindir
-mkdir -p $resourcesdir
 mkdir -p $scriptsdir
 
 cp $installerdir/postinstall $scriptsdir
