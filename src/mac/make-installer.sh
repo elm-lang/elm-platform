@@ -2,19 +2,17 @@
 
 set -e
 
-if [ -z "$1" ]; then
-    echo "Missing argument: must specify version of Elm compiler"
-    echo "    ./make-installer.sh 0.11"
-    exit 1
-fi
+# Set version numbers for everything we want to build from source
+compiler_version="0.11"
 
 # Clean-up old pkg files
 rm -f Elm.pkg
 
 # Create directory structure for new pkgs
 installerdir=$(pwd)
-tmpdir=$(mktemp -d -t elm)
+helpdir=$installerdir/helper-scripts
 
+tmpdir=$(mktemp -d -t elm)
 contentsdir=$tmpdir
 scriptsdir=$contentsdir/Scripts
 bindir=$contentsdir
@@ -23,12 +21,12 @@ mkdir -p $bindir
 mkdir -p $scriptsdir
 
 # Build Elm compiler and copy required resources to the correct places
-./helper-scripts/build.sh Elm $1
+bash $helpdir/build.sh Elm $compiler_version
 cp Elm/dist/build/elm/elm $bindir/elm-compiler
 datafilesdir=Elm/data
 
 cp $installerdir/postinstall $scriptsdir
-cp $installerdir/wrapper/elm $bindir
+cp $helpdir/compiler-wrapper $bindir/elm
 
 # Grab pre-built versions of other executables
 # Probably should build these from source as well
