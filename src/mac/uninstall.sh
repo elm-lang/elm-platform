@@ -1,6 +1,8 @@
 #!/bin/sh
 
-set -ex
+set -e
+
+echo "Warning: You are about to remove all Elm executables!"
 
 installdir=/usr/local/bin
 
