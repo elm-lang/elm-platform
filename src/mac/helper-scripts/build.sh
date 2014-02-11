@@ -4,18 +4,19 @@ set -e
 
 project=$1
 
+# Clone the project if necessary
 if [ ! -d $project ]; then
     git clone https://github.com/evancz/$project.git
 fi
 
 cd $project
 
-# May report a "fatal" error, but that is okay.
+# Build the project if necessary.
+# "git describe" may report a fatal error, but it does not matter if that happens.
 tag=$(git describe --exact-match HEAD || echo "failure")
 if [ $tag != $2 ]; then
     git checkout master
     git pull
     git checkout tags/$2
+    cabal install
 fi
-
-cabal install
