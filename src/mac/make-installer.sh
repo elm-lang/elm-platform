@@ -14,7 +14,6 @@ mkdir -p $bindir
 mkdir -p $scriptsdir
 
 cp $installerdir/postinstall $scriptsdir
-
 cp $installerdir/wrapper/elm $bindir
 
 # This is not nice! You should download Elm and build everything from scratch
@@ -38,6 +37,9 @@ pkgbuild --identifier org.elm-lang.bin.pkg --install-location /usr/local/bin --s
 
 productbuild --distribution Distribution.xml --package-path . --resources Resources ElmInstaller.pkg
 
+# Clean-up
+rm bin.pkg
+rm share.pkg
 
 # rm -rf $tmpdir
 
