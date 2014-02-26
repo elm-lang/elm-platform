@@ -8,4 +8,4 @@ Once everything is installed, run this command:
 
     make_installer.cmd
 
-It will build an installer called ElmPlatform-<version>-setup.exe.
+It will build an installer called `ElmPlatform-<version>-setup.exe`.
