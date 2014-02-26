@@ -1,0 +1,13 @@
+Delete "$INSTDIR\bin\elm.exe"
+Delete "$INSTDIR\bin\elm-doc.exe"
+Delete "$INSTDIR\bin\elm-get.exe"
+Delete "$INSTDIR\bin\elm-server.exe"
+RmDir "$INSTDIR\bin"
+
+Delete "$INSTDIR\share\docs.json"
+Delete "$INSTDIR\share\elm-runtime.js"
+Delete "$INSTDIR\share\interfaces.data"
+RmDir "$INSTDIR\share"
+
+Delete "$INSTDIR\file.ico"
+RmDir "$INSTDIR"

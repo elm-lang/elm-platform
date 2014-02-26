@@ -1,0 +1,13 @@
+SetOutPath "$INSTDIR\bin"
+File "${FILES_SOURCE_PATH}\bin\elm.exe"
+File "${FILES_SOURCE_PATH}\bin\elm-doc.exe"
+File "${FILES_SOURCE_PATH}\bin\elm-get.exe"
+File "${FILES_SOURCE_PATH}\bin\elm-server.exe"
+
+SetOutPath "$INSTDIR\share"
+File "${FILES_SOURCE_PATH}\share\docs.json"
+File "${FILES_SOURCE_PATH}\share\elm-runtime.js"
+File "${FILES_SOURCE_PATH}\share\interfaces.data"
+
+SetOutPath "$INSTDIR"
+File "file.ico"
