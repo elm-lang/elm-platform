@@ -15,6 +15,7 @@ helpdir=$installerdir/helper-scripts
 tmpdir=$(mktemp -d -t elm)
 contentsdir=$tmpdir
 scriptsdir=$contentsdir/Scripts
+targetdir=/usr/local/bin
 bindir=$contentsdir
 
 mkdir -p $bindir
@@ -22,15 +23,13 @@ mkdir -p $scriptsdir
 
 # Build Elm compiler and copy required resources to the correct places
 bash $helpdir/build.sh Elm $compiler_version
-cp Elm/dist/build/elm/elm $bindir/elm-compiler
 datafilesdir=Elm/data
 
 cp $installerdir/postinstall $scriptsdir
-cp $helpdir/compiler-wrapper $bindir/elm
 
 # Grab pre-built versions of other executables
 # Probably should build these from source as well
-for bin in elm-get elm-server elm-repl elm-doc
+for bin in elm elm-get elm-server elm-repl elm-doc
 do
 	whichbin=$(which $bin) || echo ""
 	if [ "$whichbin" = "" ]; then
@@ -41,8 +40,17 @@ do
 		echo "File does not exist: $bin"
 		exit 1
 	fi
+ 	cp $(which $bin) $bindir/$bin-unwrapped
 
- 	cp $(which $bin) $bindir 
+	cat << EOF > $bindir/$bin
+#!/bin/sh
+
+set -e
+
+export ELM_HOME=/usr/local/share/elm
+$targetdir/$bin-unwrapped $*
+EOF
+
 done
 
 pkgbuild --identifier org.elm-lang.share.pkg --install-location /usr/local/share/elm --root $datafilesdir share.pkg
