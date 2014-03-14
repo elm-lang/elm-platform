@@ -50,7 +50,7 @@ set -e
 export ELM_HOME=/usr/local/share/elm
 $targetdir/$bin-unwrapped $*
 EOF
-
+	chmod +x $bindir/$bin
 done
 
 pkgbuild --identifier org.elm-lang.share.pkg --install-location /usr/local/share/elm --root $datafilesdir share.pkg
