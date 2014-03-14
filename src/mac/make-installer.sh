@@ -48,7 +48,7 @@ do
 set -e
 
 export ELM_HOME=/usr/local/share/elm
-$targetdir/$bin-unwrapped $*
+$targetdir/$bin-unwrapped \$*
 EOF
 	chmod +x $bindir/$bin
 done
