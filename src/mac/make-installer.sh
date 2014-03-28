@@ -3,7 +3,7 @@
 set -e
 
 # Set version numbers for everything we want to build from source
-compiler_version="0.11"
+compiler_version="0.12"
 
 # Clean-up old pkg files
 rm -f Elm.pkg
