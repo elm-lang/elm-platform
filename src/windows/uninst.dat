@@ -1,6 +1,7 @@
 Delete "$INSTDIR\bin\elm.exe"
 Delete "$INSTDIR\bin\elm-doc.exe"
 Delete "$INSTDIR\bin\elm-get.exe"
+Delete "$INSTDIR\bin\elm-repl.exe"
 Delete "$INSTDIR\bin\elm-server.exe"
 RmDir "$INSTDIR\bin"
 

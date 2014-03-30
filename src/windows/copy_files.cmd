@@ -10,6 +10,7 @@ mkdir files\share
 copy %CABAL_DIR%\bin\elm.exe files\bin
 copy %CABAL_DIR%\bin\elm-doc.exe files\bin
 copy %CABAL_DIR%\bin\elm-get.exe files\bin
+copy %CABAL_DIR%\bin\elm-repl.exe files\bin
 copy %CABAL_DIR%\bin\elm-server.exe files\bin
 
 copy %CABAL_DIR%\Elm-%ELM_VERSION%\docs.json files\share
