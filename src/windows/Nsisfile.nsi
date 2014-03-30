@@ -13,8 +13,8 @@
 ;--------------------------------
 ;Defines
 
-  !Define ELM_VERSION "0.11"
-  !Define PLATFORM_VERSION "0.11"
+  !Define ELM_VERSION "0.12"
+  !Define PLATFORM_VERSION "0.12"
   !Define PRODUCT_DIR_REG_KEY "Software\Elm\Elm Platform\${PLATFORM_VERSION}"
   !Define FILES_SOURCE_PATH "files"
   !Define INST_DAT "inst.dat"
