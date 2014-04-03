@@ -77,6 +77,10 @@ Function un.onInit
   SetShellVarContext all
 FunctionEnd
 
+Function LaunchLink
+  ExecShell "open" "http://elm-lang.org/onboarding/Windows.elm"
+FunctionEnd
+
 ;--------------------------------
 ;Interface Settings
 
@@ -104,6 +108,9 @@ FunctionEnd
   !Define MUI_STARTMENUPAGE_DEFAULTFOLDER "Elm Platform ${PLATFORM_VERSION}"
   !insertmacro MUI_PAGE_STARTMENU StartMenuPage $START_MENU_FOLDER
   !insertmacro MUI_PAGE_INSTFILES
+  !define MUI_FINISHPAGE_RUN
+  !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
+  !define MUI_FINISHPAGE_RUN_TEXT "Open tutorial on how to use Elm Platform"
   !insertmacro MUI_PAGE_FINISH
 
   !insertmacro MUI_UNPAGE_WELCOME
