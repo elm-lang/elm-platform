@@ -3,3 +3,5 @@
 set -ex
 
 echo "$(date)" > /tmp/elm-installer.log
+
+open http://elm-lang.org/onboarding/Mac.elm
