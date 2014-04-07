@@ -67,7 +67,9 @@ have `printf`. The final command starts the Elm server at
 
 #### Final Notes
 
-If you are stuck, email
+If you are stuck, check to see if anyone has had [a similar
+issue](https://github.com/elm-lang/elm-platform/issues). If not,
+open a new issue or email
 [the list](https://groups.google.com/forum/?fromgroups#!forum/elm-discuss)
 or ask a question in the
 [#Elm IRC channel](http://webchat.freenode.net/?channels=elm). 
