@@ -29,11 +29,13 @@ jump to the [My First Project](#my-first-project) section.
 download the [Haskell Platform](http://hackage.haskell.org/platform/)
 then run these commands:
 
-    cabal update
-    cabal install elm
-    cabal install elm-server
-    cabal install elm-repl    # Optional
-    cabal install elm-get     # Optional
+```bash
+cabal update
+cabal install elm
+cabal install elm-server   # Highly-Recommended
+cabal install elm-repl     # Optional
+cabal install elm-get      # Optional
+```
 
 Again, all this should work on any platform, from Windows to Ubuntu.
 
