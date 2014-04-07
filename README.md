@@ -32,12 +32,10 @@ then run these commands:
     cabal update
     cabal install elm
     cabal install elm-server
+    cabal install elm-repl    # Optional
+    cabal install elm-get     # Optional
 
-    # If you want the elm-repl and elm-get
-    cabal install elm-repl
-    cabal install elm-get
-
-Again, this should work on any platform, from Windows to Ubuntu.
+Again, all this should work on any platform, from Windows to Ubuntu.
 
 ## Use
 
@@ -61,8 +59,9 @@ The following commands will set-up a very basic project and start the Elm server
 
 The first two commands create a new directory and navigate into it. The `printf`
 commands place a simple program into `Main.elm`. Do this manually if you do not
-have `printf`. The final command starts the Elm server at [localhost:8000](http://localhost:8000/),
-allowing you to navigate to `Main.elm` and see your first program in action.
+have `printf`. The final command starts the Elm server at
+[localhost:8000](http://localhost:8000/), allowing you to navigate to
+`Main.elm` and see your first program in action.
 
 #### Final Notes
 
