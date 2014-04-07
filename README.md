@@ -12,13 +12,13 @@ and `elm-doc`.
 If you have any trouble installing at all, open an issue on this repo and then
 continue to the Platform Agnostic instructions which work on any OS.
 
-**Windows** &mdash; use [the installer][windows] and continue the
-[getting started walkthrough](http://elm-lang.org/onboarding/Windows.elm).
+**Windows** &mdash; use [the installer][windows] and continue the [getting
+started walkthrough for Windows](http://elm-lang.org/onboarding/Windows.elm).
 
  [windows]: http://0726e2be3f48a1ed0f90-ec3c2a753a12d2be9f23ba16873acc23.r35.cf2.rackcdn.com/Elm-Platform-0.12.exe
 
-**Mac** &mdash; use [the installer][mac] and continue the
-[getting started walkthrough](http://elm-lang.org/onboarding/Mac.elm).
+**Mac** &mdash; use [the installer][mac] and continue the [getting
+started walkthrough for Mac](http://elm-lang.org/onboarding/Mac.elm).
 
  [mac]: http://0726e2be3f48a1ed0f90-ec3c2a753a12d2be9f23ba16873acc23.r35.cf2.rackcdn.com/Elm-Platform-0.12.pkg
 
@@ -26,12 +26,18 @@ continue to the Platform Agnostic instructions which work on any OS.
 jump to the [My First Project](#my-first-project) section.
 
 **Platform Agnostic** &mdash;
-download the [Haskell Platform](http://hackage.haskell.org/platform/).
-Once the Haskell Platform is installed run these commands:
+download the [Haskell Platform](http://hackage.haskell.org/platform/)
+then run these commands:
 
     cabal update
     cabal install elm
     cabal install elm-server
+
+    # If you want the elm-repl and elm-get
+    cabal install elm-repl
+    cabal install elm-get
+
+Again, this should work on any platform, from Windows to Ubuntu.
 
 ## Use
 
