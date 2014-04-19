@@ -4,9 +4,12 @@ set -e
 
 project=$1
 
+mkdir -p projects
+cd projects
+
 # Clone the project if necessary
 if [ ! -d $project ]; then
-    git clone https://github.com/evancz/$project.git
+    git clone https://github.com/elm-lang/$project.git
 fi
 
 cd $project
