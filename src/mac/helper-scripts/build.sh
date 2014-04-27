@@ -21,5 +21,6 @@ if [ $tag != $2 ]; then
     git checkout master
     git pull
     git checkout tags/$2
-    cabal install
 fi
+
+cabal install
