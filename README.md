@@ -2,7 +2,7 @@
 
 A bundle of all [Elm](http://elm-lang.org) tools:
 [`elm`](https://github.com/elm-lang/Elm),
-`elm-server`,
+[`elm-server`](https://github.com/elm-lang/elm-server),
 [`elm-repl`](https://github.com/elm-lang/elm-repl),
 [`elm-get`](https://github.com/elm-lang/elm-get),
 and `elm-doc`.
@@ -20,7 +20,7 @@ started walkthrough for Windows](http://elm-lang.org/onboarding/Windows.elm).
 **Mac** &mdash; use [the installer][mac] and continue the [getting
 started walkthrough for Mac](http://elm-lang.org/onboarding/Mac.elm).
 
- [mac]: http://0726e2be3f48a1ed0f90-ec3c2a753a12d2be9f23ba16873acc23.r35.cf2.rackcdn.com/Elm-Platform-0.12.pkg
+ [mac]: http://0726e2be3f48a1ed0f90-ec3c2a753a12d2be9f23ba16873acc23.r35.cf2.rackcdn.com/Elm-Platform-0.12.1.pkg
 
 **Arch Linux** &mdash; follow [these directions](https://github.com/elm-lang/Elm/wiki/Installing-Elm#arch-linux) and then
 jump to the [My First Project](#my-first-project) section.
