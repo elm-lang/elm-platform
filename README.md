@@ -43,7 +43,7 @@ Again, all this should work on any platform, from Windows to Ubuntu.
 
 This installs five command line tools:
 [`elm`](https://github.com/elm-lang/Elm),
-`elm-server`,
+[`elm-server`](https://github.com/elm-lang/elm-server),
 [`elm-repl`](https://github.com/elm-lang/elm-repl),
 [`elm-get`](https://github.com/elm-lang/elm-get),
 and `elm-doc`. To be able to call them from the command line,
