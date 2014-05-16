@@ -3,10 +3,10 @@
 set -e
 
 # Set version numbers for everything we want to build from source
-version_compiler="0.12.1"
+version_compiler="0.12.2"
 version_server="0.11"
 version_repl="0.2.2.1"
-version_get="0.1.1.3"
+version_get="0.1.2"
 
 # Clean-up old pkg files
 rm -f Elm.pkg
@@ -26,9 +26,6 @@ mkdir -p $scriptsdir
 
 # Build Elm compiler and copy required resources to the correct places
 bash $helpdir/build.sh Elm        $version_compiler
-bash $helpdir/build.sh elm-server $version_server
-bash $helpdir/build.sh elm-repl   $version_repl
-bash $helpdir/build.sh elm-get    $version_get
 datafilesdir=projects/Elm/data
 
 cp $installerdir/postinstall $scriptsdir
