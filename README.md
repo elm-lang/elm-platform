@@ -14,7 +14,7 @@ continue to the Platform Agnostic instructions which work on any OS.
 
 **Windows** &mdash; use [the installer][windows] and continue the [getting
 started walkthrough for Windows](http://elm-lang.org/onboarding/Windows.elm).
-If you run into issues compiling programs, you may need to set your `ELM_HOME`
+If you run into issues compiling programs, you may need to manually set your `ELM_HOME`
 environment variable to `C:/Program Files/Elm Platform/0.12.1/share` as reported
 [here](https://github.com/elm-lang/elm-platform/issues/2).
 
