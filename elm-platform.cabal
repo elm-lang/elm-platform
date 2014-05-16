@@ -25,7 +25,7 @@ source-repository head
   location: git://github.com/evancz/elm-platform.git
 
 Library
-  Build-depends:       Elm,
-                       elm-get,
-                       elm-repl,
-                       elm-server
+  Build-depends: Elm        == 0.12.2
+               , elm-get    == 0.1.2
+               , elm-repl   == 0.2.2.1
+               , elm-server == 0.11
