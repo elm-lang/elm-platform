@@ -1,8 +1,7 @@
 Name:                elm-platform
 Version:             0.12.3
 Synopsis:            A bundle of all Elm-related tools.
-Description:         A bundle of the Elm compiler, elm-get, elm-server, elm-repl,
-                     and elm-doc.
+Description:         A bundle of the Elm compiler, elm-get, elm-server, and elm-repl.
 
 Homepage:            http://elm-lang.org
 
@@ -17,7 +16,6 @@ Category:            Compiler, Language
 
 Build-type:          Simple
 
-Extra-source-files:  changelog.txt
 Cabal-version:       >=1.9
 
 source-repository head
