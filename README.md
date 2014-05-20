@@ -33,7 +33,7 @@ then run these commands:
 
 ```bash
 cabal update
-cabal install elm-platform
+cabal install elm elm-server elm-repl elm-get
 ```
 
 Again, all this should work on any platform, from Windows to Ubuntu.
