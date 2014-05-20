@@ -1,5 +1,5 @@
 Name:                elm-platform
-Version:             0.1
+Version:             0.12.3
 Synopsis:            A bundle of all Elm-related tools.
 Description:         A bundle of the Elm compiler, elm-get, elm-server, elm-repl,
                      and elm-doc.
@@ -25,7 +25,7 @@ source-repository head
   location: git://github.com/evancz/elm-platform.git
 
 Library
-  Build-depends: Elm        == 0.12.2
+  Build-depends: Elm        == 0.12.3
                , elm-get    == 0.1.2
                , elm-repl   == 0.2.2.1
                , elm-server == 0.11
