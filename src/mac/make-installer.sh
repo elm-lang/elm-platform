@@ -4,7 +4,7 @@ set -e
 
 # Set version numbers for everything we want to build from source
 version_compiler="0.12.3"
-version_server="0.11"
+version_server="0.11.0.1"
 version_repl="0.2.2.1"
 version_get="0.1.2"
 
