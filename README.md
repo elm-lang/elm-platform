@@ -19,7 +19,7 @@ started walkthrough for Mac](http://elm-lang.org/onboarding/Mac.elm).
 **Windows** &mdash; use [the installer][windows] and continue the [getting
 started walkthrough for Windows](http://elm-lang.org/onboarding/Windows.elm).
 If you run into issues compiling programs, you may need to manually set your `ELM_HOME`
-environment variable to `C:/Program Files/Elm Platform/0.12.1/share` as reported
+environment variable to `C:/Program Files/Elm Platform/0.12.3/share` as reported
 [here](https://github.com/elm-lang/elm-platform/issues/2).
 
  [windows]: http://0726e2be3f48a1ed0f90-ec3c2a753a12d2be9f23ba16873acc23.r35.cf2.rackcdn.com/Elm-Platform-0.12.3.exe
