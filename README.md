@@ -40,12 +40,12 @@ Again, all this should work on any platform, from Windows to Ubuntu.
 
 ## Use
 
-This installs five command line tools:
+This installs four command line tools:
 [`elm`](https://github.com/elm-lang/Elm),
 [`elm-server`](https://github.com/elm-lang/elm-server),
-[`elm-repl`](https://github.com/elm-lang/elm-repl),
-[`elm-get`](https://github.com/elm-lang/elm-get),
-and `elm-doc`. To be able to call them from the command line,
+[`elm-repl`](https://github.com/elm-lang/elm-repl), and
+[`elm-get`](https://github.com/elm-lang/elm-get).
+To be able to call them from the command line,
 you may need to add them to your PATH.
 
 ## My First Project
