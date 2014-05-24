@@ -14,7 +14,7 @@ continue to the Platform Agnostic instructions which work on any OS.
 **Mac** &mdash; use [the installer][mac] and continue the [getting
 started walkthrough for Mac](http://elm-lang.org/onboarding/Mac.elm).
 
- [mac]: http://0726e2be3f48a1ed0f90-ec3c2a753a12d2be9f23ba16873acc23.r35.cf2.rackcdn.com/Elm-Platform-0.12.3.pkg
+ [mac]: https://www.dropbox.com/s/qfz9n90jszcxa5q/Elm-Platform-0.12.3.pkg
 
 **Windows** &mdash; use [the installer][windows] and continue the [getting
 started walkthrough for Windows](http://elm-lang.org/onboarding/Windows.elm).
@@ -22,7 +22,7 @@ If you run into issues compiling programs, you may need to manually set your `EL
 environment variable to `C:/Program Files/Elm Platform/0.12.3/share` as reported
 [here](https://github.com/elm-lang/elm-platform/issues/2).
 
- [windows]: http://0726e2be3f48a1ed0f90-ec3c2a753a12d2be9f23ba16873acc23.r35.cf2.rackcdn.com/Elm-Platform-0.12.3.exe
+ [windows]: https://www.dropbox.com/s/qzcm9yyve54ss1l/Elm-Platform-0.12.3.exe
 
 **Arch Linux** &mdash; follow [these directions](https://github.com/elm-lang/Elm/wiki/Installing-Elm#arch-linux) and then
 jump to the [My First Project](#my-first-project) section.
