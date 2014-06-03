@@ -38,6 +38,12 @@ cabal install elm elm-server elm-repl elm-get
 
 Again, all this should work on any platform, from Windows to Ubuntu.
 
+#### Update
+
+Update to a newer version of Elm by just running the installer again. They link
+to the latest versions, and they will safely overwrite old executables and paths
+so your machine is in a consistent state.
+
 ## Use
 
 This installs four command line tools:
