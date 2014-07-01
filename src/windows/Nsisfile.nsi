@@ -156,12 +156,15 @@ Section "Update the PATH environment variable" SecPath
   SectionIn 1
 
   ; Update PATH
-  ${EnvVarUpdate} $0 "PATH" "P" "HKLM" "$INSTDIR\bin"
+  ExecWait '"$SYSDIR\wscript.exe" //E:vbscript "$INSTDIR\updatepath.vbs" "$INSTDIR\bin"'
   SetShellVarContext current
 
   ; Update ELM-HOME
-  ${EnvVarUpdate} $0 "ELM_HOME" "P" "HKLM" "$INSTDIR\share"
+  WriteRegStr HKCU "Environment" "ELM_HOME" "$INSTDIR\share"
   SetShellVarContext current
+
+  ; Update environment variables
+  SendMessage ${HWND_BROADCAST} ${WM_SETTINGCHANGE} 0 "STR:Environment" /TIMEOUT=5000
 
 SectionEnd
 
