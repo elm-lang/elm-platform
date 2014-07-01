@@ -3,7 +3,6 @@
 ;--------------------------------
 ;Includes
 
-  !Include "EnvVarUpdate.nsh"
   !Include "FileFunc.nsh"
   !Include "LogicLib.nsh"
   !Include "MUI2.nsh"
@@ -76,7 +75,7 @@ Function un.onInit
 FunctionEnd
 
 Function LaunchLink
-  ExecShell "open" "http://elm-lang.org/Get-Started.elm"
+  ExecShell "open" "http://elm-lang.org/onboarding/Windows.elm"
 FunctionEnd
 
 ;--------------------------------
@@ -156,6 +155,9 @@ Section "Update the PATH environment variable" SecPath
   SectionIn 1
 
   ; Update PATH
+  ; First, remove any older version
+  ExecWait '"$SYSDIR\wscript.exe" //E:vbscript "$INSTDIR\removefrompath.vbs" "$PROGRAMFILES\Elm Platform"'
+  ; Then add to the PATH
   ExecWait '"$SYSDIR\wscript.exe" //E:vbscript "$INSTDIR\updatepath.vbs" "$INSTDIR\bin"'
   SetShellVarContext current
 
@@ -226,6 +228,10 @@ SectionGroupEnd
 
 Section "Uninstall"
 
+  ; Update PATH
+  ExecWait '"$SYSDIR\wscript.exe" //E:vbscript "$INSTDIR\removefrompath.vbs" "$PROGRAMFILES\Elm Platform"'
+  SetShellVarContext current
+
   !Include ${UNINST_DAT}
 
   Delete "$INSTDIR\Uninstall.exe"
@@ -256,12 +262,8 @@ Section "Uninstall"
   DeleteRegKey /IfEmpty HKCU Software\Elm
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ElmPlatform-${PLATFORM_VERSION}"
 
-  ; Update PATH
-  ExecWait '"$SYSDIR\wscript.exe" //E:vbscript "$INSTDIR\removefrompath.vbs" "$PROGRAMFILES\Elm Platform"'
-  SetShellVarContext current
-
   ; Update ELM_HOME
-  DeleteRegKey HKCU "Environment\ELM_HOME"
+  DeleteRegValue HKCU "Environment" "ELM_HOME"
   SetShellVarContext current
 
   ; Update environment variables
