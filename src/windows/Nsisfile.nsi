@@ -257,11 +257,14 @@ Section "Uninstall"
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ElmPlatform-${PLATFORM_VERSION}"
 
   ; Update PATH
-  ${un.EnvVarUpdate} $0 "PATH" "R" "HKLM" "$INSTDIR\bin"
+  ExecWait '"$SYSDIR\wscript.exe" //E:vbscript "$INSTDIR\removefrompath.vbs" "$PROGRAMFILES\Elm Platform"'
   SetShellVarContext current
 
   ; Update ELM_HOME
-  ${un.EnvVarUpdate} $0 "ELM_HOME" "R" "HKLM" "$INSTDIR\share"
+  DeleteRegKey HKCU "Environment\ELM_HOME"
   SetShellVarContext current
+
+  ; Update environment variables
+  SendMessage ${HWND_BROADCAST} ${WM_SETTINGCHANGE} 0 "STR:Environment" /TIMEOUT=5000
 
 SectionEnd
