@@ -31,37 +31,46 @@ and testing interactions between projects.
 -}
 module Main where
 
+import qualified Data.List as List
+import qualified Data.Map as Map
 import System.Directory (createDirectoryIfMissing, setCurrentDirectory, getCurrentDirectory)
 import System.Environment (getArgs)
-import System.Exit (ExitCode)
+import System.Exit (ExitCode, exitFailure)
 import System.FilePath ((</>))
-import System.Process
+import System.IO (hPutStrLn, stderr)
+import System.Process (rawSystem)
 
+(=:) = (,)
 
-configs :: Map.Map String (String, String)
+configs :: Map.Map String [(String, String)]
 configs =
-	let (:=) = (,) in
 	Map.fromList
     [
-      "master" :=
-        [ "Elm"         := "master"
-        , "elm-reactor" := "master"
-        , "elm-repl"    := "master"
-        , "elm-get"     := "master"
+      "master" =:
+        [ "Elm"         =: "master"
+        , "elm-reactor" =: "master"
+        , "elm-repl"    =: "master"
+        , "elm-get"     =: "master"
         ]
     , 
-      "0.13" :=
-        [ "Elm"         := "0.13"
-        , "elm-reactor" := "0.1"
-        , "elm-repl"    := "0.2.2.1"
-        , "elm-get"     := "0.1.2"
+      "0.13" =:
+        [ "Elm"         =: "master"
+        , "elm-reactor" =: "master"
+        , "elm-repl"    =: "master"
+        , "elm-get"     =: "master"
         ]
+        {-
+        [ "Elm"         =: "0.13"
+        , "elm-reactor" =: "0.1"
+        , "elm-repl"    =: "0.2.2.1"
+        , "elm-get"     =: "0.1.2"
+        ]-}
     , 
-      "0.12.3" :=
-        [ "Elm"        := "0.12.3"
-        , "elm-server" := "0.11.0.1"
-        , "elm-repl"   := "0.2.2.1"
-        , "elm-get"    := "0.1.2"
+      "0.12.3" =:
+        [ "Elm"        =: "0.12.3"
+        , "elm-server" =: "0.11.0.1"
+        , "elm-repl"   =: "0.2.2.1"
+        , "elm-get"    =: "0.1.2"
         ]
     ]
 
@@ -71,14 +80,14 @@ main =
     case args of
       [version] | Map.member version configs ->
           let artifactDirectory = "Elm-Platform" </> version
-              repos = configs !! version
+              repos = configs Map.! version
           in
               makeRepos artifactDirectory repos
 
       _ ->
         do hPutStrLn stderr $
                "Expecting one of the following values as an argument:\n" ++
-               "    " ++ intercalate ", " (Map.keys configs)
+               "    " ++ List.intercalate ", " (Map.keys configs)
            exitFailure
 
 makeRepos :: FilePath -> [(String, String)] -> IO ()
