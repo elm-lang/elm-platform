@@ -104,6 +104,7 @@ makeRepo root projectName version =
     git [ "clone", "https://github.com/elm-lang/" ++ projectName ++ ".git" ]
     setCurrentDirectory projectName
     git [ "checkout", version ]
+    git [ "pull" ]
 
     -- actually build things
     cabal [ "sandbox", "init", "--sandbox=" ++ root ]
