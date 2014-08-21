@@ -30,6 +30,7 @@ runhaskell ../BuildFromSource.hs $version
 
 platform=Elm-Platform/$version
 
+
 #### COPY BINARIES ####
 
 # Create a wrapper around an executable that sets ELM_HOME
