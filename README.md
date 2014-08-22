@@ -8,6 +8,17 @@ A bundle of all [Elm](http://elm-lang.org) tools: [`elm`][elm],
 [elm-repl]: https://github.com/elm-lang/elm-repl
 [elm-get]: https://github.com/elm-lang/elm-get
 
+
+## Getting Started
+
+After installing, use [this starter project][examples] to get comfortable using
+Elm and all of its tools.
+
+[examples]: https://github.com/michaelbjames/elm-examples
+
+Be sure to try out the time-traveling debugger with `elm-reactor`!
+
+
 ## Installers
 
 If you have any trouble installing, open an issue on this repo and then
@@ -28,6 +39,7 @@ Update to a newer version of Elm by just running the installer again. They link
 to the latest versions, and they will safely overwrite old executables and paths
 so your machine is in a consistent state.
 
+
 ## Platform Agnostic Install
 
 The following should work on any platform, from Windows to Ubuntu:
@@ -46,22 +58,6 @@ The following should work on any platform, from Windows to Ubuntu:
 
 This approach makes it easy to have multiple versions of Elm Platform installed. It is okay to have `Elm-Platform/0.12.3`, `Elm-Platform/0.13`, and many others. It is up to you to manage your PATH or any symlinks though.
 
-
-## My First Project
-
-Now we will create a simple Elm project.
-The following commands will set-up a very basic project and start the Elm server.
-
-    mkdir helloElm
-    cd helloElm
-    printf "import Mouse\n\nmain = lift asText Mouse.position" > Main.elm
-    elm-server
-
-The first two commands create a new directory and navigate into it. The `printf`
-commands place a simple program into `Main.elm`. Do this manually if you do not
-have `printf`. The final command starts the Elm server at
-[localhost:8000](http://localhost:8000/), allowing you to navigate to
-`Main.elm` and see your first program in action.
 
 ## Help
 
