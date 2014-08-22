@@ -14,7 +14,8 @@ set platform=Elm-Platform\%version%
 xcopy %platform%\bin\elm*.exe files\bin /s /e
 xcopy %platform%\Elm\data\* files\share\compiler /s /e
 xcopy %platform%\elm-reactor\assets\* files\share\reactor /s /e
+xcopy updatepath.vbs files
 
-"%ProgramFiles%\NSIS\makensis.exe" /DPLATFORM_VERSION=%version% Nsisfile.nsi
+"%ProgramFiles% (x86)\NSIS\makensis.exe" /DPLATFORM_VERSION=%version% Nsisfile.nsi
 
 rd /s /q files
