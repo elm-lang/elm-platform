@@ -24,7 +24,7 @@ function pm_volume_check() {
     <choices-outline>
         <line choice="choice2"/>
         <line choice="choice3"/>
-        <!-- <line choice="choice19"/> -->
+        <line choice="choice4"/>
     </choices-outline>
     <choice id="choice2" title="Elm Platform ">
         <pkg-ref id="org.elm-lang.binaries.pkg"/>
