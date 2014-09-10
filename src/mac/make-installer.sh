@@ -53,6 +53,7 @@ do
 	chmod +x $pkg_binaries/$exe
 done
 
+cp $(pwd)/preinstall $pkg_scripts
 cp $(pwd)/postinstall $pkg_scripts
 
 pkgbuild \
