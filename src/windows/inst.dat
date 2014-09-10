@@ -31,3 +31,4 @@ File "${FILES_SOURCE_PATH}\share\reactor\_reactor\debugger\restart-button-hover.
 SetOutPath "$INSTDIR"
 File "file.ico"
 File "updatepath.vbs"
+File "removefrompath.vbs"
