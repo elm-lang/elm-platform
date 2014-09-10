@@ -21,32 +21,42 @@ Be sure to try out the time-traveling debugger with `elm-reactor`!
 
 ## Installers
 
-If you have any trouble installing, open an issue on this repo and then
-continue to the Platform Agnostic instructions which work on any OS.
-
-**Mac** &mdash; Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to uninstall.
-
-[mac]: https://www.dropbox.com/s/qfz9n90jszcxa5q/Elm-Platform-0.12.3.pkg
-[uninstall]: https://github.com/elm-lang/elm-platform/blob/master/src/mac/helper-scripts/uninstall.sh
-
-**Windows** &mdash; Use the [Windows installer][windows].
-
-[windows]: https://www.dropbox.com/s/qzcm9yyve54ss1l/Elm-Platform-0.12.3.exe
-
-**Arch Linux** &mdash; Follow [these directions](https://github.com/elm-lang/Elm/wiki/Installing-Elm#arch-linux).
-
 Update to a newer version of Elm by just running the installer again. They link
 to the latest versions, and they will safely overwrite old executables and paths
 so your machine is in a consistent state.
 
+If you have any trouble installing, open an issue on this repo and then
+consider using the platform agnostic install path which works on any OS, but
+will take a while longer.
+
+### Mac
+
+Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to uninstall.
+
+[mac]: https://www.dropbox.com/s/qfz9n90jszcxa5q/Elm-Platform-0.12.3.pkg
+[uninstall]: https://github.com/elm-lang/elm-platform/blob/master/src/mac/helper-scripts/uninstall.sh
+
+If you have trouble running the downloaded installer, you may need to open it
+in Finder and run it from there.
+
+### Windows
+
+Use the [Windows installer][windows].
+
+[windows]: https://www.dropbox.com/s/qzcm9yyve54ss1l/Elm-Platform-0.12.3.exe
+
+### Arch Linux
+
+Follow [these directions](https://github.com/elm-lang/Elm/wiki/Installing-Elm#arch-linux).
+
 
 ## Platform Agnostic Install
 
-The following should work on any platform, from Windows to Ubuntu:
+The following should work on any platform, from Windows to Ubuntu.
 
  1. Download the [Haskell Platform][hp]. We will use this to build the Elm Platform.
- 2. Create a directory called `Elm-Platform/0.13/` to place everything Elm Platform related. You need to keep this directory around, so put it somewhere out of the way like ???
- 3. Run the following commands:
+ 2. On your Desktop, create a directory called `Elm-Platform/0.13/`
+ 3. Run the following commands from within `Elm-Platform/0.13/`
 
 [hp]: http://hackage.haskell.org/platform/
 
@@ -54,9 +64,20 @@ The following should work on any platform, from Windows to Ubuntu:
         cabal update
         cabal install elm-platform-0.13
 
- 4. Add the absolute path to `Elm-Platform/0.13/bin` to your PATH. This makes it so you can run `elm-repl` or `elm-reactor` from anywhere on your computer.
+    This will take some time. It is building the Elm tools and any libraries
+    that may be needed directly or indirectly.
 
-This approach makes it easy to have multiple versions of Elm Platform installed. It is okay to have `Elm-Platform/0.12.3`, `Elm-Platform/0.13`, and many others. It is up to you to manage your PATH or any symlinks though.
+ 4. Move the `Elm-Platform/` directory to the place where installed programs
+    go on your computer. On Linux and Mac a good place is `/usr/local/`. On
+    Windows a good place is `C:\Program Files\`
+ 5. On Mac or Linux, add `/usr/local/Elm-Platform/0.13/bin` to your PATH. On
+    Windows, add `C:\Program Files\Elm-Platform\0.13\bin` to your PATH. This
+    makes it so you can run `elm-repl` or `elm-reactor` from anywhere on your
+    computer.
+
+This approach makes it easy to have multiple versions of Elm Platform
+installed. It is okay to have `Elm-Platform/0.12.3`, `Elm-Platform/0.13`,
+and many others. It is up to you to manage your PATH though.
 
 
 ## Help
