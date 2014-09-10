@@ -29,7 +29,7 @@ If you have any trouble installing, open an issue on this repo and then
 consider using the platform agnostic install path which works on any OS, but
 will take a while longer.
 
-### Mac
+#### Mac
 
 Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to uninstall.
 
@@ -39,13 +39,13 @@ Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to u
 If you have trouble running the downloaded installer, you may need to open it
 in Finder and run it from there.
 
-### Windows
+#### Windows
 
 Use the [Windows installer][windows].
 
 [windows]: https://www.dropbox.com/s/qzcm9yyve54ss1l/Elm-Platform-0.12.3.exe
 
-### Arch Linux
+#### Arch Linux
 
 Follow [these directions](https://github.com/elm-lang/Elm/wiki/Installing-Elm#arch-linux).
 
