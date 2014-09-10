@@ -16,6 +16,12 @@ xcopy %platform%\Elm\data\* files\share\compiler /s /e
 xcopy %platform%\elm-reactor\assets\* files\share\reactor /s /e
 xcopy updatepath.vbs files
 
-"%ProgramFiles% (x86)\NSIS\makensis.exe" /DPLATFORM_VERSION=%version% Nsisfile.nsi
+if EXIST "%ProgramFiles%" (
+    set nsis=%ProgramFiles%\NSIS
+) else (
+    set nsis=%ProgramFiles(x86)%\NSIS
+)
+
+"%nsis%\makensis.exe" /DPLATFORM_VERSION=%version% Nsisfile.nsi
 
 rd /s /q files
