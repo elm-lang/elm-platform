@@ -2,6 +2,7 @@
 set version=%1
 
 runhaskell ..\BuildFromSource.hs %version%
+if %errorlevel% neq 0 exit /b %errorlevel%
 
 mkdir files
 mkdir files\bin
