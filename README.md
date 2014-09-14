@@ -33,7 +33,7 @@ will take a while longer.
 
 Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to uninstall.
 
-[mac]: https://www.dropbox.com/s/qfz9n90jszcxa5q/Elm-Platform-0.12.3.pkg
+[mac]: http://install.elm-lang.org/Elm-Platform-0.13.pkg
 [uninstall]: https://github.com/elm-lang/elm-platform/blob/master/src/mac/helper-scripts/uninstall.sh
 
 If you have trouble running the downloaded installer, you may need to open it
@@ -43,7 +43,7 @@ in Finder and run it from there.
 
 Use the [Windows installer][windows].
 
-[windows]: https://www.dropbox.com/s/qzcm9yyve54ss1l/Elm-Platform-0.12.3.exe
+[windows]: http://install.elm-lang.org/Elm-Platform-0.13.exe
 
 #### Arch Linux
 
