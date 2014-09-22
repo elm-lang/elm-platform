@@ -54,17 +54,11 @@ configs =
         ]
     , 
       "0.13" =:
-        [ "Elm"         =: "master"
-        , "elm-reactor" =: "master"
-        , "elm-repl"    =: "master"
-        , "elm-get"     =: "master"
-        ]
-        {-
         [ "Elm"         =: "0.13"
         , "elm-reactor" =: "0.1"
-        , "elm-repl"    =: "0.2.2.1"
-        , "elm-get"     =: "0.1.2"
-        ]-}
+        , "elm-repl"    =: "0.3"
+        , "elm-get"     =: "0.1.3"
+        ]
     , 
       "0.12.3" =:
         [ "Elm"        =: "0.12.3"
