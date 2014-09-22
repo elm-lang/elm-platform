@@ -58,9 +58,14 @@ will still take some time to run.
 
  1. Download the [Haskell Platform][hp]. We will use this to build the Elm Platform.
 
- 2. On your Desktop, create a directory called `Elm-Platform/0.13/`
+ 2. Choose a directory to build the Elm Platform. On Linux and Mac a good place
+    is `/usr/local/`. On Windows a good place is `C:\Program Files\`. The rest
+    of the instructions will assume you are using `/usr/local/` just to make
+    things a bit simpler.
 
- 3. Run the following commands from within `Elm-Platform/0.13/`
+ 3. In `/usr/local/` create a directory named `Elm-Platform/0.13/`
+
+ 4. Run the following commands from within `/usr/local/Elm-Platform/0.13/`
 
 [hp]: http://hackage.haskell.org/platform/
 
@@ -70,10 +75,6 @@ will still take some time to run.
 
     This will take some time. Upon finishing successfull, it will place all of
     the executables you need in a directory called `bin/`.
-
- 4. Move the `Elm-Platform/` directory from your Desktop to the place where
-    installed programs go on your computer. On Linux and Mac a good place is
-    `/usr/local/`. On Windows a good place is `C:\Program Files\`.
 
  5. On Mac or Linux, add `/usr/local/Elm-Platform/0.13/bin` to your PATH. On
     Windows, add `C:\Program Files\Elm-Platform\0.13\bin` to your PATH. This
