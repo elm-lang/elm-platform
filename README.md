@@ -1,76 +1,91 @@
 # Elm Platform
 
-A bundle of all [Elm](http://elm-lang.org) tools:
-[`elm`](https://github.com/elm-lang/Elm),
-[`elm-server`](https://github.com/elm-lang/elm-server),
-[`elm-repl`](https://github.com/elm-lang/elm-repl), and
-[`elm-get`](https://github.com/elm-lang/elm-get).
+A bundle of all [Elm](http://elm-lang.org) tools: [`elm`][elm],
+[`elm-reactor`][elm-reactor], [`elm-repl`][elm-repl], and [`elm-get`][elm-get].
 
-## Install
+[elm]: https://github.com/elm-lang/Elm
+[elm-reactor]: https://github.com/elm-lang/elm-reactor
+[elm-repl]: https://github.com/elm-lang/elm-repl
+[elm-get]: https://github.com/elm-lang/elm-get
 
-If you have any trouble installing at all, open an issue on this repo and then
-continue to the Platform Agnostic instructions which work on any OS.
 
-**Mac** &mdash; use [the installer][mac] and continue the [getting
-started walkthrough for Mac](http://elm-lang.org/onboarding/Mac.elm).
+## Getting Started
 
- [mac]: https://www.dropbox.com/s/qfz9n90jszcxa5q/Elm-Platform-0.12.3.pkg
+After installing, use [this starter project][examples] to get comfortable using
+Elm and all of its tools.
 
-**Windows** &mdash; use [the installer][windows] and continue the [getting
-started walkthrough for Windows](http://elm-lang.org/onboarding/Windows.elm).
-If you run into issues compiling programs, you may need to manually set your `ELM_HOME`
-environment variable to `C:/Program Files/Elm Platform/0.12.3/share` as reported
-[here](https://github.com/elm-lang/elm-platform/issues/2).
+[examples]: https://github.com/michaelbjames/elm-examples
 
- [windows]: https://www.dropbox.com/s/qzcm9yyve54ss1l/Elm-Platform-0.12.3.exe
+Be sure to try out the time-traveling debugger with `elm-reactor`!
 
-**Arch Linux** &mdash; follow [these directions](https://github.com/elm-lang/Elm/wiki/Installing-Elm#arch-linux) and then
-jump to the [My First Project](#my-first-project) section.
 
-**Platform Agnostic** &mdash;
-download the [Haskell Platform](http://hackage.haskell.org/platform/)
-then run these commands:
-
-```bash
-cabal update
-cabal install elm elm-server elm-repl elm-get
-```
-
-Again, all this should work on any platform, from Windows to Ubuntu.
-
-#### Update
+## Installers
 
 Update to a newer version of Elm by just running the installer again. They link
 to the latest versions, and they will safely overwrite old executables and paths
 so your machine is in a consistent state.
 
-## Use
+If you have any trouble installing, open an issue on this repo and then
+consider using the platform agnostic install path which works on any OS, but
+will take a while longer.
 
-This installs four command line tools:
-[`elm`](https://github.com/elm-lang/Elm),
-[`elm-server`](https://github.com/elm-lang/elm-server),
-[`elm-repl`](https://github.com/elm-lang/elm-repl), and
-[`elm-get`](https://github.com/elm-lang/elm-get).
-To be able to call them from the command line,
-you may need to add them to your PATH.
+#### Mac
 
-## My First Project
+Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to uninstall.
 
-Now we will create a simple Elm project.
-The following commands will set-up a very basic project and start the Elm server.
+[mac]: http://install.elm-lang.org/Elm-Platform-0.13.pkg
+[uninstall]: https://github.com/elm-lang/elm-platform/blob/master/src/mac/helper-scripts/uninstall.sh
 
-    mkdir helloElm
-    cd helloElm
-    printf "import Mouse\n\nmain = lift asText Mouse.position" > Main.elm
-    elm-server
+If you have trouble running the downloaded installer, you may need to open it
+in Finder and run it from there.
 
-The first two commands create a new directory and navigate into it. The `printf`
-commands place a simple program into `Main.elm`. Do this manually if you do not
-have `printf`. The final command starts the Elm server at
-[localhost:8000](http://localhost:8000/), allowing you to navigate to
-`Main.elm` and see your first program in action.
+#### Windows
 
-#### Final Notes
+Use the [Windows installer][windows].
+
+[windows]: http://install.elm-lang.org/Elm-Platform-0.13.exe
+
+#### Arch Linux
+
+Follow [these directions](https://github.com/elm-lang/Elm/wiki/Installing-Elm#arch-linux).
+
+
+## Platform Agnostic Install
+
+The following instructions should work on any platform, from Windows to Ubuntu.
+It builds the compiler from source in a relatively straight-forward way, but it
+will still take some time to run.
+
+ 1. Download the [Haskell Platform][hp]. We will use this to build the Elm Platform.
+
+ 2. On your Desktop, create a directory called `Elm-Platform/0.13/`
+
+ 3. Run the following commands from within `Elm-Platform/0.13/`
+
+[hp]: http://hackage.haskell.org/platform/
+
+        cabal sandbox init
+        cabal update
+        cabal install elm-platform-0.13
+
+    This will take some time. Upon finishing successfull, it will place all of
+    the executables you need in a directory called `bin/`.
+
+ 4. Move the `Elm-Platform/` directory from your Desktop to the place where
+    installed programs go on your computer. On Linux and Mac a good place is
+    `/usr/local/`. On Windows a good place is `C:\Program Files\`.
+
+ 5. On Mac or Linux, add `/usr/local/Elm-Platform/0.13/bin` to your PATH. On
+    Windows, add `C:\Program Files\Elm-Platform\0.13\bin` to your PATH. This
+    makes it so you can run `elm-repl` or `elm-reactor` from anywhere on your
+    computer.
+
+This approach makes it easy to have multiple versions of Elm Platform
+installed. It is okay to have `Elm-Platform/0.12.3`, `Elm-Platform/0.13`,
+and many others. It is up to you to manage your PATH though.
+
+
+## Help
 
 If you are stuck, check to see if anyone has had [a similar
 issue](https://github.com/elm-lang/elm-platform/issues). If not,
