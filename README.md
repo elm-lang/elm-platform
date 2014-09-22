@@ -71,7 +71,7 @@ will still take some time to run.
 
         cabal sandbox init
         cabal update
-        cabal install elm-platform-0.13
+        cabal install -j Elm-0.13 elm-repl-0.3 elm-reactor-0.1 elm-get-0.1.3
 
     This will take some time. Upon finishing successfull, it will place all of
     the executables you need in a directory called `bin/`.
