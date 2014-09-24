@@ -36,9 +36,6 @@ Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to u
 [mac]: http://install.elm-lang.org/Elm-Platform-0.13.pkg
 [uninstall]: https://github.com/elm-lang/elm-platform/blob/master/src/mac/helper-scripts/uninstall.sh
 
-If you have trouble running the downloaded installer, you may need to open it
-in Finder and run it from there.
-
 #### Windows
 
 Use the [Windows installer][windows].
