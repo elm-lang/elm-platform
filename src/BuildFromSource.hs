@@ -51,6 +51,7 @@ configs =
         , "elm-reactor" =: "master"
         , "elm-repl"    =: "master"
         , "elm-get"     =: "master"
+        , "elm-make"    =: "master"
         ]
     , 
       "0.13" =:
