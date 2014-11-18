@@ -40,18 +40,19 @@ import System.FilePath ((</>))
 import System.IO (hPutStrLn, stderr)
 import System.Process (rawSystem)
 
+
 (=:) = (,)
 
 configs :: Map.Map String [(String, String)]
 configs =
-	Map.fromList
+  Map.fromList
     [
       "master" =:
-        [ "Elm"         =: "master"
-        , "elm-reactor" =: "master"
-        , "elm-repl"    =: "master"
-        , "elm-get"     =: "master"
-        , "elm-make"    =: "master"
+        [ "elm-compiler" =: "master"
+        , "elm-make"     =: "master"
+        , "elm-package"  =: "master"
+        , "elm-reactor"  =: "master"
+        , "elm-repl"     =: "master"
         ]
     , 
       "0.13" =:
@@ -69,6 +70,7 @@ configs =
         ]
     ]
 
+
 main :: IO ()
 main =
  do args <- getArgs
@@ -85,6 +87,7 @@ main =
                "    " ++ List.intercalate ", " (Map.keys configs)
            exitFailure
 
+
 makeRepos :: FilePath -> [(String, String)] -> IO ()
 makeRepos artifactDirectory repos =
  do createDirectoryIfMissing True artifactDirectory
@@ -92,6 +95,7 @@ makeRepos artifactDirectory repos =
     root <- getCurrentDirectory
     cabal [ "sandbox", "init", "--sandbox=." ]
     mapM_ (uncurry (makeRepo root)) repos
+
 
 makeRepo :: FilePath -> String -> String -> IO ()
 makeRepo root projectName version =
