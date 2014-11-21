@@ -43,14 +43,16 @@ import System.Process (rawSystem)
 
 (=:) = (,)
 
+-- NOTE: The order of the dependencies is also the build order,
+-- so do not just go alphebetizing things.
 configs :: Map.Map String [(String, String)]
 configs =
   Map.fromList
     [
       "master" =:
         [ "elm-compiler" =: "master"
-        , "elm-make"     =: "master"
         , "elm-package"  =: "master"
+        , "elm-make"     =: "master"
         , "elm-reactor"  =: "master"
         , "elm-repl"     =: "master"
         ]
