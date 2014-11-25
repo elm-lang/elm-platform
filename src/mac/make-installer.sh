@@ -46,7 +46,7 @@ EOF
 }  
 
 # Copy executables into pkg_binaries directory
-for exe in elm elm-get elm-reactor elm-repl elm-doc
+for exe in elm-package elm-make elm-reactor elm-repl elm-doc
 do
 	cp $platform/bin/$exe $pkg_binaries/$exe-unwrapped
     wrap $exe
@@ -70,7 +70,7 @@ pkgbuild \
 pkgbuild \
     --identifier org.elm-lang.compiler-assets.pkg \
     --install-location $usr_assets/compiler \
-    --root $platform/Elm/data \
+    --root $platform/elm-compiler/runtime \
     compiler-assets.pkg
 
 pkgbuild \
