@@ -102,7 +102,7 @@ makeRepos artifactDirectory repos =
 makeRepo :: FilePath -> String -> String -> IO ()
 makeRepo root projectName version =
  do  -- get the right version of the repo
-    git [ "clone", "https://github.com/elm-lang/" ++ projectName ++ ".git" ]
+    git [ "clone", "--depth=1", "https://github.com/elm-lang/" ++ projectName ++ ".git" ]
     setCurrentDirectory projectName
     git [ "checkout", version ]
     git [ "pull" ]
