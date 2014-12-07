@@ -33,12 +33,13 @@ module Main where
 
 import qualified Data.List as List
 import qualified Data.Map as Map
-import System.Directory (createDirectoryIfMissing, setCurrentDirectory, getCurrentDirectory)
+import System.Directory (createDirectoryIfMissing, setCurrentDirectory, getCurrentDirectory, doesFileExist)
 import System.Environment (getArgs)
 import System.Exit (ExitCode, exitFailure)
 import System.FilePath ((</>))
 import System.IO (hPutStrLn, stderr)
 import System.Process (rawSystem)
+import Control.Monad (when, void)
 
 
 (=:) = (,)
@@ -107,6 +108,8 @@ makeRepo root projectName version =
     git [ "checkout", version ]
     git [ "pull" ]
 
+    whenM (doesFileExist "elm-package.json") $ void $ elmPackage [ "install", "--yes" ]
+
     -- actually build things
     cabal [ "sandbox", "init", "--sandbox=" ++ root ]
     cabal [ "install", "-j" ]
@@ -117,8 +120,14 @@ makeRepo root projectName version =
 
 -- HELPER FUNCTIONS
 
+whenM :: Monad m => m Bool -> m () -> m ()
+whenM p s = flip when s =<< p
+
 cabal :: [String] -> IO ExitCode
 cabal = rawSystem "cabal"
 
 git :: [String] -> IO ExitCode
 git = rawSystem "git"
+
+elmPackage :: [String] -> IO ExitCode
+elmPackage = rawSystem "../bin/elm-package"
