@@ -33,14 +33,14 @@ will take a while longer.
 
 Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to uninstall.
 
-[mac]: http://install.elm-lang.org/Elm-Platform-0.13.pkg
+[mac]: http://install.elm-lang.org/Elm-Platform-0.14.pkg
 [uninstall]: https://github.com/elm-lang/elm-platform/blob/master/src/mac/helper-scripts/uninstall.sh
 
 #### Windows
 
 Use the [Windows installer][windows].
 
-[windows]: http://install.elm-lang.org/Elm-Platform-0.13.exe
+[windows]: http://install.elm-lang.org/Elm-Platform-0.14.exe
 
 #### Arch Linux
 
