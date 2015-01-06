@@ -68,12 +68,6 @@ pkgbuild \
 #### BUNDLE STATIC ASSETS ####
 
 pkgbuild \
-    --identifier org.elm-lang.compiler-assets.pkg \
-    --install-location $usr_assets/compiler \
-    --root $platform/elm-compiler/runtime \
-    compiler-assets.pkg
-
-pkgbuild \
     --identifier org.elm-lang.reactor-assets.pkg \
     --install-location $usr_assets/reactor \
     --root $platform/elm-reactor/assets \
@@ -94,6 +88,5 @@ productbuild \
 #### CLEAN UP ####
 
 rm binaries.pkg
-rm compiler-assets.pkg
 rm reactor-assets.pkg
 rm -rf $pkg_root

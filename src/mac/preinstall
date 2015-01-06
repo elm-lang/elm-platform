@@ -4,7 +4,7 @@ set -e
 
 installdir=/usr/local/bin
 
-for bin in elm elm-compiler elm-get elm-reactor elm-repl elm-doc elm-server
+for bin in elm-compiler elm-package elm-reactor elm-repl elm-doc
 do
 	if [ -f $installdir/$bin ]; then
 		sudo rm -f $installdir/$bin
