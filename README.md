@@ -1,12 +1,12 @@
 # Elm Platform
 
 A bundle of all [Elm](http://elm-lang.org) tools: [`elm`][elm],
-[`elm-reactor`][elm-reactor], [`elm-repl`][elm-repl], and [`elm-get`][elm-get].
+[`elm-reactor`][elm-reactor], [`elm-repl`][elm-repl], and [`elm-package`][elm-package].
 
 [elm]: https://github.com/elm-lang/Elm
 [elm-reactor]: https://github.com/elm-lang/elm-reactor
 [elm-repl]: https://github.com/elm-lang/elm-repl
-[elm-get]: https://github.com/elm-lang/elm-get
+[elm-package]: https://github.com/elm-lang/elm-package
 
 
 ## Getting Started
@@ -33,14 +33,14 @@ will take a while longer.
 
 Use the [Mac installer][mac]. Run [this script][uninstall] if you ever want to uninstall.
 
-[mac]: http://install.elm-lang.org/Elm-Platform-0.13.pkg
+[mac]: http://install.elm-lang.org/Elm-Platform-0.14.pkg
 [uninstall]: https://github.com/elm-lang/elm-platform/blob/master/src/mac/helper-scripts/uninstall.sh
 
 #### Windows
 
 Use the [Windows installer][windows].
 
-[windows]: http://install.elm-lang.org/Elm-Platform-0.13.exe
+[windows]: http://install.elm-lang.org/Elm-Platform-0.14.exe
 
 #### Arch Linux
 
@@ -60,21 +60,21 @@ will still take some time to run.
     of the instructions will assume you are using `/usr/local/` just to make
     things a bit simpler.
 
- 3. In `/usr/local/` create a directory named `Elm-Platform/0.13/`
+ 3. In `/usr/local/` create a directory named `Elm-Platform/0.14/`
 
- 4. Run the following commands from within `/usr/local/Elm-Platform/0.13/`
+ 4. Run the following commands from within `/usr/local/Elm-Platform/0.14/`
 
 [hp]: http://hackage.haskell.org/platform/
 
         cabal sandbox init
         cabal update
-        cabal install -j Elm-0.13 elm-repl-0.3 elm-reactor-0.1 elm-get-0.1.3
+        cabal install -j Elm-0.14 elm-package-0.2 elm-make-0.1 elm-reactor-0.2 elm-repl-0.4
 
     This will take some time. Upon finishing successfull, it will place all of
     the executables you need in a directory called `bin/`.
 
- 5. On Mac or Linux, add `/usr/local/Elm-Platform/0.13/bin` to your PATH. On
-    Windows, add `C:\Program Files\Elm-Platform\0.13\bin` to your PATH. This
+ 5. On Mac or Linux, add `/usr/local/Elm-Platform/0.14/bin` to your PATH. On
+    Windows, add `C:\Program Files\Elm-Platform\0.14\bin` to your PATH. This
     makes it so you can run `elm-repl` or `elm-reactor` from anywhere on your
     computer.
 
