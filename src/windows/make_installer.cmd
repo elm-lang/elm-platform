@@ -7,13 +7,11 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 mkdir files
 mkdir files\bin
 mkdir files\share
-mkdir files\share\compiler
 mkdir files\share\reactor
 
 set platform=Elm-Platform\%version%
 
 xcopy %platform%\bin\elm*.exe files\bin /s /e
-xcopy %platform%\Elm\data\* files\share\compiler /s /e
 xcopy %platform%\elm-reactor\assets\* files\share\reactor /s /e
 xcopy updatepath.vbs files
 

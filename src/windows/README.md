@@ -1,11 +1,11 @@
 # Building Windows installer
 
-You need to have Elm installed with the help of the [Haskell platform](https://github.com/evancz/Elm/blob/master/README.md#install). You also need `elm-get`, `elm-repl`, and `elm-server` to be installed.
+You will need the [NSIS installer](http://nsis.sourceforge.net/Download) to be installed.
 
-You will also need the [NSIS installer](http://nsis.sourceforge.net/Download) to be installed.
+Once everything is installed, run something like this command:
 
-Once everything is installed, run this command:
+    make_installer.cmd 0.15
 
-    make_installer.cmd
-
-It will build an installer called `ElmPlatform-<version>-setup.exe`.
+It will build an installer called `ElmPlatform-0.15-setup.exe`. You can read
+more about what arguments can be given to this command in the comments in
+`BuildFromSource.hs`.
