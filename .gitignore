@@ -1,2 +1,4 @@
 *.pkg
 Elm-Platform/
+dist
+cabal.sandbox.config
