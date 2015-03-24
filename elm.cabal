@@ -1,5 +1,5 @@
 Name: elm
-Version: 0.14.1
+Version: 0.15
 
 Synopsis:
     Central command line tool for working with Elm.
@@ -43,7 +43,7 @@ Executable elm
         base >=4.2 && <5,
         containers >= 0.3,
         directory,
-        elm-compiler >= 0.14.1 && < 0.15,
+        elm-compiler >= 0.15 && < 0.16,
         filepath,
         mtl,
         process
