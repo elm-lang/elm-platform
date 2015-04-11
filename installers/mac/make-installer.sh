@@ -35,7 +35,7 @@ platform=Elm-Platform/$version
 
 # Create a wrapper around an executable that sets ELM_HOME
 function wrap {
-     cat << EOF > $pkg_binaries/$1
+    cat << EOF > $pkg_binaries/$1
 #!/bin/sh
 
 set -e
@@ -48,9 +48,9 @@ EOF
 # Copy executables into pkg_binaries directory
 for exe in elm-package elm-make elm-reactor elm-repl elm-doc
 do
-	cp $platform/bin/$exe $pkg_binaries/$exe-unwrapped
+    cp $platform/bin/$exe $pkg_binaries/$exe-unwrapped
     wrap $exe
-	chmod +x $pkg_binaries/$exe
+    chmod +x $pkg_binaries/$exe
 done
 
 cp $(pwd)/preinstall $pkg_scripts
