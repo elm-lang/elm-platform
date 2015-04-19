@@ -60,7 +60,7 @@ configs =
       "0.15" =:
         [ "elm-compiler" =: "0.15"
         , "elm-package"  =: "0.5"
-        , "elm-make"     =: "0.1.1"
+        , "elm-make"     =: "0.1.2"
         , "elm-reactor"  =: "0.3.1"
         , "elm-repl"     =: "0.4.1"
         ]
