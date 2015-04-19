@@ -4,22 +4,22 @@ version of cabal.
 
 To install a released version of Elm, run something like this:
 
-    runhaskell BuildFromSource.hs 0.14
+    runhaskell BuildFromSource.hs 0.15
 
 Whatever directory you run this in, you will now have a new directory for the
 Elm Platform, like this:
 
-    Elm-Platform/0.14/
+    Elm-Platform/0.15/
         bin/             -- all the relevant executables
         elm-make/        -- git repo for the build tool, ready to edit
         elm-repl/        -- git repo for the REPL, ready to edit
         ...
 
 All of the executables you need are in bin/ so add
-wherever/Elm-Platform/0.14/bin to your PATH to use them from anywhere.
+wherever/Elm-Platform/0.15/bin to your PATH to use them from anywhere.
 
 You can build many versions of the Elm Platform, so it is possible to have
-Elm-Platform/0.14/ and Elm-Platform/0.12.3/ with no problems. It is up to you
+Elm-Platform/0.15/ and Elm-Platform/0.12.3/ with no problems. It is up to you
 to manage your PATH variable or symlinks though.
 
 To get set up with the master branch of all Elm Platform projects, run this:
@@ -56,7 +56,15 @@ configs =
         , "elm-reactor"  =: "master"
         , "elm-repl"     =: "master"
         ]
-    , 
+    ,
+      "0.15" =:
+        [ "elm-compiler" =: "0.15"
+        , "elm-package"  =: "0.5"
+        , "elm-make"     =: "0.1.1"
+        , "elm-reactor"  =: "0.3.1"
+        , "elm-repl"     =: "0.4.1"
+        ]
+    ,
       "0.14.1" =:
         [ "elm-compiler" =: "0.14.1"
         , "elm-package"  =: "0.4"
@@ -64,7 +72,7 @@ configs =
         , "elm-reactor"  =: "0.3"
         , "elm-repl"     =: "0.4"
         ]
-    , 
+    ,
       "0.14" =:
         [ "elm-compiler" =: "0.14"
         , "elm-package"  =: "0.2"
@@ -72,14 +80,14 @@ configs =
         , "elm-reactor"  =: "0.2"
         , "elm-repl"     =: "0.4"
         ]
-    , 
+    ,
       "0.13" =:
         [ "Elm"         =: "0.13"
         , "elm-reactor" =: "0.1"
         , "elm-repl"    =: "0.3"
         , "elm-get"     =: "0.1.3"
         ]
-    , 
+    ,
       "0.12.3" =:
         [ "Elm"        =: "0.12.3"
         , "elm-server" =: "0.11.0.1"
