@@ -13,7 +13,7 @@ This bundles together a bunch of projects that make it nice to use Elm: [`elm-co
 
 ## Use it
 
-Ideally you can follow [these directions](http://elm-lang.org/Install.elm) and use one of the many installers for Elm that can get you up in running in minutes.
+Ideally you can follow [these directions](http://elm-lang.org/Install.elm) and use one of the many installers for Elm that can get you up and running in minutes.
 
 ## Build from Packages
 
