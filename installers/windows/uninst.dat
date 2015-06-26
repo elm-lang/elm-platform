@@ -1,4 +1,3 @@
-Delete "$INSTDIR\bin\elm-doc.exe"
 Delete "$INSTDIR\bin\elm-make.exe"
 Delete "$INSTDIR\bin\elm-package.exe"
 Delete "$INSTDIR\bin\elm-repl.exe"

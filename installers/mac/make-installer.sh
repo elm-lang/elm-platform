@@ -46,7 +46,7 @@ EOF
 }  
 
 # Copy executables into pkg_binaries directory
-for exe in elm elm-package elm-make elm-reactor elm-repl elm-doc
+for exe in elm elm-package elm-make elm-reactor elm-repl
 do
     cp $platform/bin/$exe $pkg_binaries/$exe-unwrapped
     wrap $exe
