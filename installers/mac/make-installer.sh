@@ -46,12 +46,15 @@ EOF
 }  
 
 # Copy executables into pkg_binaries directory
-for exe in elm elm-package elm-make elm-reactor elm-repl
+for exe in elm elm-package elm-make elm-repl
 do
-    cp $platform/bin/$exe $pkg_binaries/$exe-unwrapped
-    wrap $exe
-    chmod +x $pkg_binaries/$exe
+    cp $platform/bin/$exe $pkg_binaries/$exe
 done
+
+cp $platform/bin/elm-reactor $pkg_binaries/elm-reactor-unwrapped
+wrap elm-reactor
+chmod +x $pkg_binaries/elm-reactor
+
 
 cp $(pwd)/preinstall $pkg_scripts
 cp $(pwd)/postinstall $pkg_scripts
