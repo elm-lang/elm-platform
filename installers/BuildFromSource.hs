@@ -127,7 +127,7 @@ makeRepos artifactDirectory repos =
  do createDirectoryIfMissing True artifactDirectory
     setCurrentDirectory artifactDirectory
     root <- getCurrentDirectory
-    cabal [ "sandbox", "init", "--sandbox=." ]
+    cabal [ "sandbox", "init" ]
     mapM_ (uncurry (makeRepo root)) repos
 
 
