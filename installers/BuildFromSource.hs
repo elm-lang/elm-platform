@@ -127,21 +127,28 @@ makeRepos artifactDirectory repos =
  do createDirectoryIfMissing True artifactDirectory
     setCurrentDirectory artifactDirectory
     root <- getCurrentDirectory
-    cabal [ "sandbox", "init" ]
     mapM_ (uncurry (makeRepo root)) repos
 
+    -- create a sandbox for installation
+    cabal [ "sandbox", "init" ]
+
+    -- add each of the sub-directories as a sandbox source
+    cabal ([ "sandbox", "add-source" ] ++ map fst repos)
+    
+    -- install all of the packages together in order to resolve transient dependencies robustly
+    -- (install the dependencies a bit more quietly than the elm packages)
+    cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"" ] ++ map fst repos)
+    cabal ([ "install", "-j", "--bindir=../" ] ++ map fst repos)
+
+    return ()
 
 makeRepo :: FilePath -> String -> String -> IO ()
 makeRepo root projectName version =
- do  -- get the right version of the repo
-    git [ "clone", "https://github.com/elm-lang/" ++ projectName ++ ".git" ]
+  do  -- get the right version of the repo
+    git [ "clone", "https://github.com/elm-lang/" ++ projectName ++ ".git", "--quiet" ]
     setCurrentDirectory projectName
     git [ "checkout", version ]
     git [ "pull" ]
-
-    -- actually build things
-    cabal [ "sandbox", "init", "--sandbox=" ++ root ]
-    cabal [ "install", "-j" ]
 
     -- move back into the root
     setCurrentDirectory root
