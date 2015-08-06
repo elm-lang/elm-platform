@@ -138,7 +138,10 @@ makeRepos artifactDirectory repos =
     -- install all of the packages together in order to resolve transient dependencies robustly
     -- (install the dependencies a bit more quietly than the elm packages)
     cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"" ] ++ map fst repos)
-    cabal ([ "install", "-j", "--bindir=../", "--ghc-options=\"-XFlexibleContexts\"" ] ++ map fst repos)
+    cabal ([ "install", "-j", "--bindir=../bin", "--ghc-options=\"-XFlexibleContexts\"" ] ++ filter (/= "elm-reactor") (map fst repos))
+
+    -- elm-reactor needs to be installed last because of a post-build dependency on elm-make
+    cabal [ "install", "-j", "--bindir=../", "elm-reactor" ]
 
     return ()
 
