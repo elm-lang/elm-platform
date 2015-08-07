@@ -135,7 +135,7 @@ makeRepos artifactDirectory repos =
     -- add each of the sub-directories as a sandbox source
     cabal ([ "sandbox", "add-source" ] ++ map fst repos)
     
-    -- install all of the packages together in order to resolve transient dependencies robustly
+    -- install all of the packages together in order to resolve transitive dependencies robustly
     -- (install the dependencies a bit more quietly than the elm packages)
     cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"" ] ++ map fst repos)
     cabal ([ "install", "-j", "--bindir=../bin", "--ghc-options=\"-XFlexibleContexts\"" ] ++ filter (/= "elm-reactor") (map fst repos))
