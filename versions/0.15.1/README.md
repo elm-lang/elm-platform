@@ -4,7 +4,12 @@
 
 The compiler and core tools are written in Haskell, so to build from source you need a Haskell compiler. This will be the hardest part of this process.
 
-On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.8 but as of 0.15.1 things should build with GHC 7.10 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, make sure it is going to give you these things.
+On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this section before making any moves. You need to have specific versions for things to work out.
+
+  * **GHC** - GHC 7.8 is known to work. GHC 7.10 may work, but it seems to be riskier.
+  * **cabal** - You need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier.
+
+Before getting the Haskell Platform, make sure it is going to give you these things. If it is not, it is probably possible to get `ghc` and `cabal` directly.
 
 [hp]: http://hackage.haskell.org/platform/
 
