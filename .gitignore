@@ -1,4 +1,11 @@
 *.pkg
-Elm-Platform/
 dist
 cabal.sandbox.config
+.cabal-sandbox
+elm-compiler/
+elm-make/
+elm-package/
+elm-reactor/
+elm-repl/
+elm-lang.org/
+package.elm-lang.org/
