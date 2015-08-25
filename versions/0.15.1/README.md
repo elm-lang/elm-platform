@@ -1,4 +1,4 @@
-# Building Elm Platform 0.15.1
+# Building 0.15.1 from Source
 
 ### Get Haskell Set Up
 
