@@ -53,9 +53,10 @@ bash build.sh
 
 > **Note:** we are using [this bash file][bash] to set everything up. If you do not have `bash` for some reason, you can just run the commands in that file by hand.
 >
-> **Note:** the commented out line that runs the `fubar.sh` script clears out any globally installed Haskell packages. These are not needed and will almost certainly mess with your build. If you end up having dependency troubles, you want to delete the whole cloned repository and start again but uncomment that part.
+> **Note:** the commented out line that runs [the `fubar.sh` script][fubar] clears out any globally installed Haskell packages. These are not needed and will almost certainly mess with your build. If you end up having dependency troubles, you want to delete the whole cloned repository and start again but uncomment that part.
 
 [bash]: build.sh
+[fubar]: https://github.com/elm-lang/elm-platform/blob/master/installers/fubar.sh
 
 This will kick off the entire build process. It will take a bit of time. When it is done, you should be all set to start using Elm locally!
 
