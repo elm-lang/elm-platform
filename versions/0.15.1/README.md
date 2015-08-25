@@ -2,9 +2,13 @@
 
 ### Get Haskell Set Up
 
-This will be the hardest part of this process. Follow [these instructions][haskell] very carefully before continuing!
+The compiler and core tools are written in Haskell, so to build from source you need a Haskell compiler. This will be the hardest part of this process.
 
-[haskell]: README.md
+On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.8 but as of 0.15.1 things should build with GHC 7.10 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, make sure it is going to give you these things.
+
+[hp]: http://hackage.haskell.org/platform/
+
+> **Note:** Sometimes things go bad with cabal, so know that [you can always blow it all up](https://www.reddit.com/r/elm/comments/34np4m/how_to_uninstall_elm/). I sometimes do this after a fresh install of GHC and cabal to make sure there are no globaly installed packages that are going to make things suck for me later.
 
 
 ### Choose a Home
