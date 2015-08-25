@@ -13,8 +13,6 @@ Before getting the Haskell Platform, make sure it is going to give you these thi
 
 [hp]: http://hackage.haskell.org/platform/
 
-> **Note:** Sometimes things go bad with cabal, so know that [you can always blow it all up](https://www.reddit.com/r/elm/comments/34np4m/how_to_uninstall_elm/). I sometimes do this after a fresh install of GHC and cabal to make sure there are no globaly installed packages that are going to make things suck for me later.
-
 
 ### Choose a Home
 
@@ -48,11 +46,14 @@ In `<ROOT>` run the following commands:
 
 ```bash
 git clone https://github.com/elm-lang/elm-platform.git
+# bash elm-platform/installers/fubar.sh
 cd elm-platform/versions/0.15.1
 bash build.sh
 ```
 
 > **Note:** we are using [this bash file][bash] to set everything up. If you do not have `bash` for some reason, you can just run the commands in that file by hand.
+>
+> **Note:** the commented out line that runs the `fubar.sh` script clears out any globally installed Haskell packages. These are not needed and will almost certainly mess with your build. If you end up having dependency troubles, you want to delete the whole cloned repository and start again but uncomment that part.
 
 [bash]: build.sh
 
