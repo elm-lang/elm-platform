@@ -31,14 +31,15 @@ and testing interactions between projects.
 -}
 module Main where
 
-import qualified Data.List as List
-import qualified Data.Map as Map
-import System.Directory (createDirectoryIfMissing, setCurrentDirectory, getCurrentDirectory)
-import System.Environment (getArgs)
-import System.Exit (ExitCode, exitFailure)
-import System.FilePath ((</>))
-import System.IO (hPutStrLn, stderr)
-import System.Process (rawSystem)
+import qualified Data.List          as List
+import qualified Data.Map           as Map
+import           System.Directory   (createDirectoryIfMissing,
+                                     getCurrentDirectory, setCurrentDirectory)
+import           System.Environment (getArgs)
+import           System.Exit        (ExitCode, exitFailure)
+import           System.FilePath    ((</>))
+import           System.IO          (hPutStrLn, stderr)
+import           System.Process     (rawSystem)
 
 
 (=:) = (,)
@@ -134,14 +135,14 @@ makeRepos artifactDirectory repos =
 
     -- add each of the sub-directories as a sandbox source
     cabal ([ "sandbox", "add-source" ] ++ map fst repos)
-    
+
     -- install all of the packages together in order to resolve transitive dependencies robustly
     -- (install the dependencies a bit more quietly than the elm packages)
     cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"" ] ++ map fst repos)
     cabal ([ "install", "-j", "--bindir=../bin", "--ghc-options=\"-XFlexibleContexts\"" ] ++ filter (/= "elm-reactor") (map fst repos))
 
     -- elm-reactor needs to be installed last because of a post-build dependency on elm-make
-    cabal [ "install", "-j", "--bindir=../", "elm-reactor" ]
+    cabal [ "install", "-j", "--bindir=../bin", "elm-reactor" ]
 
     return ()
 
