@@ -2,6 +2,8 @@
 
 set -e
 
+cabal update
+
 cabal sandbox init
 
 git clone https://github.com/elm-lang/elm-compiler.git
