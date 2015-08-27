@@ -152,7 +152,6 @@ makeRepo root projectName version =
     git [ "clone", "https://github.com/elm-lang/" ++ projectName ++ ".git" ]
     setCurrentDirectory projectName
     git [ "checkout", version, "--quiet" ]
-    git [ "pull" ]
 
     -- move back into the root
     setCurrentDirectory root
