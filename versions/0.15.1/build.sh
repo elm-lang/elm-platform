@@ -20,7 +20,7 @@ cd elm-package
 git checkout tags/0.5.1 --quiet
 cabal sandbox init --sandbox ../.cabal-sandbox
 cp ../cabal.config .
-cabal install -j --allow-newer
+cabal install -j --allow-newer --ghc-options="-XFlexibleContexts"
 cd ..
 
 
