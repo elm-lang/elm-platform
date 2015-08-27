@@ -10,13 +10,14 @@ Whatever directory you run this in, you will now have a new directory for the
 Elm Platform, like this:
 
     Elm-Platform/0.15.1/
-        bin/             -- all the relevant executables
         elm-make/        -- git repo for the build tool, ready to edit
         elm-repl/        -- git repo for the REPL, ready to edit
         ...
+        .cabal-sandbox/  -- various build files
 
-All of the executables you need are in bin/ so add
-wherever/Elm-Platform/0.15.1/bin to your PATH to use them from anywhere.
+All of the executables you need are in .cabal-sandbox/bin/ so add
+wherever/Elm-Platform/0.15.1/.cabal-sandbox/bin to your PATH to use
+them from anywhere.
 
 You can build many versions of the Elm Platform, so it is possible to have
 Elm-Platform/0.15.1/ and Elm-Platform/0.12.3/ with no problems. It is up to you
@@ -139,10 +140,10 @@ makeRepos artifactDirectory repos =
     -- install all of the packages together in order to resolve transitive dependencies robustly
     -- (install the dependencies a bit more quietly than the elm packages)
     cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"" ] ++ map fst repos)
-    cabal ([ "install", "-j", "--bindir=../bin", "--ghc-options=\"-XFlexibleContexts\"" ] ++ filter (/= "elm-reactor") (map fst repos))
+    cabal ([ "install", "-j", "--ghc-options=\"-XFlexibleContexts\"" ] ++ filter (/= "elm-reactor") (map fst repos))
 
     -- elm-reactor needs to be installed last because of a post-build dependency on elm-make
-    cabal [ "install", "-j", "--bindir=../bin", "elm-reactor" ]
+    cabal [ "install", "-j", "elm-reactor" ]
 
     return ()
 
