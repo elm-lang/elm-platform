@@ -113,7 +113,7 @@ main =
           let artifactDirectory = "Elm-Platform" </> version
               repos = configs Map.! version
           in
-              makeRepos artifactDirectory repos
+              makeRepos artifactDirectory version repos
 
       _ ->
         do hPutStrLn stderr $
@@ -122,8 +122,8 @@ main =
            exitFailure
 
 
-makeRepos :: FilePath -> [(String, String)] -> IO ()
-makeRepos artifactDirectory repos =
+makeRepos :: FilePath -> String -> [(String, String)] -> IO ()
+makeRepos artifactDirectory version repos =
  do createDirectoryIfMissing True artifactDirectory
     setCurrentDirectory artifactDirectory
     root <- getCurrentDirectory
@@ -143,7 +143,7 @@ makeRepos artifactDirectory repos =
     cabal ([ "install", "-j", "--ghc-options=\"-XFlexibleContexts\"" ] ++ filter (/= "elm-reactor") (map fst repos))
 
     -- elm-reactor needs to be installed last because of a post-build dependency on elm-make
-    cabal [ "install", "-j", "elm-reactor" ]
+    cabal ([ "install", "-j", "elm-reactor" ] ++ if version <= "0.15.1" then [ "--constraint=fsnotify<0.2" ] else [])
 
     return ()
 
