@@ -38,7 +38,7 @@ runhaskell BuildFromSource.hs 0.15
 
 > **Note:** You can use the `BuildFromSource.hs` script to build any version of the compiler, so you can run the following to build all the latest versions of things: `runhaskell BuildFromSource.hs master`. Be aware, this is where active development happens, so not everything will be working at all times!
 
-Once you are done with all this stuff you may want to [add to your PATH][add-path] the absolute path to `Elm-Platform/0.15/bin`. This will make it so all the Elm command line tools are easily available.
+Once you are done with all this stuff you may want to [add to your PATH][add-path] the absolute path to `Elm-Platform/0.15/.cabal-sandbox/bin`. This will make it so all the Elm command line tools are easily available.
 
 [add-path]: http://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path
 
