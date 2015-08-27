@@ -129,6 +129,8 @@ makeRepos artifactDirectory repos =
     root <- getCurrentDirectory
     mapM_ (uncurry (makeRepo root)) repos
 
+    cabal [ "update" ]
+
     -- create a sandbox for installation
     cabal [ "sandbox", "init" ]
 
