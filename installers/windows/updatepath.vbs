@@ -4,4 +4,4 @@ elmPath = WScript.Arguments(0)
 const PathRegKey = "HKCU\Environment\Path"
 path = WshShell.RegRead(PathRegKey)
 newPath = elmPath & ";" & path
-Call WshShell.RegWrite(PathRegKey, newPath)
+Call WshShell.RegWrite(PathRegKey, newPath, "REG_EXPAND_SZ")

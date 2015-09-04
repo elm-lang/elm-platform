@@ -9,4 +9,4 @@ elmBasePath = Replace(Replace(Replace(elmBasePath, "\", "\\"), "(", "\("), ")", 
 regEx.Pattern = elmBasePath & "\\\d+\.\d+(\.\d+|)\\bin(;|)"
 regEx.Global = True
 newPath = regEx.Replace(path, "")
-Call WshShell.RegWrite(PathRegKey, newPath)
+Call WshShell.RegWrite(PathRegKey, newPath, "REG_EXPAND_SZ")
