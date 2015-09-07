@@ -19,6 +19,8 @@ Second, if you are on some variant of Debian (Ubuntu, Mint, etc.) that happens t
 
 Okay, if you have made it here, you are in a unique position. We are currently working on making this smoother in [this issue](https://github.com/elm-lang/elm-platform/issues/60), and I recommend you read this whole section before you start running anything.
 
+#### Get Haskell Working
+
 You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.8 but as of 0.15.1 things should build with GHC 7.10 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, make sure it is going to give you these things.
 
 [hp]: http://hackage.haskell.org/platform/
@@ -27,7 +29,9 @@ You will need Haskell to build this stuff. On some platforms the [Haskell Platfo
 
 At this point you should be in a world where your cabal version is greater than 1.18. It probably sucked getting here, so thank you for sticking with this!
 
-Now find a directory on your machine where you want the Elm Platform to live. We will soon run [a script][script] that creates a directory called `Elm-Platform/0.15.1/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
+#### Actually Build Elm Things
+
+Find a directory on your machine where you want the Elm Platform to live. We will soon run [a script][script] that creates a directory called `Elm-Platform/0.15.1/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
 
 Now that you have chosen a home for `Elm-Platform/`, add the absolute path to `Elm-Platform/0.15.1/.cabal-sandbox/bin` to your `PATH` ([like this][add-path]). This is necessary to successfully build `elm-reactor` which relies on `elm-make`. This will also mean you can use `elm` commands from anywhere!
 
