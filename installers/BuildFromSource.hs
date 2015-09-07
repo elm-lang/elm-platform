@@ -2,11 +2,14 @@
 Before you use it, make sure you have the Haskell Platform with a recent
 version of cabal.
 
-To install a released version of Elm, run something like this:
+To install a released version of Elm, you will run something like this:
 
     runhaskell BuildFromSource.hs 0.15.1
 
-Whatever directory you run this in, you will now have a new directory for the
+Before you do that, in some directory of your choosing, add
+wherever/Elm-Platform/0.15.1/.cabal-sandbox/bin to your PATH.
+
+Then, run the above. You will now actually have a new directory for the
 Elm Platform, like this:
 
     Elm-Platform/0.15.1/
@@ -15,12 +18,11 @@ Elm Platform, like this:
         ...
         .cabal-sandbox/  -- various build files
 
-All of the executables you need are in .cabal-sandbox/bin/ so add
-wherever/Elm-Platform/0.15.1/.cabal-sandbox/bin to your PATH to use
-them from anywhere.
+All of the executables you need are in .cabal-sandbox/bin, which is on
+your PATH and thus can be used from anywhere.
 
 You can build many versions of the Elm Platform, so it is possible to have
-Elm-Platform/0.15.1/ and Elm-Platform/0.12.3/ with no problems. It is up to you
+Elm-Platform/0.15.1/ and Elm-Platform/0.13/ with no problems. It is up to you
 to manage your PATH variable or symlinks though.
 
 To get set up with the master branch of all Elm Platform projects, run this:
