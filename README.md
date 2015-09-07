@@ -25,7 +25,13 @@ You will need Haskell to build this stuff. On some platforms the [Haskell Platfo
 
 > **Note:** Sometimes things go bad with cabal, so know that [you can always blow it all up](https://www.reddit.com/r/elm/comments/34np4m/how_to_uninstall_elm/). I sometimes do this after a fresh install of GHC and cabal to make sure there are no globaly installed packages that are going to make things suck for me later.
 
-At this point you should be in a world where your cabal version is greater than 1.18. It probably sucked getting here, so thank you for sticking with this! Now find a directory on your machine where you want the Elm Platform to live. The following commands will download [a script][script] that will create a directory called `Elm-Platform/0.15.1/*` and build all the necessary things. It is best if you do not have to move `Elm-Platform/`, so choose carefully before progressing. Also, before you run the following, [add to your PATH][add-path] the absolute path to `Elm-Platform/0.15.1/.cabal-sandbox/bin`. This will make it so that all the Elm command line tools are easily available to you later. But it is also required already during the build. So, having set that path, now run:
+At this point you should be in a world where your cabal version is greater than 1.18. It probably sucked getting here, so thank you for sticking with this!
+
+Now find a directory on your machine where you want the Elm Platform to live. We will soon run [a script][script] that creates a directory called `Elm-Platform/0.15.1/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
+
+Now that you have chosen a home for `Elm-Platform/`, add the absolute path to `Elm-Platform/0.15.1/.cabal-sandbox/bin` to your `PATH` ([like this][add-path]). This is necessary to successfully build `elm-reactor` which relies on `elm-make`. This will also mean you can use `elm` commands from anywhere!
+
+Okay, now run these commands:
 
 [script]: https://github.com/elm-lang/elm-platform/blob/master/installers/BuildFromSource.hs
 [add-path]: http://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path
@@ -37,6 +43,6 @@ curl https://raw.githubusercontent.com/elm-lang/elm-platform/master/installers/B
 runhaskell BuildFromSource.hs 0.15.1
 ```
 
-> **Note:** You can use the `BuildFromSource.hs` script to build any version of the compiler, so you can run the following to build all the latest versions of things: `runhaskell BuildFromSource.hs master`. Be aware, this is where active development happens, so not everything will be working at all times! Also, of course the paths mentioned above need to be adjusted to talk about `master` instead of `0.15.1`.
+> **Note:** You can use the `BuildFromSource.hs` script to build any version of the compiler, so you can run the following to build all the latest versions of things: `runhaskell BuildFromSource.hs master`. Be aware, this is where active development happens, so not everything will be working at all times! You will want to change your `PATH` to point to the right thing if you go down this road.
 
 We have had reports that some people need to set the `ELM_HOME` variable manually to get the debugger working in elm-reactor. If you are having issues like this, you may need to set `ELM_HOME` to something like `Elm-Platform/0.15.1/.cabal-sandbox/x86_64-osx-ghc-7.8.3/elm-reactor-0.3.2/`. It won't be exactly that in your case probably, so go find the equivalent path for your OS and version of elm-reactor.
