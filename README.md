@@ -13,11 +13,11 @@ This bundles together a bunch of projects that make it nice to use Elm: [`elm-co
 
 ## Build from Source
 
-First, if you are on Mac or Windows just looking to use Elm, definitely use the installers linked [here](http://elm-lang.org/install). Do not put yourself through this process if you do not have to!
+First, **if you are on Mac or Windows** just looking to use Elm, definitely use the installers linked [here](http://elm-lang.org/install). Do not put yourself through this process if you do not have to!
 
-Second, if you are on some variant of Debian (Ubuntu, Mint, etc.) that happens to be a 64-bit build and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm) and be very very attentive to the README there. You need to do that `ELM_HOME` stuff or you will be confused!
+Second, **if you are on some linix OS** and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm) and be very very attentive to the README there. You need to do that `ELM_HOME` stuff or you will be confused!
 
-Okay, if you have made it here, you are in a unique position. We are currently working on making this smoother in [this issue](https://github.com/elm-lang/elm-platform/issues/60), and I recommend you read this whole section before you start running anything.
+Okay, if you have made it here, you are in a unique position. We are currently working on making this smoother in [this issue](https://github.com/elm-lang/elm-platform/issues/60), and **I recommend you read this whole section before you start running anything.**
 
 #### Get Haskell Working
 
