@@ -60,3 +60,11 @@ runhaskell BuildFromSource.hs 0.16
 ```
 
 > **Note:** You can use the `BuildFromSource.hs` script to build any version of the compiler, so you can run the following to build all the latest versions of things: `runhaskell BuildFromSource.hs master`. Be aware, this is where active development happens, so not everything will be working at all times! You will want to change your `PATH` to point to the right thing if you go down this road.
+
+<br>
+
+## Use Elm
+
+Visit the [get started page][get-started] for information about how to actually use the tools you have just installed.
+
+[get-started]: http://elm-lang.org/get-started
