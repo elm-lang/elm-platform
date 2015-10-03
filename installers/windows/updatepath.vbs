@@ -5,7 +5,7 @@ const PathRegKey = "HKCU\Environment\Path"
 
 on error resume next
 path = WshShell.RegRead(PathRegKey)
-if err.number = 0 then
+if err.number <> 0 then
 	path = ""
 end if
 on error goto 0
