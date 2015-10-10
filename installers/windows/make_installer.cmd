@@ -11,7 +11,7 @@ mkdir files\share\reactor
 
 set platform=Elm-Platform\%version%
 
-xcopy %platform%\bin\elm*.exe files\bin /s /e
+xcopy %platform%\.cabal-sandbox\bin\elm*.exe files\bin /s /e
 xcopy %platform%\elm-reactor\assets\* files\share\reactor /s /e
 xcopy updatepath.vbs files
 
