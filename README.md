@@ -15,13 +15,13 @@ This bundles together a bunch of projects that make it nice to use Elm: [`elm-co
 
 First, **if you are on Mac or Windows** just looking to use Elm, definitely use the installers linked [here](http://elm-lang.org/install). Do not put yourself through this process if you do not have to!
 
-Second, **if you are on some linux OS** and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm) and be very very attentive to the README there. You need to do that `ELM_HOME` stuff or you will be confused!
+Second, **if you are on some linux OS** and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm) and be very very attentive to the README there. You need to do that `ELM_HOME` stuff or you will be confused! If the npm installer works for you, don't read on here. You won't need to build from source.
 
-Okay, if you have made it here, you are in a unique position. We are currently working on making this smoother in [this issue](https://github.com/elm-lang/elm-platform/issues/60), and **I recommend you read this whole section before you start running anything.**
+Okay, if you reached this point, none of the installers above was appropriate for you, you are in a unique position. We are currently working on making this smoother in [this issue](https://github.com/elm-lang/elm-platform/issues/60), and **we recommend you read this whole section before you start running anything.**
 
 #### Get Haskell Working
 
-You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.8 but as of 0.15.1 things should build with GHC 7.10 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, make sure it is going to give you these things.
+You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.8 but as of 0.15.1 things should build with GHC 7.10 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, make sure it is going to give you these things. (You can check this at the [Haskell Platform contents page](https://www.haskell.org/platform/contents.html).)
 
 [hp]: http://hackage.haskell.org/platform/
 
