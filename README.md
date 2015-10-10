@@ -17,7 +17,8 @@ First, **if you are on Mac or Windows** just looking to use Elm, definitely use 
 
 Second, **if you are on some linux OS** and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm) and be very very attentive to the README there. You need to do that `ELM_HOME` stuff or you will be confused!
 
-Okay, if you have made it here, you are in a unique position. We are currently working on making this smoother in [this issue](https://github.com/elm-lang/elm-platform/issues/60), and **I recommend you read this whole section before you start running anything.**
+Finally, **if you have made it this far**, you are in some unique position where the other options do not cover you for some reason. You are about to actually build from source. **I recommend you read this whole section before you start running anything.**
+
 
 #### Get Haskell Working
 
@@ -28,6 +29,7 @@ You will need Haskell to build this stuff. On some platforms the [Haskell Platfo
 > **Note:** Sometimes things go bad with cabal, so know that [you can always blow it all up](https://www.reddit.com/r/elm/comments/34np4m/how_to_uninstall_elm/). I sometimes do this after a fresh install of GHC and cabal to make sure there are no globaly installed packages that are going to make things suck for me later.
 
 At this point you should be in a world where your cabal version is greater than 1.18. It probably sucked getting here, so thank you for sticking with this!
+
 
 #### Actually Build Elm Things
 
@@ -41,6 +43,10 @@ Okay, now run these commands:
 [add-path]: http://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path
 
 ```bash
+# If you are on LINUX, you need to install a dependency of elm-repl.
+# Uncomment the following line and run it.
+# sudo apt-get install libtinfo-dev
+
 # if you are on windows, or some other place without curl, just download this file manually
 curl https://raw.githubusercontent.com/elm-lang/elm-platform/master/installers/BuildFromSource.hs > BuildFromSource.hs
 
