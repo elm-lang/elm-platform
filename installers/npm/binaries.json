@@ -1,0 +1,39 @@
+{
+  "binaries": [
+    {
+        "filename": "osx.tar.gz",
+        "os": "darwin",
+        "arch": "x86"
+    },
+
+    {
+        "filename": "osx.tar.gz",
+        "os": "darwin",
+        "arch": "x64"
+    },
+
+    {
+        "filename": "linux-x64.tar.gz",
+        "os": "linux",
+        "arch": "x86"
+    },
+
+    {
+        "filename": "linux-x64.tar.gz",
+        "os": "linux",
+        "arch": "x64"
+    },
+
+    {
+        "filename": "win.tar.gz",
+        "os": "win32",
+        "arch": "x86"
+    },
+
+    {
+        "filename": "win.tar.gz",
+        "os": "win32",
+        "arch": "x64"
+    }
+  ]
+}
