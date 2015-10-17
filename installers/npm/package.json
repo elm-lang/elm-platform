@@ -1,0 +1,47 @@
+{
+  "name": "elm",
+  "version": "0.15.1",
+  "description": "The Elm Platform: Binaries for the Elm programming language.",
+  "license": "BSD-3-Clause",
+  "repository": "https://github.com/elm-lang/elm-platform",
+  "author": {
+    "name": "Richard Feldman",
+    "email": "richard.t.feldman@gmail.com",
+    "url": "https://github.com/rtfeldman"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bin": {
+    "elm": "dist/elm",
+    "elm-make": "dist/elm-make",
+    "elm-package": "dist/elm-package",
+    "elm-reactor": "dist/elm-reactor",
+    "elm-repl": "dist/elm-repl"
+  },
+  "scripts": {
+    "prepublish": "node prepublish.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "bin",
+    "binary",
+    "binaries",
+    "elm",
+    "elm-make",
+    "elm-package",
+    "elm-platform",
+    "elm-reactor",
+    "elm-repl",
+    "platform"
+  ],
+  "dependencies": {
+    "decompress": "2.3.0",
+    "download": "4.3.0",
+    "os-filter-obj": "1.0.3"
+  },
+  "devDependencies": {
+  }
+}
