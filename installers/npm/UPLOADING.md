@@ -1,39 +1,16 @@
 ## Uploading new binaries
 
-The first time you do this, you will need to set up a `bintray.json` file.
-See below for how to set that up.
+First, assemble the following files. Each should contain `elm-make` and so forth
+for their respective environments.
 
-Once you have that set up, run this:
+1. `osx.tar.gz`
+2. `win.tar.gz`
+3. `linux-x64.tar.gz`
 
-```
-$ node upload.js 0.15.1 osx osx.tar.gz
-```
+Next, publish them on Bintray:
 
-Once this completes, your local file `binaries-for-osx-0.15.1.tar.gz` will now
-be the new OS X binary bundle for Elm 0.15.1, meaning whenever anyone runs
-`npm install elm` on OS X, they will get the binaries in that `.tar.gz` file.
-
-## Setting up `bintray.json`
-
-Make a file called bintray.json and put it in this folder. (That file is
-already in .gitignore, so it won't accidentally get checked in.) It should
-look something like this:
-
-`bintray.json`
-```
-{
-    "username": "rtfeldman",
-    "key": "a29dfa02d34fea2df34f1ac3dac"
-}
-```
-
-Replace the `username` field with your Bintray username, and the
-`key` field with your Bintray API key.
-
-To find your Bintray API key:
-
-1. Sign in to [bintray.com](http://bintray.com)
-2. Edit your profile
-3. Click "API Key" at the bottom of the left nav bar
-
-Now your `bintray.json` file is set up, and you can upload binaries.
+1. Sign into [the elm-platform npm binaries upload page](https://bintray.com/elmlang/elm-platform/npm/1/upload)
+2. Enter the version number (e.g. `0.15.1`) under **Target Repository Path**.
+3. Click **Upload Files** and select the `.tar.gz` files from earlier. (You can multi-select in the dialog.)
+4. Once everything is done uploading, hit **Save Changes**. You should now see each of the files listed at the bottom of the page, along with an auto-generated `.asc` file which contains a PGP signature so people can verify the files were downloaded correctly.
+5. If everything looks right, hit **Publish** to make them available for download.
