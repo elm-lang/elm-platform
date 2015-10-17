@@ -13,17 +13,19 @@
     "node": ">=0.10.0"
   },
   "bin": {
-    "elm": "dist/elm",
-    "elm-make": "dist/elm-make",
-    "elm-package": "dist/elm-package",
-    "elm-reactor": "dist/elm-reactor",
-    "elm-repl": "dist/elm-repl"
+    "elm": "binwrappers/elm",
+    "elm-make": "binwrappers/elm-make",
+    "elm-package": "binwrappers/elm-package",
+    "elm-reactor": "binwrappers/elm-reactor",
+    "elm-repl": "binwrappers/elm-repl"
   },
   "scripts": {
-    "prepublish": "npm install temp@0.8.3 && npm install os-filter-obj@1.0.3 && npm install decompress@2.3.0 && npm install download@4.3.0 && node prepublish.js"
+    "postinstall": "node postinstall.js"
   },
   "files": [
-    "dist"
+    "postinstall.js",
+    "binaries.json",
+    "binwrappers"
   ],
   "keywords": [
     "bin",
@@ -38,5 +40,9 @@
     "platform"
   ],
   "dependencies": {
+    "decompress": "2.3.0",
+    "download": "4.3.0",
+    "os-filter-obj": "1.0.3",
+    "temp": "0.8.3"
   }
 }
