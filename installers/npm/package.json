@@ -44,6 +44,7 @@
     "decompress": "2.3.0",
     "httpreq": "0.4.13",
     "os-filter-obj": "1.0.3",
+    "progress": "1.1.8",
     "temp": "0.8.3"
   }
 }
