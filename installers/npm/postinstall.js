@@ -2,7 +2,7 @@ var path = require("path");
 var fs = require("fs");
 var temp = require("temp").track();
 var osFilter = require("os-filter-obj");
-var Download = require("download");
+var https = require("follow-redirects").https;
 var Decompress = require("decompress");
 var version = require(path.join(__dirname, "package.json")).version;
 var mappings = require(path.join(__dirname, "binaries.json"));
@@ -21,17 +21,29 @@ if (!fs.existsSync(distDir)) {
 
 temp.mkdir('elm-platform-download', function(err, tempDir) {
   var filename = applicableBinaries.filename;
-  var destFilename = path.join(distDir, filename);
-  var url = "http://dl.bintray.com/elmlang/elm-platform/"
+  var downloadedFilename = path.join(tempDir, filename);
+  var url = "https://dl.bintray.com/elmlang/elm-platform/"
     + version + "/" + filename;
 
   console.log("Downloading " + url);
 
-  new Download({mode: "755"}).get(url, tempDir).run(function() {
-    new Decompress({mode: "755", strip: 1})
-      .src(path.join(tempDir, filename))
-      .dest(distDir)
-      .run();
+  https.get(url, function(response) {
+    var writeStream = fs.createWriteStream(downloadedFilename);
+
+    writeStream.on("close", function() {
+      new Decompress({mode: "755", strip: 1})
+        .src(downloadedFilename)
+        .dest(distDir)
+        .run();
+    });
+
+    writeStream.on("error", function(error) {
+      console.error("Error receiving data from ", url, error);
+    });
+
+    response.pipe(writeStream);
+  }).on("error", function(error) {
+    console.error("Error communicating with URL ", url, error);
   });
 });
 
