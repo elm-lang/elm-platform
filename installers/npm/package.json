@@ -41,9 +41,8 @@
     "platform"
   ],
   "dependencies": {
-    "decompress": "2.3.0",
-    "httpreq": "0.4.13",
+    "follow-redirects": "0.0.7",
     "os-filter-obj": "1.0.3",
-    "temp": "0.8.3"
+    "tar": "2.2.1"
   }
 }
