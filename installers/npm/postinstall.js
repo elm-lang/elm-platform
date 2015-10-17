@@ -2,7 +2,7 @@ var path = require("path");
 var fs = require("fs");
 var temp = require("temp").track();
 var osFilter = require("os-filter-obj");
-var https = require("follow-redirects").https;
+var httpreq = require("httpreq");
 var Decompress = require("decompress");
 var version = require(path.join(__dirname, "package.json")).version;
 var mappings = require(path.join(__dirname, "binaries.json"));
@@ -27,24 +27,35 @@ temp.mkdir('elm-platform-download', function(err, tempDir) {
 
   console.log("Downloading " + url);
 
-  https.get(url, function(response) {
-    var writeStream = fs.createWriteStream(downloadedFilename);
+  httpreq.download(url, downloadedFilename,
+    function (err, progress){
+      if (err) {
+        console.error("Error communicating with URL ", url, error);
+        process.exit(1);
+      }
+    }, function (err, res){
+      if (err) {
+        console.error("Error receiving data from ", url, err);
+        process.exit(1);
+      }
 
-    writeStream.on("close", function() {
       new Decompress({mode: "755", strip: 1})
         .src(downloadedFilename)
         .dest(distDir)
-        .run();
-    });
+        .run(function(error, files) {
+          if (error) {
+            console.error("Error extracting ", downloadedFilename, error);
+            process.exit(1);
+          }
 
-    writeStream.on("error", function(error) {
-      console.error("Error receiving data from ", url, error);
-    });
+          if (files.length < 1) {
+            console.error("This downloaded archive should have contained Elm executables, but was empty: ", downloadedFilename);
+            process.exit(1);
+          }
 
-    response.pipe(writeStream);
-  }).on("error", function(error) {
-    console.error("Error communicating with URL ", url, error);
-  });
+          console.log("Successfully received " + files.length + " Elm executables.")
+        });
+    });
 });
 
 
