@@ -20,7 +20,7 @@
     "elm-repl": "dist/elm-repl"
   },
   "scripts": {
-    "prepublish": "node prepublish.js"
+    "prepublish": "npm install temp@0.8.3 && npm install os-filter-obj@1.0.3 && npm install decompress@2.3.0 && npm install download@4.3.0 && node prepublish.js"
   },
   "files": [
     "dist"
@@ -38,10 +38,5 @@
     "platform"
   ],
   "dependencies": {
-    "decompress": "2.3.0",
-    "download": "4.3.0",
-    "os-filter-obj": "1.0.3"
-  },
-  "devDependencies": {
   }
 }
