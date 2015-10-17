@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-var filename = require.resolve("../dist/elm-reactor");
+var filename = require("../").getPathTo("elm-reactor");
 var spawn = require("child_process").spawn;
 var input = process.argv.slice(2);
 
