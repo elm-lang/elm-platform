@@ -26,6 +26,7 @@
     "index.js",
     "postinstall.js",
     "binaries.json",
+    "binwrap.js",
     "binwrappers"
   ],
   "keywords": [
