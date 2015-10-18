@@ -35,6 +35,23 @@ https.get(url, function(response) {
       process.exit(1);
     })
     .on("end", function() {
+      if (!fs.existsSync(distDir)) {
+        console.error(
+          "Error extracting executables: extraction finished, but",
+          distDir, "directory was not created.");
+        console.error("Current directory contents:", fs.readdirSync(__dirname));
+
+        process.exit(1);
+      }
+
+      if (!fs.statSync(distDir).isDirectory()) {
+        console.error(
+          "Error extracting executables: extraction finished, but",
+          distDir, "ended up being a file, not a directory.");
+
+        process.exit(1);
+      }
+
       expectedExecutables.forEach(function(executable) {
         if (!fs.existsSync(path.join(distDir, executable))) {
           console.error("Error extracting executables...");
@@ -44,6 +61,7 @@ https.get(url, function(response) {
           process.exit(1);
         }
       });
+
       console.log("Successfully downloaded and processed", filename);
     });
 
