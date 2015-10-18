@@ -13,13 +13,13 @@
     },
 
     {
-        "filename": "linux.tar.gz",
+        "filename": "linux-32bit.tar.gz",
         "os": "linux",
         "arch": "x86"
     },
 
     {
-        "filename": "linux.tar.gz",
+        "filename": "linux-64bit.tar.gz",
         "os": "linux",
         "arch": "x64"
     },
