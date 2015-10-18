@@ -8,6 +8,9 @@ var version = require(path.join(__dirname, "package.json")).version;
 var mappings = require(path.join(__dirname, "binaries.json"));
 var applicableBinaries = osFilter(mappings.binaries)[0];
 var distDir = "dist";
+var expectedExecutables = [
+  "elm", "elm-make", "elm-repl", "elm-package", "elm-reactor"
+];
 
 if (!applicableBinaries) {
   console.error("There are currently no Elm Platform binaries available for your operating system and architecture.")
@@ -32,7 +35,16 @@ https.get(url, function(response) {
       process.exit(1);
     })
     .on("end", function() {
-      console.log("Successfully processed", filename);
+      expectedExecutables.forEach(function(executable) {
+        if (!fs.existsSync(path.join(distDir, executable))) {
+          console.error("Error extracting executables...");
+          console.error("Expected these executables to be in", distDir, " - ", expectedExecutables);
+          console.error("...but got these contents instead:", fs.readdirSync(distDir));
+
+          process.exit(1);
+        }
+      });
+      console.log("Successfully downloaded and processed", filename);
     });
 
   var gunzip = zlib.createGunzip()
