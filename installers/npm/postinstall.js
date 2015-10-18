@@ -26,9 +26,25 @@ var url = "https://dl.bintray.com/elmlang/elm-platform/"
 console.log("Downloading " + url);
 
 https.get(url, function(response) {
-  var untar = tar.Extract({path: distDir, strip: 1});
+  var untar = tar.Extract({path: distDir, strip: 1})
+    .on("error", function(error) {
+      console.error("Error extracting", filename, error);
+      process.exit(1);
+    })
+    .on("end", function() {
+      console.log("Successfully processed", filename);
+    });
 
-  response.pipe(zlib.createGunzip()).pipe(untar);
+  var gunzip = zlib.createGunzip()
+    .on("error", function(error) {
+      console.error("Error decompressing", filename, error);
+      process.exit(1);
+    });
+
+  response.on("error", function(error) {
+    console.error("Error receiving", url);
+    process.exit(1);
+  }).pipe(gunzip).pipe(untar);
 }).on("error", function(error) {
   console.error("Error communicating with URL ", url, error);
   process.exit(1)
