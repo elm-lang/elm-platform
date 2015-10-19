@@ -33,4 +33,4 @@ script:
   - mkdir dist_binaries
   - cp .cabal-sandbox/bin/elm* dist_binaries
   - tar cvzf binaries.tar.gz dist_binaries
-  - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/$TRAVIS_OS_NAME-64bit_generated_by_travis_on_ghc_7.8.4.tar.gz
+  - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/$TRAVIS_OS_NAME-64bit_generated_by_travis.tar.gz
