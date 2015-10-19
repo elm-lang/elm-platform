@@ -1,0 +1,22 @@
+sudo: false
+
+language: haskell
+
+ghc:
+  - "7.8.4"
+
+env:
+  matrix:
+    - ELM_VERSION=master
+    - ELM_VERSION=0.15.1
+
+  global:
+    - secure: "RY4A5Bj0tN7rscwPh6eDJUmf2qWW6lXPBQrD74vg3hB1ubloCRuoXvBD8evUSQg6Kb1D7Dqi3FNpZmt9In7Tiz3Xy6Vb4Q0pbh1r8rq97ZuFFbxzPVRL2QuyYuqQfvsfoal4NVxGyhfTaLh1tCC/G6CjCjGDRXFcqhcz+CR0cEI="
+
+install:
+  - cd installers
+  - runhaskell BuildFromSource.hs $ELM_VERSION
+
+script:
+  - tar cvzf binaries.tar.gz Elm-Platform/$ELM_VERSION/.cabal-sandbox/bin
+  - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/linux-64bit_generated_by_travis_on_ghc_7.8.4.tar.gz
