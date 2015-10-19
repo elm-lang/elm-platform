@@ -1,8 +1,16 @@
 sudo: false
 
-os:
-  - linux
-  - osx
+language: haskell
+
+addons:
+  apt:
+    sources:
+      - hvr-ghc
+    packages:
+      - ghc-7.10.1
+      - cabal-install-1.22
+      - happy
+      - alex
 
 env:
   matrix:
@@ -11,16 +19,6 @@ env:
 
   global:
     - secure: "RY4A5Bj0tN7rscwPh6eDJUmf2qWW6lXPBQrD74vg3hB1ubloCRuoXvBD8evUSQg6Kb1D7Dqi3FNpZmt9In7Tiz3Xy6Vb4Q0pbh1r8rq97ZuFFbxzPVRL2QuyYuqQfvsfoal4NVxGyhfTaLh1tCC/G6CjCjGDRXFcqhcz+CR0cEI="
-
-addons:
-  apt:
-    sources:
-    - hvr-ghc
-    packages:
-    - ghc-7.10.1
-    - cabal-install-1.22
-    - happy
-    - alex
 
 before_install:
   - export PATH=/opt/ghc/7.10.1/bin:/opt/cabal/1.22/bin:$PATH
