@@ -1,0 +1,59 @@
+{
+  "name": "elm",
+  "version": "0.15.1",
+  "description": "The Elm Platform: Binaries for the Elm programming language.",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elm-lang/elm-platform"
+  },
+  "bugs": "https://github.com/elm-lang/elm-platform/issues",
+  "author": {
+    "name": "Richard Feldman",
+    "email": "richard.t.feldman@gmail.com",
+    "url": "https://github.com/rtfeldman"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "main": "./index.js",
+  "scripts": {
+    "install": "node-pre-gyp install --fallback-to-build"
+  },
+  "files": [
+    "binwrap.js",
+    "binwrappers"
+  ],
+  "keywords": [
+    "bin",
+    "binary",
+    "binaries",
+    "elm",
+    "elm-make",
+    "elm-package",
+    "elm-platform",
+    "elm-reactor",
+    "elm-repl",
+    "platform"
+  ],
+  "bin": {
+    "elm": "binwrappers/elm",
+    "elm-make": "binwrappers/elm-make",
+    "elm-package": "binwrappers/elm-package",
+    "elm-reactor": "binwrappers/elm-reactor",
+    "elm-repl": "binwrappers/elm-repl"
+  },
+  "binary": {
+    "module_name": "elm",
+    "module_path": "./dist/",
+    "host": "https://dl.bintray.com",
+    "remote_path": "./elmlang/elm-platform/{version}/{configuration}/",
+    "package_name": "{platform}-{arch}.tar.gz"
+  },
+  "bundledDependencies": [
+    "node-pre-gyp"
+  ],
+  "dependencies": {
+    "node-pre-gyp": "0.6.13"
+  }
+}
