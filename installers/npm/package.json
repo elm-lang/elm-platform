@@ -24,11 +24,11 @@
     "build-from-source": "node buildFromSource.js"
   },
   "files": [
-    "binding.gyp",
     "BuildFromSource.hs",
     "install.js",
     "elmVersion.js",
     "buildFromSource.js",
+    "binaries.json",
     "binwrap.js",
     "binwrappers"
   ],
@@ -51,17 +51,10 @@
     "elm-reactor": "binwrappers/elm-reactor",
     "elm-repl": "binwrappers/elm-repl"
   },
-  "binary": {
-    "module_name": "elm",
-    "module_path": "./Elm-Platform/{major}.{minor}.{patch}/.cabal-sandbox/bin/",
-    "host": "https://dl.bintray.com",
-    "remote_path": "./elmlang/elm-platform/{major}.{minor}.{patch}/{configuration}/",
-    "package_name": "{platform}-{arch}.tar.gz"
-  },
-  "bundledDependencies": [
-    "node-pre-gyp"
-  ],
   "dependencies": {
-    "node-pre-gyp": "0.6.13"
+    "follow-redirects": "0.0.7",
+    "mkdirp": "0.5.1",
+    "os-filter-obj": "1.0.3",
+    "tar": "2.2.1"
   }
 }
