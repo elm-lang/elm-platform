@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
-require("../binwrap.js")("elm-repl");
+var path = require("path");
+var getPathTo = require(path.join("..", "binwrap.js"))("elm-repl");
