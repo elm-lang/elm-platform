@@ -18,6 +18,7 @@ env:
     - ELM_VERSION=0.15.1
 
   global:
+    - ARCHITECTURE=x86
     - secure: "RY4A5Bj0tN7rscwPh6eDJUmf2qWW6lXPBQrD74vg3hB1ubloCRuoXvBD8evUSQg6Kb1D7Dqi3FNpZmt9In7Tiz3Xy6Vb4Q0pbh1r8rq97ZuFFbxzPVRL2QuyYuqQfvsfoal4NVxGyhfTaLh1tCC/G6CjCjGDRXFcqhcz+CR0cEI="
 
 before_install:
@@ -33,4 +34,4 @@ script:
   - mkdir dist_binaries
   - cp .cabal-sandbox/bin/elm* dist_binaries
   - tar cvzf binaries.tar.gz dist_binaries
-  - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/$TRAVIS_OS_NAME-64bit_generated_by_travis.tar.gz
+  - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/Release/$TRAVIS_OS_NAME-$ARCHITECTURE-fromtravis.tar.gz
