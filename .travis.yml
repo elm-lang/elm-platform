@@ -26,8 +26,8 @@ before_install:
 
 install:
   - travis_retry cabal update
-  - cd installers
-  - runhaskell BuildFromSource.hs $ELM_VERSION
+  - cd installers/npm
+  - npm run build-from-source
 
 script:
   - cd Elm-Platform/$ELM_VERSION

@@ -10,7 +10,7 @@ int main() {
 
     if (pid == 0) { /* child process */
         static char *argv[] =
-            { "runhaskell", "BuildFromSource.hs", "0.15.1", NULL };
+            { "runhaskell", "BuildFromSource.hs", getenv("ELM_BUILD_VERSION"), NULL };
 
         execvp("runhaskell", argv);
 

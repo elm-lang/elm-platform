@@ -21,7 +21,7 @@
   "scripts": {
     "install": "node-pre-gyp install --fallback-to-build",
     "prepublish": "node prepublish.js",
-    "build-from-source": "node-pre-gyp install --build-from-source"
+    "build-from-source": "echo 'foo'"
   },
   "files": [
     "binding.gyp",
