@@ -55,6 +55,7 @@
     "follow-redirects": "0.0.7",
     "mkdirp": "0.5.1",
     "os-filter-obj": "1.0.3",
+    "promise": "7.0.4",
     "tar": "2.2.1"
   }
 }

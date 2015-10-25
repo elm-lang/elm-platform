@@ -15,70 +15,90 @@ var expectedExecutables = [
   "elm", "elm-make", "elm-repl", "elm-package", "elm-reactor"
 ];
 
-if (!applicableBinaries) {
-  console.error("There are currently no Elm Platform binaries available for your operating system and architecture.")
-
-  process.exit(1);
-}
-
-if (!fs.existsSync(distDir)) {
-  mkdirp.sync(distDir);
-}
-
-var filename = applicableBinaries.filename;
-var url = "https://dl.bintray.com/elmlang/elm-platform/"
-  + elmVersion + "/" + filename;
-
-console.log("Downloading " + url);
-
-https.get(url, function(response) {
-  var untar = tar.Extract({path: distDir, strip: 1})
-    .on("error", function(error) {
-      console.error("Error extracting", filename, error);
-      process.exit(1);
-    })
-    .on("end", function() {
-      if (!fs.existsSync(distDir)) {
-        console.error(
-          "Error extracting executables: extraction finished, but",
-          distDir, "directory was not created.");
-        console.error("Current directory contents:", fs.readdirSync(__dirname));
-
-        process.exit(1);
-      }
-
-      if (!fs.statSync(distDir).isDirectory()) {
-        console.error(
-          "Error extracting executables: extraction finished, but",
-          distDir, "ended up being a file, not a directory.");
-
-        process.exit(1);
-      }
-
-      expectedExecutables.forEach(function(executable) {
-        if (!fs.existsSync(path.join(distDir, executable))) {
-          console.error("Error extracting executables...");
-          console.error("Expected these executables to be in", distDir, " - ", expectedExecutables);
-          console.error("...but got these contents instead:", fs.readdirSync(distDir));
-
-          process.exit(1);
+function checkBinariesPresent() {
+  return Promise.all(
+    expectedExecutablePaths.map(function(executable) {
+      fs.stat(executable, function(err, stats) {
+        if (err) {
+          reject(executable + " was not found.");
+        } else if (!stats.isFile()) {
+          reject(executable + " was not a file.");
+        } else {
+          resolve();
         }
       });
-
-      console.log("Successfully downloaded and processed", filename);
     });
+  }));
+}
 
-  var gunzip = zlib.createGunzip()
-    .on("error", function(error) {
-      console.error("Error decompressing", filename, error);
-      process.exit(1);
+function downloadBinaries() {
+  return new Promise(function(resolve, reject) {
+    if (!applicableBinaries) {
+      reject("There are currently no Elm Platform binaries available for your operating system and architecture.")
+    }
+
+    if (!fs.existsSync(distDir)) {
+      fs.mkdirSync(distDir);
+    }
+
+    var filename = applicableBinaries.filename;
+    var url = "https://dl.bintray.com/elmlang/elm-platform/"
+      + version + "/" + filename;
+
+    console.log("Downloading " + url);
+
+    https.get(url, function(response) {
+      var untar = tar.Extract({path: distDir, strip: 1})
+        .on("error", function(error) {
+          reject("Error extracting " + filename + " - " + error);
+        })
+        .on("end", function() {
+          if (!fs.existsSync(distDir)) {
+            reject(
+              "Error extracting executables: extraction finished, but",
+              distDir, "directory was not created.\n" +
+              "Current directory contents: " + fs.readdirSync(__dirname)
+            );
+          }
+
+          if (!fs.statSync(distDir).isDirectory()) {
+            reject(
+              "Error extracting executables: extraction finished, but" +
+              distDir + "ended up being a file, not a directory. " +
+              "This can happen when the .tar.gz file contained the " +
+              "binaries directly, instead of containing a directory with " +
+              "the files inside.");
+          }
+
+          checkBinariesPresent().then(function() {
+              resolve("Successfully downloaded and processed " + filename);
+            }, function(error) {
+              console.error("Error extracting executables...");
+              console.error("Expected these executables to be in", distDir, " - ", expectedExecutables);
+              console.error("...but got these contents instead:", fs.readdirSync(distDir));
+
+              reject(error);
+            }
+          );
+        });
+
+      var gunzip = zlib.createGunzip()
+        .on("error", function(error) {
+          reject("Error decompressing " + filename + " " + error);
+        });
+
+      response.on("error", function(error) {
+        reject("Error receiving " + url);
+      }).pipe(gunzip).pipe(untar);
+    }).on("error", function(error) {
+      reject("Error communicating with URL " + url + " " + error);
     });
+  });
+}
 
-  response.on("error", function(error) {
-    console.error("Error receiving", url);
-    process.exit(1);
-  }).pipe(gunzip).pipe(untar);
-}).on("error", function(error) {
-  console.error("Error communicating with URL ", url, error);
-  process.exit(1)
+downloadBinaries().then(function(successMsg) {
+  console.log(successMsg);
+}, function(errorMsg) {
+  console.log("Unable to download Elm binaries for your operating system and architecture. Building from source...");
+  require("./buildFromSource");
 });
