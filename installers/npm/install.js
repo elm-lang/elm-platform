@@ -4,12 +4,9 @@ var platform = require(path.join(__dirname, "platform"));
 var spawn = require("child_process").spawn;
 var path = require("path");
 var fs = require("fs");
-var osFilter = require("os-filter-obj");
 var https = require("follow-redirects").https;
 var tar = require("tar");
 var zlib = require("zlib");
-var mappings = require(path.join(__dirname, "binaries.json"));
-var applicableBinaries = osFilter(mappings.binaries)[0];
 var mkdirp = require("mkdirp");
 var distDir = path.join(__dirname, "Elm-Platform", platform.elmVersion, ".cabal-sandbox", "bin");
 var expectedExecutablePaths = platform.executables.map(function(executable) {
@@ -35,24 +32,28 @@ function checkBinariesPresent() {
 }
 
 function downloadBinaries() {
-  if (!applicableBinaries) {
-    console.log("There are currently no Elm Platform binaries available for your operating system and architecture. Building from source...");
-
-    return platform.buildFromSource();
-  }
-
   return new Promise(function(resolve, reject) {
     if (!fs.existsSync(distDir)) {
       mkdirp.sync(distDir);
     }
 
-    var filename = applicableBinaries.filename;
+    // 'arm', 'ia32', or 'x64'.
+    var arch = process.arch;
+
+    //'darwin', 'freebsd', 'linux', 'sunos' or 'win32'
+    var operatingSystem = process.platform;
+
+    var filename = operatingSystem + "-" + arch + ".tar.gz";
     var url = "https://dl.bintray.com/elmlang/elm-platform/"
       + platform.elmVersion + "/" + filename;
 
-    console.log("Downloading " + url);
-
     https.get(url, function(response) {
+      if (response.statusCode == 404) {
+        console.log("There are currently no Elm Platform binaries available for your operating system and architecture. Building from source...");
+
+        return platform.buildFromSource().then(resolve, reject);
+      }
+
       var untar = tar.Extract({path: distDir, strip: 1})
         .on("error", function(error) {
           reject("Error extracting " + filename + " - " + error);
