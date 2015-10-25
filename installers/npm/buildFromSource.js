@@ -1,9 +1,9 @@
 var path = require("path");
-var elmVersion = require(path.join(__dirname, "elmVersion"));
-var spawn = require("child_process").spawn;
+var platform = require(path.join(__dirname, "platform"));
 
-var child = spawn("runhaskell", ["BuildFromSource.hs", elmVersion], {stdio: "inherit"});
-
-child.on("exit", function(exitCode) {
-    process.exit(exitCode);
+platform.buildFromSource().then(function() {
+  console.log("Successfully built from source.");
+}, function(exitCode) {
+  console.error("Error - building from source failed to complete.");
+  process.exit(exitCode);
 });

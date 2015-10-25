@@ -1,5 +1,6 @@
+var Promise = require("promise");
 var path = require("path");
-var elmVersion = require(path.join(__dirname, "elmVersion"));
+var platform = require(path.join(__dirname, "platform"));
 var spawn = require("child_process").spawn;
 var path = require("path");
 var fs = require("fs");
@@ -10,40 +11,44 @@ var zlib = require("zlib");
 var mappings = require(path.join(__dirname, "binaries.json"));
 var applicableBinaries = osFilter(mappings.binaries)[0];
 var mkdirp = require("mkdirp");
-var distDir = path.join(__dirname, "Elm-Platform", elmVersion, ".cabal-sandbox", "bin");
-var expectedExecutables = [
-  "elm", "elm-make", "elm-repl", "elm-package", "elm-reactor"
-];
+var distDir = path.join(__dirname, "Elm-Platform", platform.elmVersion, ".cabal-sandbox", "bin");
+var expectedExecutablePaths = platform.executables.map(function(executable) {
+  return path.join(distDir, executable);
+});
 
 function checkBinariesPresent() {
   return Promise.all(
     expectedExecutablePaths.map(function(executable) {
-      fs.stat(executable, function(err, stats) {
-        if (err) {
-          reject(executable + " was not found.");
-        } else if (!stats.isFile()) {
-          reject(executable + " was not a file.");
-        } else {
-          resolve();
-        }
+      return new Promise(function(resolve, reject) {
+        fs.stat(executable, function(err, stats) {
+          if (err) {
+            reject(executable + " was not found.");
+          } else if (!stats.isFile()) {
+            reject(executable + " was not a file.");
+          } else {
+            resolve();
+          }
+        });
       });
-    });
-  }));
+    })
+  );
 }
 
 function downloadBinaries() {
-  return new Promise(function(resolve, reject) {
-    if (!applicableBinaries) {
-      reject("There are currently no Elm Platform binaries available for your operating system and architecture.")
-    }
+  if (!applicableBinaries) {
+    console.log("There are currently no Elm Platform binaries available for your operating system and architecture. Building from source...");
 
+    return platform.buildFromSource();
+  }
+
+  return new Promise(function(resolve, reject) {
     if (!fs.existsSync(distDir)) {
-      fs.mkdirSync(distDir);
+      mkdirp.sync(distDir);
     }
 
     var filename = applicableBinaries.filename;
     var url = "https://dl.bintray.com/elmlang/elm-platform/"
-      + version + "/" + filename;
+      + platform.elmVersion + "/" + filename;
 
     console.log("Downloading " + url);
 
@@ -74,7 +79,7 @@ function downloadBinaries() {
               resolve("Successfully downloaded and processed " + filename);
             }, function(error) {
               console.error("Error extracting executables...");
-              console.error("Expected these executables to be in", distDir, " - ", expectedExecutables);
+              console.error("Expected these executables to be in", distDir, " - ", platform.executables);
               console.error("...but got these contents instead:", fs.readdirSync(distDir));
 
               reject(error);
@@ -99,6 +104,6 @@ function downloadBinaries() {
 downloadBinaries().then(function(successMsg) {
   console.log(successMsg);
 }, function(errorMsg) {
-  console.log("Unable to download Elm binaries for your operating system and architecture. Building from source...");
-  require("./buildFromSource");
+  console.error(errorMsg);
+  process.exit(1);
 });
