@@ -1,3 +1,4 @@
+BuildFromSource.hs
 node_modules/
 build/
 dist/
