@@ -50,9 +50,9 @@
   },
   "binary": {
     "module_name": "elm",
-    "module_path": "./Elm-Platform/{version}/",
+    "module_path": "./Elm-Platform/{major}.{minor}.{patch}/",
     "host": "https://dl.bintray.com",
-    "remote_path": "./elmlang/elm-platform/{version}/{configuration}/",
+    "remote_path": "./elmlang/elm-platform/{major}.{minor}.{patch}/{configuration}/",
     "package_name": "{platform}-{arch}.tar.gz"
   },
   "bundledDependencies": [

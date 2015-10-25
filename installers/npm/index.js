@@ -1,7 +1,7 @@
 var path = require("path");
 var version = require('./package.json').version;
 
-// For distDir, only use the main semver - e.g. "1.2.3" from "1.2.3-alpha"
+// Use major.minor.patch from version string - e.g. "1.2.3" from "1.2.3-alpha"
 var distDir = path.join("Elm-Platform",
     version.replace(/^(\d+\.\d+\.\d+).*$/, "$1"));
 
