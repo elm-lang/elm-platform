@@ -1,9 +1,6 @@
 var path = require("path");
-var version = require('./package.json').version;
-
-// Use major.minor.patch from version string - e.g. "1.2.3" from "1.2.3-alpha"
-var distDir = path.join("Elm-Platform",
-    version.replace(/^(\d+\.\d+\.\d+).*$/, "$1"));
+var elmVersion = require("./elmVersion");
+var distDir = path.join("Elm-Platform", elmVersion, ".cabal-sandbox", "bin");
 
 var paths = {};
 var executables = [

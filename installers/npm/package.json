@@ -50,7 +50,7 @@
   },
   "binary": {
     "module_name": "elm",
-    "module_path": "./Elm-Platform/{major}.{minor}.{patch}/",
+    "module_path": "./Elm-Platform/{major}.{minor}.{patch}/.cabal-sandbox/bin/",
     "host": "https://dl.bintray.com",
     "remote_path": "./elmlang/elm-platform/{major}.{minor}.{patch}/{configuration}/",
     "package_name": "{platform}-{arch}.tar.gz"
