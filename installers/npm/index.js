@@ -1,4 +1,9 @@
 var path = require("path");
+var version = require('./package.json').version;
+
+// For distDir, only use the main semver - e.g. "1.2.3" from "1.2.3-alpha"
+var distDir = path.join("Elm-Platform",
+    version.replace(/^(\d+\.\d+\.\d+).*$/, "$1"));
 
 var paths = {};
 var executables = [
@@ -12,7 +17,7 @@ var executables = [
 executables.forEach(function (executable) {
     var extension = process.platform === "win32" ? ".exe" : "";
 
-    paths[executable] = path.join(__dirname, "dist", (executable + extension));
+    paths[executable] = path.join(__dirname, distDir, (executable + extension));
 });
 
 function getPathTo(executable) {

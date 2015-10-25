@@ -47,7 +47,7 @@
   },
   "binary": {
     "module_name": "elm",
-    "module_path": "./dist/",
+    "module_path": "./Elm-Platform/{version}/",
     "host": "https://dl.bintray.com",
     "remote_path": "./elmlang/elm-platform/{version}/{configuration}/",
     "package_name": "{platform}-{arch}.tar.gz"
