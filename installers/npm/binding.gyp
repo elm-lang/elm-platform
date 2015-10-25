@@ -1,9 +1,9 @@
 {
   "targets": [
     {
-      "target_name": "build_with_haskell",
+      "target_name": "donothing",
       "type": "none",
-      "sources": [ "build.c" ]
+      "sources": []
     }
   ]
 }
