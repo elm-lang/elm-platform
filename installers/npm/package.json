@@ -19,10 +19,12 @@
   },
   "main": "./index.js",
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build"
-    "prepublish": "node prepublish.js"
+    "install": "node-pre-gyp install --fallback-to-build",
+    "prepublish": "node prepublish.js",
+    "build-from-source": "node-pre-gyp install --build-from-source"
   },
   "files": [
+    "binding.gyp",
     "BuildFromSource.hs",
     "binwrap.js",
     "binwrappers"
