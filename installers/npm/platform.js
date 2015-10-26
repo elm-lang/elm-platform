@@ -18,7 +18,7 @@ function buildFromSource() {
     // Now that you have chosen a home for Elm-Platform/, add the absolute path
     // to Elm-Platform/0.15.1/.cabal-sandbox/bin to your PATH. This is
     // necessary to successfully build elm-reactor which relies on elm-make.
-    childEnv.PATH += ":" + distDir;
+    childEnv.PATH = (childEnv.PATH || "").split(":").concat([distDir]).join(":");
 
     var child = spawn("runhaskell", ["BuildFromSource.hs", elmVersion],
       {stdio: "inherit", env: childEnv});
