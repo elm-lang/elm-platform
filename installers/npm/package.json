@@ -6,8 +6,9 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elm-lang/elm-platform"
+    "url": "https://github.com/elm-lang/elm-platform.git"
   },
+  "homepage": "https://github.com/elm-lang/elm-platform/tree/master/installers/npm",
   "bugs": "https://github.com/elm-lang/elm-platform/issues",
   "author": {
     "name": "Richard Feldman",
