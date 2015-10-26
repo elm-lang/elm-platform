@@ -54,6 +54,8 @@ function downloadBinaries() {
         mkdirp.sync(distDir);
       }
 
+      console.log("Downloading Elm binaries from " + url);
+
       var untar = tar.Extract({path: distDir, strip: 1})
         .on("error", function(error) {
           reject("Error extracting " + filename + " - " + error);
