@@ -33,7 +33,7 @@ script:
   - npm install ./installers/npm
   - cd installers/npm
   - npm run build-from-source
-  - cd Elm-Platform/$ELM_VERSION
+  - cd Elm-Platform/*
   - mkdir dist_binaries
   - cp .cabal-sandbox/bin/elm* dist_binaries
   - tar cvzf binaries.tar.gz dist_binaries
