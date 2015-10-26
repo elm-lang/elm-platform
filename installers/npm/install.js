@@ -8,7 +8,7 @@ var https = require("follow-redirects").https;
 var tar = require("tar");
 var zlib = require("zlib");
 var mkdirp = require("mkdirp");
-var distDir = path.join(__dirname, "Elm-Platform", platform.elmVersion, ".cabal-sandbox", "bin");
+var distDir = platform.distDir;
 var expectedExecutablePaths = platform.executables.map(function(executable) {
   return path.join(distDir, executable);
 });
