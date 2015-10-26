@@ -33,10 +33,6 @@ function checkBinariesPresent() {
 
 function downloadBinaries() {
   return new Promise(function(resolve, reject) {
-    if (!fs.existsSync(distDir)) {
-      mkdirp.sync(distDir);
-    }
-
     // 'arm', 'ia32', or 'x64'.
     var arch = process.arch;
 
@@ -52,6 +48,10 @@ function downloadBinaries() {
         console.log("There are currently no Elm Platform binaries available for your operating system and architecture. Building from source...");
 
         return platform.buildFromSource().then(resolve, reject);
+      }
+
+      if (!fs.existsSync(distDir)) {
+        mkdirp.sync(distDir);
       }
 
       var untar = tar.Extract({path: distDir, strip: 1})
