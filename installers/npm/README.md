@@ -11,8 +11,6 @@ Run this to get the binaries:
 $ npm install -g elm
 ```
 
-For `elm-reactor` to work properly, set your `ELM_HOME` environment variable to `/usr/local/lib/node_modules/elm/share` or the appropriate directory created on your machine.
-
 ## Troubleshooting
 
 1. [Troubleshooting npm](https://github.com/npm/npm/wiki/Troubleshooting)
