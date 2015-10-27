@@ -28,8 +28,10 @@ install:
   - cd installers/npm
   - npm install
 
-script:
+before_script:
   - cd ../..
+
+script:
   - npm install ./installers/npm
   - cd installers/npm
   - npm run build-from-source
