@@ -9,6 +9,7 @@ var tar = require("tar");
 var zlib = require("zlib");
 var mkdirp = require("mkdirp");
 var distDir = platform.distDir;
+var shareReactorDir = platform.shareReactorDir;
 var expectedExecutablePaths = platform.executables.map(function(executable) {
   return path.join(distDir, executable);
 });
@@ -104,8 +105,67 @@ function downloadBinaries() {
   });
 }
 
-downloadBinaries().then(function(successMsg) {
-  console.log(successMsg);
+function downloadReactorAssets() {
+  var filename = "elm-reactor-assets.tar.gz";
+  var url = "https://dl.bintray.com/elmlang/elm-platform/"
+    + platform.elmVersion + "/" + filename;
+
+  return new Promise(function(resolve, reject) {
+    https.get(url, function(response) {
+      if (response.statusCode != 200 && response.statusCode != 204) {
+        console.log("Unable to download elm-reactor assets. elm-reactor may not work properly.");
+
+        reject(response.statusCode);
+
+        return;
+      }
+
+      console.log("Downloading Elm Reactor assets from " + url);
+
+      var untar = tar.Extract({path: shareReactorDir, strip: 1})
+        .on("error", function(error) {
+          reject("Error extracting " + filename + " - " + error);
+        })
+        .on("end", function() {
+          if (!fs.existsSync(shareReactorDir)) {
+            reject(
+              "Error extracting elm-reactor assets: extraction finished, but",
+              distDir, "directory was not created.\n" +
+              "Current directory contents: " + fs.readdirSync(__dirname)
+            );
+          }
+
+          if (!fs.statSync(shareReactorDir).isDirectory()) {
+            reject(
+              "Error extracting elm-reactor assets: extraction finished, but" +
+              distDir + "ended up being a file, not a directory. " +
+              "This can happen when the .tar.gz file contained the " +
+              "assets directly, instead of containing a directory with " +
+              "the files inside.");
+          }
+
+          resolve("Successfully downloaded and processed " + filename);
+        });
+
+      var gunzip = zlib.createGunzip()
+        .on("error", function(error) {
+          reject("Error decompressing " + filename + " " + error);
+        });
+
+      response.on("error", function(error) {
+        reject("Error receiving " + url);
+      }).pipe(gunzip).pipe(untar);
+    });
+  });
+}
+
+Promise.all([
+  downloadBinaries(),
+  downloadReactorAssets()
+]).then(function(successMessages) {
+  successMessages.forEach(function(message) {
+    console.log(message);
+  })
 }, function(errorMsg) {
   console.error(errorMsg);
   process.exit(1);

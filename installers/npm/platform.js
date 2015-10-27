@@ -5,7 +5,10 @@ var spawn = require("child_process").spawn;
 
 // Use major.minor.patch from version string - e.g. "1.2.3" from "1.2.3-alpha"
 var elmVersion = packageInfo.version.replace(/^(\d+\.\d+\.\d+).*$/, "$1");
-var distDir = path.join(__dirname, "Elm-Platform", elmVersion, ".cabal-sandbox", "bin");
+var platformDir = path.join(__dirname, "Elm-Platform", elmVersion);
+var distDir = path.join(platformDir, ".cabal-sandbox", "bin");
+var shareDir = path.join(platformDir, "share");
+var shareReactorDir = path.join(shareDir, "reactor");
 
 function buildFromSource() {
   return new Promise(function(resolve, reject) {
@@ -34,5 +37,7 @@ module.exports = {
   elmVersion: elmVersion,
   buildFromSource: buildFromSource,
   distDir: distDir,
+  shareDir: shareDir,
+  shareReactorDir: shareReactorDir,
   executables: Object.keys(packageInfo.bin)
 };
