@@ -1,5 +1,5 @@
 var path = require("path");
-var getPathTo = require(path.join(__dirname, "index")).getPathTo
+var getPathTo = require(path.join(__dirname, "index")).getPathTo;
 var spawn = require("child_process").spawn;
 
 module.exports = function(executable) {
@@ -8,4 +8,4 @@ module.exports = function(executable) {
 
   spawn(filename, input, {stdio: 'inherit'})
     .on('exit', process.exit);
-}
+};
