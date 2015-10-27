@@ -21,5 +21,4 @@ For `elm-reactor` to work properly, set your `ELM_HOME` environment variable to 
 
 ## Getting Started
 
-Once everything has installed successfully, head over to http://elm-lang.org/get-started 
-to get started!
+Once everything has installed successfully, head over to the [Get Started](http://elm-lang.org/Get-Started.elm) page!
