@@ -15,7 +15,7 @@ This bundles together a bunch of projects that make it nice to use Elm: [`elm-co
 
 First, **if you are on Mac or Windows** just looking to use Elm, definitely use the installers linked [here](http://elm-lang.org/install). Do not put yourself through this process if you do not have to!
 
-Second, **if you are on some linux OS** and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm) and be very very attentive to the README there. You need to do that `ELM_HOME` stuff or you will be confused!
+Second, **if you are on some linux OS** and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm).
 
 Finally, **if you have made it this far**, you are in some unique position where the other options do not cover you for some reason. You are about to actually build from source. **I recommend you read this whole section before you start running anything.**
 
@@ -33,7 +33,7 @@ At this point you should be in a world where your cabal version is greater than 
 
 #### Actually Build Elm Things
 
-Find a directory on your machine where you want the Elm Platform to live. We will soon run [a script][script] that creates a directory called `Elm-Platform/0.15.1/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
+Find a directory on your machine where you want the Elm Platform to live. You will soon run [a script][script] that creates a directory called `Elm-Platform/0.15.1/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
 
 Now that you have chosen a home for `Elm-Platform/`, add the absolute path to `Elm-Platform/0.15.1/.cabal-sandbox/bin` to your `PATH` ([like this][add-path]). This is necessary to successfully build `elm-reactor` which relies on `elm-make`. This will also mean you can use `elm` commands from anywhere!
 
