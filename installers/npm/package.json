@@ -20,16 +20,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "install": "node install.js",
-    "prepublish": "node prepublish.js",
-    "build-from-source": "node buildFromSource.js"
+    "install": "node install.js"
   },
   "files": [
-    "BuildFromSource.hs",
     "index.js",
     "install.js",
     "platform.js",
-    "buildFromSource.js",
     "binaries.json",
     "binwrap.js",
     "binwrappers"

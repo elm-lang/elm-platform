@@ -46,9 +46,7 @@ function downloadBinaries() {
 
     https.get(url, function(response) {
       if (response.statusCode == 404) {
-        console.log("There are currently no Elm Platform binaries available for your operating system and architecture. Building from source...");
-
-        return platform.buildFromSource().then(resolve, reject);
+        reject("Unfortunately, there are currently no Elm Platform binaries available for your operating system and architecture.\n\nIf you would like to build Elm from source, there are instructions at https://github.com/elm-lang/elm-platform#build-from-source\n");
       }
 
       if (!fs.existsSync(distDir)) {
