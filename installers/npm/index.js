@@ -5,7 +5,7 @@ var distDir = path.join("Elm-Platform", platform.elmVersion, ".cabal-sandbox", "
 var paths = {};
 
 platform.executables.forEach(function (executable) {
-    paths[executable] = path.join(__dirname, distDir, executable);
+    paths[executable] = path.join(__dirname, distDir, executable + platform.binaryExtension);
 });
 
 function getPathTo(executable) {

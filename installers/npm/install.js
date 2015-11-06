@@ -10,15 +10,14 @@ var zlib = require("zlib");
 var mkdirp = require("mkdirp");
 var distDir = platform.distDir;
 var shareReactorDir = platform.shareReactorDir;
-var expectedExecutablePaths = platform.executables.map(function(executable) {
-  return path.join(distDir, executable);
-});
 
 function checkBinariesPresent() {
   return Promise.all(
-    expectedExecutablePaths.map(function(executable) {
+    platform.executables.map(function(executable) {
+      var executablePath = platform.executablePaths[executable];
+
       return new Promise(function(resolve, reject) {
-        fs.stat(executable, function(err, stats) {
+        fs.stat(executablePath, function(err, stats) {
           if (err) {
             reject(executable + " was not found.");
           } else if (!stats.isFile()) {

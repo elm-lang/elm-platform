@@ -9,10 +9,12 @@ var platformDir = path.join(__dirname, "Elm-Platform", elmVersion);
 var distDir = path.join(platformDir, ".cabal-sandbox", "bin");
 var shareDir = path.join(platformDir, "share");
 var shareReactorDir = path.join(shareDir, "reactor");
-var executables = Object.keys(packageInfo.bin).map(function(executable) {
-    var extension = process.platform === "win32" ? ".exe" : "";
+var executables = Object.keys(packageInfo.bin);
+var binaryExtension = process.platform === "win32" ? ".exe" : "";
+var executablePaths = {};
 
-    return executable + extension;
+executables.forEach(function(executable) {
+  executablePaths[executable] = path.join(distDir, executable + binaryExtension);
 });
 
 module.exports = {
@@ -21,5 +23,6 @@ module.exports = {
   distDir: distDir,
   shareDir: shareDir,
   shareReactorDir: shareReactorDir,
+  executablePaths: executablePaths,
   executables: executables
 };

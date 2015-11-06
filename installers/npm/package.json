@@ -18,12 +18,10 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "main": "index.js",
   "scripts": {
     "install": "node install.js"
   },
   "files": [
-    "index.js",
     "install.js",
     "platform.js",
     "binaries.json",
