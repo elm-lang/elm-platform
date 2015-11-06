@@ -18,7 +18,7 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "main": "./index.js",
+  "main": "index.js",
   "scripts": {
     "install": "node install.js",
     "prepublish": "node prepublish.js",
