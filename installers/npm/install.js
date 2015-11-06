@@ -10,15 +10,14 @@ var zlib = require("zlib");
 var mkdirp = require("mkdirp");
 var distDir = platform.distDir;
 var shareReactorDir = platform.shareReactorDir;
-var expectedExecutablePaths = platform.executables.map(function(executable) {
-  return path.join(distDir, executable);
-});
 
 function checkBinariesPresent() {
   return Promise.all(
-    expectedExecutablePaths.map(function(executable) {
+    platform.executables.map(function(executable) {
+      var executablePath = platform.executablePaths[executable];
+
       return new Promise(function(resolve, reject) {
-        fs.stat(executable, function(err, stats) {
+        fs.stat(executablePath, function(err, stats) {
           if (err) {
             reject(executable + " was not found.");
           } else if (!stats.isFile()) {
@@ -46,9 +45,7 @@ function downloadBinaries() {
 
     https.get(url, function(response) {
       if (response.statusCode == 404) {
-        console.log("There are currently no Elm Platform binaries available for your operating system and architecture. Building from source...");
-
-        return platform.buildFromSource().then(resolve, reject);
+        reject("Unfortunately, there are currently no Elm Platform binaries available for your operating system and architecture.\n\nIf you would like to build Elm from source, there are instructions at https://github.com/elm-lang/elm-platform#build-from-source\n");
       }
 
       if (!fs.existsSync(distDir)) {

@@ -1,6 +1,6 @@
 {
   "name": "elm",
-  "version": "0.15.1",
+  "version": "0.15.1-beta4",
   "description": "The Elm Platform: Binaries for the Elm programming language.",
   "preferGlobal": true,
   "license": "BSD-3-Clause",
@@ -18,17 +18,12 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "main": "./index.js",
   "scripts": {
-    "install": "node install.js",
-    "prepublish": "node prepublish.js",
-    "build-from-source": "node buildFromSource.js"
+    "install": "node install.js"
   },
   "files": [
-    "BuildFromSource.hs",
     "install.js",
     "platform.js",
-    "buildFromSource.js",
     "binaries.json",
     "binwrap.js",
     "binwrappers"

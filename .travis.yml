@@ -1,6 +1,10 @@
 sudo: false
 
-language: haskell
+language: node_js
+
+node_js:
+  - "stable"
+  - "0.10"
 
 addons:
   apt:
@@ -29,12 +33,19 @@ install:
   - npm install
 
 before_script:
-  - cd ../..
+  - cd ..
 
 script:
-  - npm install ./installers/npm
-  - cd installers/npm
-  - npm run build-from-source
+  - npm install ./npm
+  - node_modules/.bin/elm-make --help
+  - node_modules/.bin/elm-repl --help
+  - node_modules/.bin/elm-package install --help
+  - node_modules/.bin/elm-reactor --help
+  - node_modules/.bin/elm make --help
+  - node_modules/.bin/elm repl --help
+  - node_modules/.bin/elm package install --help
+  - node_modules/.bin/elm reactor --help
+  - runhaskell BuildFromSource.hs $ELM_VERSION
   - cd Elm-Platform/*
   - mkdir dist_binaries
   - cp .cabal-sandbox/bin/elm* dist_binaries
