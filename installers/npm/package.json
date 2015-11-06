@@ -26,6 +26,7 @@
   },
   "files": [
     "BuildFromSource.hs",
+    "index.js",
     "install.js",
     "platform.js",
     "buildFromSource.js",
