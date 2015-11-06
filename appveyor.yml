@@ -8,6 +8,10 @@ test_script:
   - node --version
   - npm --version
   - npm install installers\npm
+  - node_modules\.bin\elm-make --help
+  - node_modules\.bin\elm-repl --help
+  - node_modules\.bin\elm-package install --help
+  - node_modules\.bin\elm-reactor --help
   - node_modules\.bin\elm make --help
   - node_modules\.bin\elm repl --help
   - node_modules\.bin\elm package install --help
