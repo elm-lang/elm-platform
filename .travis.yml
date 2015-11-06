@@ -1,6 +1,10 @@
 sudo: false
 
-language: haskell
+language: node_js
+
+node_js:
+  - "stable"
+  - "0.10"
 
 addons:
   apt:
