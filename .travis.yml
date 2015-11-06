@@ -29,12 +29,11 @@ install:
   - npm install
 
 before_script:
-  - cd ../..
+  - cd ..
 
 script:
-  - npm install ./installers/npm
-  - cd installers/npm
-  - npm run build-from-source
+  - npm install ./npm
+  - runhaskell BuildFromSource.hs $ELM_VERSION
   - cd Elm-Platform/*
   - mkdir dist_binaries
   - cp .cabal-sandbox/bin/elm* dist_binaries
