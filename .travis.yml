@@ -18,8 +18,10 @@ addons:
 
 env:
   matrix:
-    - ELM_VERSION=master
-    - ELM_VERSION=0.15.1
+    - export ELM_VERSION=master; export TARGET_NODE_VERSION=stable
+    - export ELM_VERSION=master; export TARGET_NODE_VERSION=0.10
+    - export ELM_VERSION=0.15.1; export TARGET_NODE_VERSION=stable
+    - export ELM_VERSION=0.15.1; export TARGET_NODE_VERSION=0.10
 
   global:
     - secure: "RY4A5Bj0tN7rscwPh6eDJUmf2qWW6lXPBQrD74vg3hB1ubloCRuoXvBD8evUSQg6Kb1D7Dqi3FNpZmt9In7Tiz3Xy6Vb4Q0pbh1r8rq97ZuFFbxzPVRL2QuyYuqQfvsfoal4NVxGyhfTaLh1tCC/G6CjCjGDRXFcqhcz+CR0cEI="
@@ -29,6 +31,9 @@ before_install:
     then brew install node ghc; else
     export PATH=/opt/ghc/7.10.1/bin:/opt/cabal/1.22/bin:$PATH;
     fi
+  - npm install -g nvm
+  - export PATH=./node_modules/.bin:$PATH
+  - nvm install $TARGET_NODE_VERSION
 
 install:
   - travis_retry cabal update
