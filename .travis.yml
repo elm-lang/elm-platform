@@ -18,17 +18,17 @@ addons:
 
 env:
   matrix:
-    - export ELM_VERSION=master; export TARGET_NODE_VERSION=stable
-    - export ELM_VERSION=master; export TARGET_NODE_VERSION=0.10
-    - export ELM_VERSION=0.15.1; export TARGET_NODE_VERSION=stable
-    - export ELM_VERSION=0.15.1; export TARGET_NODE_VERSION=0.10
+    - ELM_VERSION=master TARGET_NODE_VERSION=stable
+    - ELM_VERSION=master TARGET_NODE_VERSION=0.10
+    - ELM_VERSION=0.15.1 TARGET_NODE_VERSION=stable
+    - ELM_VERSION=0.15.1 TARGET_NODE_VERSION=0.10
 
   global:
     - secure: "RY4A5Bj0tN7rscwPh6eDJUmf2qWW6lXPBQrD74vg3hB1ubloCRuoXvBD8evUSQg6Kb1D7Dqi3FNpZmt9In7Tiz3Xy6Vb4Q0pbh1r8rq97ZuFFbxzPVRL2QuyYuqQfvsfoal4NVxGyhfTaLh1tCC/G6CjCjGDRXFcqhcz+CR0cEI="
 
 before_install:
   - if [ ${TRAVIS_OS_NAME} == "osx" ];
-    then brew install node ghc; else
+    then brew update && brew install ghc; else
     export PATH=/opt/ghc/7.10.1/bin:/opt/cabal/1.22/bin:$PATH;
     fi
   - npm install -g nvm
