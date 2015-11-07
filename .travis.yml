@@ -6,6 +6,10 @@ node_js:
   - "stable"
   - "0.10"
 
+os:
+  - linux
+  - osx
+
 addons:
   apt:
     sources:
@@ -25,7 +29,10 @@ env:
     - secure: "RY4A5Bj0tN7rscwPh6eDJUmf2qWW6lXPBQrD74vg3hB1ubloCRuoXvBD8evUSQg6Kb1D7Dqi3FNpZmt9In7Tiz3Xy6Vb4Q0pbh1r8rq97ZuFFbxzPVRL2QuyYuqQfvsfoal4NVxGyhfTaLh1tCC/G6CjCjGDRXFcqhcz+CR0cEI="
 
 before_install:
-  - export PATH=/opt/ghc/7.10.1/bin:/opt/cabal/1.22/bin:$PATH
+  - if [ ${TRAVIS_OS_NAME} == "osx" ];
+    then brew install ghc; else
+    export PATH=/opt/ghc/7.10.1/bin:/opt/cabal/1.22/bin:$PATH;
+    fi
 
 install:
   - travis_retry cabal update
