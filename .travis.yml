@@ -1,11 +1,5 @@
 sudo: false
 
-language: node_js
-
-node_js:
-  - "stable"
-  - "0.10"
-
 os:
   - linux
   - osx
@@ -19,6 +13,8 @@ addons:
       - cabal-install-1.22
       - happy
       - alex
+      - nodejs
+      - npm
 
 env:
   matrix:
@@ -30,7 +26,7 @@ env:
 
 before_install:
   - if [ ${TRAVIS_OS_NAME} == "osx" ];
-    then brew install ghc; else
+    then brew install node ghc; else
     export PATH=/opt/ghc/7.10.1/bin:/opt/cabal/1.22/bin:$PATH;
     fi
 
