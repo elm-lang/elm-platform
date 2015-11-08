@@ -1,10 +1,8 @@
 sudo: false
 
-language: node_js
-
-node_js:
-  - "stable"
-  - "0.10"
+os:
+  - osx
+  - linux
 
 addons:
   apt:
@@ -15,19 +13,28 @@ addons:
       - cabal-install-1.22
       - happy
       - alex
+      - nodejs
+      - npm
 
 env:
   matrix:
-    - ELM_VERSION=master
-    - ELM_VERSION=0.15.1
+    - ELM_VERSION=master TARGET_NODE_VERSION=node
+    - ELM_VERSION=master TARGET_NODE_VERSION=0.10
+    - ELM_VERSION=0.15.1 TARGET_NODE_VERSION=node
+    - ELM_VERSION=0.15.1 TARGET_NODE_VERSION=0.10
 
   global:
     - secure: "RY4A5Bj0tN7rscwPh6eDJUmf2qWW6lXPBQrD74vg3hB1ubloCRuoXvBD8evUSQg6Kb1D7Dqi3FNpZmt9In7Tiz3Xy6Vb4Q0pbh1r8rq97ZuFFbxzPVRL2QuyYuqQfvsfoal4NVxGyhfTaLh1tCC/G6CjCjGDRXFcqhcz+CR0cEI="
 
 before_install:
-  - export PATH=/opt/ghc/7.10.1/bin:/opt/cabal/1.22/bin:$PATH
+  - if [ ${TRAVIS_OS_NAME} == "osx" ];
+    then brew update; brew install cabal-install; brew install nvm; mkdir ~/.nvm; export NVM_DIR=~/.nvm; source $(brew --prefix nvm)/nvm.sh; else
+    export PATH=/opt/ghc/7.10.1/bin:/opt/cabal/1.22/bin:$PATH; curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash;
+    fi
 
 install:
+  - nvm install $TARGET_NODE_VERSION
+  - nvm use $TARGET_NODE_VERSION
   - travis_retry cabal update
   - cd installers/npm
   - npm install
