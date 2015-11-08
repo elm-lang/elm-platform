@@ -15,7 +15,7 @@ $ npm install -g elm
 
 1. [Troubleshooting npm](https://github.com/npm/npm/wiki/Troubleshooting)
 2. On Debian/Ubuntu systems, you may have to install the nodejs-legacy package: `apt-get install nodejs-legacy`.
-3. If the installer says that it is building Elm from source, and that installation fails, check the [Build from Source](https://github.com/elm-lang/elm-platform/blob/master/README.md#build-from-source) documentation.
+3. If the installer says that it cannot find any usable binaries for your operating system and architecture, check the [Build from Source](https://github.com/elm-lang/elm-platform/blob/master/README.md#build-from-source) documentation.
 
 ## Getting Started
 
