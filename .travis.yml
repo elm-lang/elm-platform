@@ -35,6 +35,8 @@ before_install:
 install:
   - nvm install $TARGET_NODE_VERSION
   - nvm use $TARGET_NODE_VERSION
+  - node --version
+  - npm --version
   - travis_retry cabal update
   - cd installers/npm
   - npm install
