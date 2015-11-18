@@ -1,0 +1,56 @@
+{
+  "name": "elm",
+  "version": "0.15.1-beta5",
+  "description": "The Elm Platform: Binaries for the Elm programming language.",
+  "preferGlobal": true,
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elm-lang/elm-platform.git"
+  },
+  "homepage": "https://github.com/elm-lang/elm-platform/tree/master/installers/npm",
+  "bugs": "https://github.com/elm-lang/elm-platform/issues",
+  "author": {
+    "name": "Richard Feldman",
+    "email": "richard.t.feldman@gmail.com",
+    "url": "https://github.com/rtfeldman"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "install": "node install.js"
+  },
+  "files": [
+    "install.js",
+    "platform.js",
+    "binaries.json",
+    "binwrap.js",
+    "binwrappers"
+  ],
+  "keywords": [
+    "bin",
+    "binary",
+    "binaries",
+    "elm",
+    "elm-make",
+    "elm-package",
+    "elm-platform",
+    "elm-reactor",
+    "elm-repl",
+    "platform"
+  ],
+  "bin": {
+    "elm": "binwrappers/elm",
+    "elm-make": "binwrappers/elm-make",
+    "elm-package": "binwrappers/elm-package",
+    "elm-reactor": "binwrappers/elm-reactor",
+    "elm-repl": "binwrappers/elm-repl"
+  },
+  "dependencies": {
+    "follow-redirects": "0.0.7",
+    "mkdirp": "0.5.1",
+    "promise": "7.0.4",
+    "tar": "2.2.1"
+  }
+}
