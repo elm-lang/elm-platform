@@ -4,15 +4,15 @@ version of cabal.
 
 To install a released version of Elm, you will run something like this:
 
-    runhaskell BuildFromSource.hs 0.15.1
+    runhaskell BuildFromSource.hs 0.16
 
 Before you do that, in some directory of your choosing, add
-wherever/Elm-Platform/0.15.1/.cabal-sandbox/bin to your PATH.
+wherever/Elm-Platform/0.16/.cabal-sandbox/bin to your PATH.
 
 Then, run the above. You will now actually have a new directory for the
 Elm Platform, like this:
 
-    Elm-Platform/0.15.1/
+    Elm-Platform/0.16/
         elm-make/        -- git repo for the build tool, ready to edit
         elm-repl/        -- git repo for the REPL, ready to edit
         ...
@@ -22,7 +22,7 @@ All of the executables you need are in .cabal-sandbox/bin, which is on
 your PATH and thus can be used from anywhere.
 
 You can build many versions of the Elm Platform, so it is possible to have
-Elm-Platform/0.15.1/ and Elm-Platform/0.13/ with no problems. It is up to you
+Elm-Platform/0.16/ and Elm-Platform/0.13/ with no problems. It is up to you
 to manage your PATH variable or symlinks though.
 
 To get set up with the master branch of all Elm Platform projects, run this:
@@ -57,6 +57,14 @@ configs =
         , "elm-make"     =: "master"
         , "elm-reactor"  =: "master"
         , "elm-repl"     =: "master"
+        ]
+    ,
+      "0.16" =:
+        [ "elm-compiler" =: "0.16"
+        , "elm-package"  =: "0.16"
+        , "elm-make"     =: "0.16"
+        , "elm-reactor"  =: "0.16"
+        , "elm-repl"     =: "0.16"
         ]
     ,
       "0.15.1" =:
