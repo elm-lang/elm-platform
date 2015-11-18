@@ -33,9 +33,9 @@ At this point you should be in a world where your cabal version is greater than 
 
 #### Actually Build Elm Things
 
-Find a directory on your machine where you want the Elm Platform to live. You will soon run [a script][script] that creates a directory called `Elm-Platform/0.15.1/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
+Find a directory on your machine where you want the Elm Platform to live. You will soon run [a script][script] that creates a directory called `Elm-Platform/0.16/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
 
-Now that you have chosen a home for `Elm-Platform/`, add the absolute path to `Elm-Platform/0.15.1/.cabal-sandbox/bin` to your `PATH` ([like this][add-path]). This is necessary to successfully build `elm-reactor` which relies on `elm-make`. This will also mean you can use `elm` commands from anywhere!
+Now that you have chosen a home for `Elm-Platform/`, add the absolute path to `Elm-Platform/0.16/.cabal-sandbox/bin` to your `PATH` ([like this][add-path]). This is necessary to successfully build `elm-reactor` which relies on `elm-make`. This will also mean you can use `elm` commands from anywhere!
 
 Okay, now run these commands:
 
@@ -50,9 +50,9 @@ Okay, now run these commands:
 # if you are on windows, or some other place without curl, just download this file manually
 curl https://raw.githubusercontent.com/elm-lang/elm-platform/master/installers/BuildFromSource.hs > BuildFromSource.hs
 
-runhaskell BuildFromSource.hs 0.15.1
+runhaskell BuildFromSource.hs 0.16
 ```
 
 > **Note:** You can use the `BuildFromSource.hs` script to build any version of the compiler, so you can run the following to build all the latest versions of things: `runhaskell BuildFromSource.hs master`. Be aware, this is where active development happens, so not everything will be working at all times! You will want to change your `PATH` to point to the right thing if you go down this road.
 
-We have had reports that some people need to set the `ELM_HOME` variable manually to get the debugger working in elm-reactor. If you are having issues like this, you may need to set `ELM_HOME` to something like `Elm-Platform/0.15.1/.cabal-sandbox/x86_64-osx-ghc-7.8.3/elm-reactor-0.3.2/`. It won't be exactly that in your case probably, so go find the equivalent path for your OS and version of elm-reactor.
+We have had reports that some people need to set the `ELM_HOME` variable manually to get the debugger working in elm-reactor. If you are having issues like this, you may need to set `ELM_HOME` to something like `Elm-Platform/0.16/.cabal-sandbox/x86_64-osx-ghc-7.8.3/elm-reactor-0.3.2/`. It won't be exactly that in your case probably, so go find the equivalent path for your OS and version of elm-reactor.
