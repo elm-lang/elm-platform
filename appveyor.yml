@@ -1,8 +1,7 @@
 environment:
   matrix:
+  - nodejs_version: "5.0"
   - nodejs_version: "0.10"
-  # Installs whatever is the latest version of Node
-  - nodejs_version: "LATEST"
 
 platform:
   - x86
@@ -12,12 +11,7 @@ matrix:
   fast_finish: true
 
 install:
-  - ps: >-
-      If ($env:Platform -Match "LATEST") {
-        choco install nodejs
-      } Else {
-        Install-Product node $env:nodejs_version $env:platform
-      }
+  - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version) $env:Platform
 
 test_script:
   - node --version
