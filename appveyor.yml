@@ -1,6 +1,13 @@
 environment:
   nodejs_version: "0.10"
 
+platform:
+  - x86
+  - x64
+
+matrix:
+  fast_finish: true
+
 install:
   - ps: Install-Product node $env:nodejs_version
 
