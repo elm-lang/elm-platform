@@ -42,8 +42,20 @@ import           System.Environment (getArgs)
 import           System.Exit        (ExitCode, exitFailure)
 import           System.FilePath    ((</>))
 import           System.IO          (hPutStrLn, stderr)
-import           System.Process     (rawSystem)
+import           System.Process     (rawSystem, readProcess)
+import           System.Info        (compilerVersion)
+import           Data.Version
+import           System.Directory   (findExecutable)
+import           Text.ParserCombinators.ReadP
+import           Control.Monad
+import           Text.Printf
 
+ghcMajor = 7
+ghcMinor = 10
+cabalMajor = 1
+cabalMinor = 18
+minGHCVersion   = makeVersion [ ghcMajor,   ghcMinor   ]
+minCabalVersion = makeVersion [ cabalMajor, cabalMinor ]
 
 (=:) = (,)
 
@@ -114,10 +126,35 @@ configs =
         ]
     ]
 
+checkGHCVersion =
+  if compilerVersion < minGHCVersion then
+    do
+      hPrintf stderr "You need at least GHC version %i.%i to build elm\n" ghcMajor ghcMinor
+      exitFailure
+  else
+    return ()
+
+checkCabalVersion =
+  do
+    path <- (findExecutable "cabal")
+    case path of
+      Nothing -> do ( hPutStrLn stderr "cabal is not installed" )
+                    exitFailure
+      Just path -> do
+        versionString <- (readProcess path [ "--numeric-version" ] "" )
+        version <- return ((fst. last . (readP_to_S parseVersion)) versionString)
+        if (version < minCabalVersion) then
+          do
+            hPrintf stderr "You need at least cabal version %i.%i to build elm\n" cabalMajor cabalMinor
+            exitFailure
+        else
+          return ()
 
 main :: IO ()
 main =
  do args <- getArgs
+    checkGHCVersion
+    checkCabalVersion
     case args of
       [version] | Map.member version configs ->
           let artifactDirectory = "Elm-Platform" </> version
