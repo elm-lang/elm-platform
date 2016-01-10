@@ -44,11 +44,11 @@ import           System.FilePath    ((</>))
 import           System.IO          (hPutStrLn, stderr)
 import           System.Process     (rawSystem, readProcess)
 import           System.Info        (compilerVersion)
-import           Data.Version
+import           Data.Version       (makeVersion, parseVersion)
 import           System.Directory   (findExecutable)
-import           Text.ParserCombinators.ReadP
-import           Control.Monad
-import           Text.Printf
+import           Text.ParserCombinators.ReadP (readP_to_S)
+import           Control.Monad      ()
+import           Text.Printf        (hPrintf)
 
 ghcMajor = 7
 ghcMinor = 10
