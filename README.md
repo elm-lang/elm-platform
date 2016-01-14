@@ -23,14 +23,14 @@ It is recommended that you do not build from source when possible. Should you de
 #### Prerequisites
 A few things are required prior to compiling elm:
 
-* Haskell (On some platforms the [Haskell Platform](https://www.haskell.org/platform/) is sufficient)
+* Haskell (On some platforms the [Haskell Platform](https://www.haskell.org/platform/) is sufficient; please verify that you end up with everything [here](https://www.haskell.org/platform/contents.html))
 * GHC (Elm versions older than 0.16 will build with GHC 7.8 but newer versions will only build with GHC 7.10)
 * Cabal 1.18 or newer
 * Build Script (Can be downloaded [here](https://raw.githubusercontent.com/elm-lang/elm-platform/master/installers/BuildFromSource.hs))
 
 **Note:** In the event that you have problems during the build process, please see [here](https://www.reddit.com/r/elm/comments/34np4m/how_to_uninstall_elm/) for information on starting the process over.
 
-Next, you'll need to decide where the Elm Platform installation directory is going to be and will need to add it to your ```PATH``` environment variable. Assuming you've selected ```~/Elm-Platform/``` as your target directory & you're wanting to install Elm 0.16:
+Next, you'll need to decide where the Elm Platform installation directory is going to be and will need to add it to your ```PATH``` environment variable. For Linux, assuming you've selected ```~/Elm-Platform/``` as your target directory & you're wanting to install Elm 0.16:
 
 ```Bash
 $ export PATH=$PATH:~/Elm-Platform/0.16/.cabal-sandbox/bin
