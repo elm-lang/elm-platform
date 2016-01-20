@@ -154,11 +154,11 @@ checkCabalVersion =
 main :: IO ()
 main =
  do args <- getArgs
-    checkCabalVersion
     case args of
       [version] | Map.member version configs ->
         do let (minGHCVersion, repos) = configs Map.! version
            checkGHCVersion minGHCVersion
+           checkCabalVersion
            let artifactDirectory = "Elm-Platform" </> version
            makeRepos artifactDirectory version repos
 
