@@ -50,20 +50,20 @@ import           Text.ParserCombinators.ReadP (readP_to_S)
 import           Control.Monad      ()
 import           Text.Printf        (hPrintf)
 
-ghcMajor = 7
-ghcMinor = 10
 cabalMajor = 1
 cabalMinor = 18
-minGHCVersion   = makeVersion [ ghcMajor,   ghcMinor   ]
 minCabalVersion = makeVersion [ cabalMajor, cabalMinor ]
 
-(=:) = (,)
+data GHCVersion = AnyGHC | GHC Int Int
 
-configs :: Map.Map String [(String, String)]
+(=:) = (,)
+withAtLeast = (,)
+
+configs :: Map.Map String (GHCVersion, [(String, String)])
 configs =
   Map.fromList
     [
-      "master" =:
+      "master" =: withAtLeast (GHC 7 10)
         [ "elm-compiler" =: "master"
         , "elm-package"  =: "master"
         , "elm-make"     =: "master"
@@ -71,7 +71,7 @@ configs =
         , "elm-repl"     =: "master"
         ]
     ,
-      "0.16" =:
+      "0.16" =: withAtLeast (GHC 7 10)
         [ "elm-compiler" =: "0.16"
         , "elm-package"  =: "0.16"
         , "elm-make"     =: "0.16"
@@ -79,7 +79,7 @@ configs =
         , "elm-repl"     =: "0.16"
         ]
     ,
-      "0.15.1" =:
+      "0.15.1" =: withAtLeast (GHC 7 8)
         [ "elm-compiler" =: "0.15.1"
         , "elm-package"  =: "0.5.1"
         , "elm-make"     =: "0.2"
@@ -87,7 +87,7 @@ configs =
         , "elm-repl"     =: "0.4.2"
         ]
     ,
-      "0.15" =:
+      "0.15" =: withAtLeast (GHC 7 8)
         [ "elm-compiler" =: "0.15"
         , "elm-package"  =: "0.5"
         , "elm-make"     =: "0.1.2"
@@ -95,7 +95,7 @@ configs =
         , "elm-repl"     =: "0.4.1"
         ]
     ,
-      "0.14.1" =:
+      "0.14.1" =: withAtLeast AnyGHC
         [ "elm-compiler" =: "0.14.1"
         , "elm-package"  =: "0.4"
         , "elm-make"     =: "0.1.1"
@@ -103,7 +103,7 @@ configs =
         , "elm-repl"     =: "0.4"
         ]
     ,
-      "0.14" =:
+      "0.14" =: withAtLeast AnyGHC
         [ "elm-compiler" =: "0.14"
         , "elm-package"  =: "0.2"
         , "elm-make"     =: "0.1"
@@ -111,14 +111,14 @@ configs =
         , "elm-repl"     =: "0.4"
         ]
     ,
-      "0.13" =:
+      "0.13" =: withAtLeast AnyGHC
         [ "Elm"         =: "0.13"
         , "elm-reactor" =: "0.1"
         , "elm-repl"    =: "0.3"
         , "elm-get"     =: "0.1.3"
         ]
     ,
-      "0.12.3" =:
+      "0.12.3" =: withAtLeast AnyGHC
         [ "Elm"        =: "0.12.3"
         , "elm-server" =: "0.11.0.1"
         , "elm-repl"   =: "0.2.2.1"
@@ -126,10 +126,11 @@ configs =
         ]
     ]
 
-checkGHCVersion =
-  if compilerVersion < minGHCVersion then
+checkGHCVersion AnyGHC = return ()
+checkGHCVersion (GHC ghcMajor ghcMinor) =
+  if compilerVersion < makeVersion [ghcMajor, ghcMinor] then
     do
-      hPrintf stderr "You need at least GHC version %i.%i to build elm\n" ghcMajor ghcMinor
+      hPrintf stderr "You need at least GHC version %i.%i to build this version of Elm\n" ghcMajor ghcMinor
       exitFailure
   else
     return ()
@@ -145,7 +146,7 @@ checkCabalVersion =
         version <- return ((fst. last . (readP_to_S parseVersion)) versionString)
         if (version < minCabalVersion) then
           do
-            hPrintf stderr "You need at least cabal version %i.%i to build elm\n" cabalMajor cabalMinor
+            hPrintf stderr "You need at least cabal version %i.%i to build Elm\n" cabalMajor cabalMinor
             exitFailure
         else
           return ()
@@ -153,14 +154,13 @@ checkCabalVersion =
 main :: IO ()
 main =
  do args <- getArgs
-    checkGHCVersion
     checkCabalVersion
     case args of
       [version] | Map.member version configs ->
-          let artifactDirectory = "Elm-Platform" </> version
-              repos = configs Map.! version
-          in
-              makeRepos artifactDirectory version repos
+        do let (minGHCVersion, repos) = configs Map.! version
+           checkGHCVersion minGHCVersion
+           let artifactDirectory = "Elm-Platform" </> version
+           makeRepos artifactDirectory version repos
 
       _ ->
         do hPutStrLn stderr $
