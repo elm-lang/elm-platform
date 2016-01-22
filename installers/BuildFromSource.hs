@@ -41,10 +41,10 @@ import           System.Directory   (createDirectoryIfMissing,
 import           System.Environment (getArgs)
 import           System.Exit        (ExitCode, exitFailure)
 import           System.FilePath    ((</>))
-import           System.IO          (hPutStrLn, stderr)
+import           System.IO          (hPutStrLn, stderr, stdout)
 import           System.Process     (rawSystem, readProcess)
 import           System.Info        (compilerVersion)
-import           Data.Version       (makeVersion, parseVersion)
+import           Data.Version       (makeVersion, parseVersion, showVersion)
 import           System.Directory   (findExecutable)
 import           Text.ParserCombinators.ReadP (readP_to_S)
 import           Control.Monad      ()
@@ -133,7 +133,7 @@ checkGHCVersion (GHC ghcMajor ghcMinor) =
       hPrintf stderr "You need at least GHC version %i.%i to build this version of Elm\n" ghcMajor ghcMinor
       exitFailure
   else
-    return ()
+    hPrintf stdout "Using GHC version %s.\n" (showVersion compilerVersion)
 
 checkCabalVersion =
   do
@@ -149,7 +149,7 @@ checkCabalVersion =
             hPrintf stderr "You need at least cabal version %i.%i to build Elm\n" cabalMajor cabalMinor
             exitFailure
         else
-          return ()
+          hPrintf stdout "Using cabal version %s.\n" (showVersion version)
 
 main :: IO ()
 main =
