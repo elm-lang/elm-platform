@@ -44,17 +44,15 @@ import           System.FilePath    ((</>))
 import           System.IO          (hPutStrLn, stderr, stdout)
 import           System.Process     (rawSystem, readProcess)
 import           System.Info        (compilerVersion)
-import           Data.Version       (makeVersion, parseVersion, showVersion)
+import           Data.Version       (Version, makeVersion, parseVersion, showVersion)
 import           System.Directory   (findExecutable)
 import           Text.ParserCombinators.ReadP (readP_to_S)
 import           Control.Monad      ()
 import           Text.Printf        (hPrintf)
 
-cabalMajor = 1
-cabalMinor = 18
-minCabalVersion = makeVersion [ cabalMajor, cabalMinor ]
+minCabalVersion = makeVersion [ 1, 18 ]
 
-data GHCVersion = AnyGHC | GHC Int Int
+data GHCVersion = AnyGHC | GHC Version
 
 (=:) = (,)
 withAtLeast = (,)
@@ -63,7 +61,7 @@ configs :: Map.Map String (GHCVersion, [(String, String)])
 configs =
   Map.fromList
     [
-      "master" =: withAtLeast (GHC 7 10)
+      "master" =: withAtLeast (GHC $ makeVersion [7, 10])
         [ "elm-compiler" =: "master"
         , "elm-package"  =: "master"
         , "elm-make"     =: "master"
@@ -71,7 +69,7 @@ configs =
         , "elm-repl"     =: "master"
         ]
     ,
-      "0.16" =: withAtLeast (GHC 7 10)
+      "0.16" =: withAtLeast (GHC $ makeVersion [7, 10])
         [ "elm-compiler" =: "0.16"
         , "elm-package"  =: "0.16"
         , "elm-make"     =: "0.16"
@@ -79,7 +77,7 @@ configs =
         , "elm-repl"     =: "0.16"
         ]
     ,
-      "0.15.1" =: withAtLeast (GHC 7 8)
+      "0.15.1" =: withAtLeast (GHC $ makeVersion [7, 8])
         [ "elm-compiler" =: "0.15.1"
         , "elm-package"  =: "0.5.1"
         , "elm-make"     =: "0.2"
@@ -87,7 +85,7 @@ configs =
         , "elm-repl"     =: "0.4.2"
         ]
     ,
-      "0.15" =: withAtLeast (GHC 7 8)
+      "0.15" =: withAtLeast (GHC $ makeVersion [7, 8])
         [ "elm-compiler" =: "0.15"
         , "elm-package"  =: "0.5"
         , "elm-make"     =: "0.1.2"
@@ -127,10 +125,10 @@ configs =
     ]
 
 checkGHCVersion AnyGHC = return ()
-checkGHCVersion (GHC ghcMajor ghcMinor) =
-  if compilerVersion < makeVersion [ghcMajor, ghcMinor] then
+checkGHCVersion (GHC minGHCVersion) =
+  if compilerVersion < minGHCVersion then
     do
-      hPrintf stderr "You need at least GHC version %i.%i to build this version of Elm\n" ghcMajor ghcMinor
+      hPrintf stderr "You need at least GHC version %s to build this version of Elm.\n" (showVersion minGHCVersion)
       exitFailure
   else
     hPrintf stdout "Using GHC version %s.\n" (showVersion compilerVersion)
@@ -146,7 +144,7 @@ checkCabalVersion =
         version <- return ((fst. last . (readP_to_S parseVersion)) versionString)
         if (version < minCabalVersion) then
           do
-            hPrintf stderr "You need at least cabal version %i.%i to build Elm\n" cabalMajor cabalMinor
+            hPrintf stderr "You need at least cabal version %s to build Elm.\n" (showVersion minCabalVersion)
             exitFailure
         else
           hPrintf stdout "Using cabal version %s.\n" (showVersion version)
