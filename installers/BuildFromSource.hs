@@ -135,14 +135,14 @@ checkGHCVersion (GHC minGHCVersion) =
 
 checkCabalVersion =
   do
-    path <- (findExecutable "cabal")
+    path <- findExecutable "cabal"
     case path of
-      Nothing -> do ( hPutStrLn stderr "cabal is not installed" )
+      Nothing -> do hPrintf stderr "It looks like cabal is not installed. You need at least version %s.\n" (showVersion minCabalVersion)
                     exitFailure
       Just path -> do
-        versionString <- (readProcess path [ "--numeric-version" ] "" )
-        version <- return ((fst. last . (readP_to_S parseVersion)) versionString)
-        if (version < minCabalVersion) then
+        versionString <- readProcess path [ "--numeric-version" ] ""
+        let version = fst . last . readP_to_S parseVersion $ versionString
+        if version < minCabalVersion then
           do
             hPrintf stderr "You need at least cabal version %s to build Elm.\n" (showVersion minCabalVersion)
             exitFailure
