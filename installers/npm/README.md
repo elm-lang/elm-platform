@@ -11,6 +11,22 @@ Run this to get the binaries:
 $ npm install -g elm
 ```
 
+## Installing behind a proxy server
+
+If you are behind a proxy server, set the environment variable "HTTPS_PROXY".
+
+```
+$ export HTTPS_PROXY=$YourProxyServer$
+$ npm install -g elm
+```
+
+Or on Windows:
+
+```
+$ set HTTPS_PROXY=$YourProxyServer$
+$ npm install -g elm
+```
+
 ## Troubleshooting
 
 1. [Troubleshooting npm](https://github.com/npm/npm/wiki/Troubleshooting)

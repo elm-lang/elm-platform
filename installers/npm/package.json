@@ -48,9 +48,9 @@
     "elm-repl": "binwrappers/elm-repl"
   },
   "dependencies": {
-    "follow-redirects": "0.0.7",
     "mkdirp": "0.5.1",
     "promise": "7.0.4",
-    "tar": "2.2.1"
+    "tar": "2.2.1",
+    "request": "2.69.0"
   }
 }
