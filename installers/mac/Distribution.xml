@@ -23,14 +23,9 @@ function pm_volume_check() {
     <conclusion mime-type="text/rtf" file="conclusion.rtf" />
     <choices-outline>
         <line choice="choice2"/>
-        <line choice="choice3"/>
     </choices-outline>
     <choice id="choice2" title="Elm Platform ">
         <pkg-ref id="org.elm-lang.binaries.pkg"/>
     </choice>
-    <choice id="choice3" title="Elm Reactor Assets" start_visible="false">
-        <pkg-ref id="org.elm-lang.reactor-assets.pkg"/>
-    </choice>
     <pkg-ref id="org.elm-lang.binaries.pkg" installKBytes="19444" version="1" auth="Root">binaries.pkg</pkg-ref>
-    <pkg-ref id="org.elm-lang.reactor-assets.pkg" installKBytes="19444" version="1" auth="Root">reactor-assets.pkg</pkg-ref>
 </installer-script>

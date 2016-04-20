@@ -21,7 +21,6 @@ mkdir -p $pkg_binaries
 mkdir -p $pkg_scripts
 
 usr_binaries=/usr/local/bin
-usr_assets=/usr/local/share/elm
 
 
 #### BUILD ELM PLATFORM ####
@@ -33,28 +32,11 @@ platform=Elm-Platform/$version
 
 #### COPY BINARIES ####
 
-# Create a wrapper around an executable that sets ELM_HOME
-function wrap {
-    cat << EOF > $pkg_binaries/$1
-#!/bin/sh
-
-set -e
-
-export ELM_HOME=$usr_assets
-$usr_binaries/$1-unwrapped \$*
-EOF
-}  
-
 # Copy executables into pkg_binaries directory
-for exe in elm elm-package elm-make elm-repl
+for exe in elm elm-package elm-make elm-repl elm-reactor
 do
     cp $platform/.cabal-sandbox/bin/$exe $pkg_binaries/$exe
 done
-
-cp $platform/.cabal-sandbox/bin/elm-reactor $pkg_binaries/elm-reactor-unwrapped
-wrap elm-reactor
-chmod +x $pkg_binaries/elm-reactor
-
 
 cp $(pwd)/preinstall $pkg_scripts
 cp $(pwd)/postinstall $pkg_scripts
@@ -66,15 +48,6 @@ pkgbuild \
     --filter 'Scripts.*' \
     --root $pkg_root \
     binaries.pkg
-
-
-#### BUNDLE STATIC ASSETS ####
-
-pkgbuild \
-    --identifier org.elm-lang.reactor-assets.pkg \
-    --install-location $usr_assets/reactor \
-    --root $platform/elm-reactor/assets \
-    reactor-assets.pkg
 
 
 #### CREATE PACKAGE ####
@@ -91,5 +64,4 @@ productbuild \
 #### CLEAN UP ####
 
 rm binaries.pkg
-rm reactor-assets.pkg
 rm -rf $pkg_root
