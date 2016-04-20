@@ -149,8 +149,12 @@ makeRepos artifactDirectory version repos =
 
     -- install all of the packages together in order to resolve transitive dependencies robustly
     -- (install the dependencies a bit more quietly than the elm packages)
-    cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"" ] ++ (if version <= "0.15.1" then [ "--constraint=fsnotify<0.2" ] else []) ++ map fst repos)
-    cabal ([ "install", "-j", "--ghc-options=\"-XFlexibleContexts\"" ] ++ filter (/= "elm-reactor") (map fst repos))
+    cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"" ]
+           ++ (if version <= "0.15.1" then [ "--constraint=fsnotify<0.2" ] else [])
+           ++ map fst repos)
+    cabal ([ "install", "-j" ]
+           ++ (if version <= "0.15.1" then [ "--ghc-options=\"-XFlexibleContexts\"" ] else [])
+           ++ filter (/= "elm-reactor") (map fst repos))
 
     -- elm-reactor needs to be installed last because of a post-build dependency on elm-make
     cabal [ "install", "-j", "elm-reactor" ]

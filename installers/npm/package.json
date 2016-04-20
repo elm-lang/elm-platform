@@ -1,6 +1,6 @@
 {
   "name": "elm",
-  "version": "0.15.1-beta5",
+  "version": "0.16.0",
   "description": "The Elm Platform: Binaries for the Elm programming language.",
   "preferGlobal": true,
   "license": "BSD-3-Clause",
@@ -48,9 +48,9 @@
     "elm-repl": "binwrappers/elm-repl"
   },
   "dependencies": {
-    "follow-redirects": "0.0.7",
     "mkdirp": "0.5.1",
     "promise": "7.0.4",
-    "tar": "2.2.1"
+    "tar": "2.2.1",
+    "request": "2.69.0"
   }
 }
