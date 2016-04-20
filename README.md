@@ -54,5 +54,3 @@ runhaskell BuildFromSource.hs 0.16
 ```
 
 > **Note:** You can use the `BuildFromSource.hs` script to build any version of the compiler, so you can run the following to build all the latest versions of things: `runhaskell BuildFromSource.hs master`. Be aware, this is where active development happens, so not everything will be working at all times! You will want to change your `PATH` to point to the right thing if you go down this road.
-
-We have had reports that some people need to set the `ELM_HOME` variable manually to get the debugger working in elm-reactor. If you are having issues like this, you may need to set `ELM_HOME` to something like `Elm-Platform/0.16/.cabal-sandbox/x86_64-osx-ghc-7.8.3/elm-reactor-0.3.2/`. It won't be exactly that in your case probably, so go find the equivalent path for your OS and version of elm-reactor.
