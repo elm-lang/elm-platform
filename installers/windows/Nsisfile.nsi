@@ -161,10 +161,6 @@ Section "Update the PATH environment variable" SecPath
   ExecWait '"$SYSDIR\wscript.exe" //E:vbscript "$INSTDIR\updatepath.vbs" "$INSTDIR\bin"'
   SetShellVarContext current
 
-  ; Update ELM-HOME
-  WriteRegStr HKCU "Environment" "ELM_HOME" "$INSTDIR\share"
-  SetShellVarContext current
-
   ; Update environment variables
   SendMessage ${HWND_BROADCAST} ${WM_SETTINGCHANGE} 0 "STR:Environment" /TIMEOUT=5000
 
@@ -261,10 +257,6 @@ Section "Uninstall"
   DeleteRegKey HKLM "${PRODUCT_DIR_REG_KEY}"
   DeleteRegKey /IfEmpty HKCU Software\Elm
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\ElmPlatform-${PLATFORM_VERSION}"
-
-  ; Update ELM_HOME
-  DeleteRegValue HKCU "Environment" "ELM_HOME"
-  SetShellVarContext current
 
   ; Update environment variables
   SendMessage ${HWND_BROADCAST} ${WM_SETTINGCHANGE} 0 "STR:Environment" /TIMEOUT=5000
