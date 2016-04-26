@@ -1,6 +1,6 @@
 {
   "name": "elm",
-  "version": "0.16.0",
+  "version": "0.17.0-alpha1",
   "description": "The Elm Platform: Binaries for the Elm programming language.",
   "preferGlobal": true,
   "license": "BSD-3-Clause",
