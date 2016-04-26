@@ -103,66 +103,7 @@ function downloadBinaries() {
   });
 }
 
-function downloadReactorAssets() {
-  var filename = "elm-reactor-assets.tar.gz";
-  var url = "https://dl.bintray.com/elmlang/elm-platform/"
-    + platform.elmVersion + "/" + filename;
-
-  return new Promise(function(resolve, reject) {
-    var untar = tar.Extract({path: shareReactorDir, strip: 1})
-        .on("error", function(error) {
-          reject("Error extracting " + filename + " - " + error);
-        })
-        .on("end", function() {
-          if (!fs.existsSync(shareReactorDir)) {
-            reject(
-                "Error extracting elm-reactor assets: extraction finished, but",
-                distDir, "directory was not created.\n" +
-                "Current directory contents: " + fs.readdirSync(__dirname)
-            );
-          }
-
-          if (!fs.statSync(shareReactorDir).isDirectory()) {
-            reject(
-                "Error extracting elm-reactor assets: extraction finished, but" +
-                distDir + "ended up being a file, not a directory. " +
-                "This can happen when the .tar.gz file contained the " +
-                "assets directly, instead of containing a directory with " +
-                "the files inside.");
-          }
-
-          resolve("Successfully downloaded and processed " + filename);
-        });
-
-    var gunzip = zlib.createGunzip()
-        .on("error", function(error) {
-          reject("Error decompressing " + filename + " " + error);
-        });
-
-    request.get(url, function(error, response) {
-      if(error) {
-        reject("Error communicating with URL " + url + " " + error);
-        return;
-      }
-      if (response.statusCode != 200 && response.statusCode != 204) {
-        console.log("Unable to download elm-reactor assets. elm-reactor may not work properly.");
-        reject(response.statusCode);
-        return;
-      }
-
-      console.log("Downloading Elm Reactor assets from " + url);
-
-      response.on("error", function(error) {
-        reject("Error receiving " + url);
-      });
-    }).pipe(gunzip).pipe(untar);
-  });
-}
-
-Promise.all([
-  downloadBinaries(),
-  downloadReactorAssets()
-]).then(function(successMessages) {
+downloadBinaries().then(function(successMessages) {
   successMessages.forEach(function(message) {
     console.log(message);
   })
