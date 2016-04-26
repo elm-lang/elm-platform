@@ -49,8 +49,8 @@
   },
   "dependencies": {
     "mkdirp": "0.5.1",
-    "promise": "7.0.4",
+    "promise": "7.1.1",
     "tar": "2.2.1",
-    "request": "2.69.0"
+    "request": "2.72.0"
   }
 }
