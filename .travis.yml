@@ -38,15 +38,13 @@ install:
   - node --version
   - npm --version
   - travis_retry cabal update
-  - cd installers/npm
-  - npm install
 
 before_script:
   - if [ ${TRAVIS_OS_NAME} == "osx" ];
     then export BINARY_OS_NAME=darwin; else
     export BINARY_OS_NAME=$TRAVIS_OS_NAME;
     fi
-  - cd ..
+  - cd installers
 
 script:
   - npm install ./npm
@@ -64,3 +62,5 @@ script:
   - cp .cabal-sandbox/bin/elm* dist_binaries
   - tar cvzf binaries.tar.gz dist_binaries
   - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/$BINARY_OS_NAME-x64.tar.gz
+  - cd ../../npm
+  - npm install
