@@ -48,7 +48,16 @@ before_script:
 
 script:
   - runhaskell BuildFromSource.hs $ELM_VERSION
-  - cd Elm-Platform/*
+  - cd Elm-Platform/*/.cabal-sandbox/bin
+  - ./elm-make --help
+  - ./elm-repl --help
+  - ./elm-package install --help
+  - ./elm-reactor --help
+  - ./elm make --help
+  - ./elm repl --help
+  - ./elm package install --help
+  - ./elm reactor --help
+  - cd ../..
   - mkdir dist_binaries
   - cp .cabal-sandbox/bin/elm* dist_binaries
   - du -hs dist_binaries
