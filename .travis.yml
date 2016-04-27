@@ -60,7 +60,9 @@ script:
   - cd Elm-Platform/*
   - mkdir dist_binaries
   - cp .cabal-sandbox/bin/elm* dist_binaries
+  - du -hs dist_binaries
   - tar cvzf binaries.tar.gz dist_binaries
+  - du -hs binaries.tar.gz
   - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/$BINARY_OS_NAME-x64.tar.gz
   - cd ../../npm
   - npm install
