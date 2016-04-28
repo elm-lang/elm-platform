@@ -9,10 +9,6 @@ var mkdirp = require("mkdirp");
 var distDir = platform.distDir;
 var shareReactorDir = platform.shareReactorDir;
 
-if(process.env.https_proxy) {
-  request = request.defaults({"proxy": process.env.https_proxy});
-}
-
 function checkBinariesPresent() {
   return Promise.all(
     platform.executables.map(function(executable) {
