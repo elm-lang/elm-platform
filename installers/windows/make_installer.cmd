@@ -6,13 +6,10 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 mkdir files
 mkdir files\bin
-mkdir files\share
-mkdir files\share\reactor
 
 set platform=Elm-Platform\%version%
 
 xcopy %platform%\.cabal-sandbox\bin\elm*.exe files\bin /s /e
-xcopy %platform%\elm-reactor\assets\* files\share\reactor /s /e
 xcopy updatepath.vbs files
 
 if EXIST "%ProgramFiles%" (

@@ -1,4 +1,4 @@
-npm install elm [![Travis build Status](https://travis-ci.org/elm-lang/elm-platform.svg?branch=master)](http://travis-ci.org/elm-lang/elm-platform) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/6mcub79i04ianpm9/branch/master?svg=true)](https://ci.appveyor.com/project/rtfeldman/elm-platform/branch/appveyor)
+npm install elm [![Travis build Status](https://travis-ci.org/elm-lang/elm-platform.svg?branch=master)](http://travis-ci.org/elm-lang/elm-platform) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/6mcub79i04ianpm9/branch/master?svg=true)](https://ci.appveyor.com/project/rtfeldman/elm-platform/branch/master)
 ===============
 
 Install the [Elm Platform](https://github.com/elm-lang/elm-platform) via [`npm`](https://www.npmjs.com).
@@ -8,6 +8,22 @@ Install the [Elm Platform](https://github.com/elm-lang/elm-platform) via [`npm`]
 Run this to get the binaries:
 
 ```
+$ npm install -g elm
+```
+
+## Installing behind a proxy server
+
+If you are behind a proxy server, set the environment variable "HTTPS_PROXY".
+
+```
+$ export HTTPS_PROXY=$YourProxyServer$
+$ npm install -g elm
+```
+
+Or on Windows:
+
+```
+$ set HTTPS_PROXY=$YourProxyServer$
 $ npm install -g elm
 ```
 
