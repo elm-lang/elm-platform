@@ -32,7 +32,7 @@ At this point you should be in a world where your cabal version is greater than 
 
 #### Extra Dependencies
 
-**If you are on Linux**, you need to run the following commands:
+You need to run the following commands **only if you are on Linux**:
 
 ```bash
 sudo apt-get install ncurses-dev
