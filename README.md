@@ -30,6 +30,16 @@ You will need Haskell to build this stuff. On some platforms the [Haskell Platfo
 
 At this point you should be in a world where your cabal version is greater than 1.18. It probably sucked getting here, so thank you for sticking with this!
 
+#### Extra Dependencies
+
+**If you are on Linux**, you need to run the following commands:
+
+```bash
+sudo apt-get install ncurses-dev
+```
+
+The REPL needs this for some of the fancier interactions it supports.
+
 
 #### Actually Build Elm Things
 
