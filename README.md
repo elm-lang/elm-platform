@@ -10,6 +10,7 @@ This bundles together a bunch of projects that make it nice to use Elm: [`elm-co
 [repl]: https://github.com/elm-lang/elm-repl
 [package]: https://github.com/elm-lang/elm-package
 
+<br>
 
 ## Build from Source
 
@@ -19,8 +20,11 @@ Second, **if you are on some linux OS** and just want to use Elm, use [the npm i
 
 Finally, **if you have made it this far**, you are in some unique position where the other options do not cover you for some reason. You are about to actually build from source. **I recommend you read this whole section before you start running anything.**
 
+There are two phases!
 
-#### Get Haskell Working
+<br>
+
+#### 1. Get Haskell Working
 
 You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.10 but Elm versions before 0.16 should build with GHC 7.8 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, [make sure it is going to give you these things](https://www.haskell.org/platform/contents.html).
 
@@ -30,18 +34,9 @@ You will need Haskell to build this stuff. On some platforms the [Haskell Platfo
 
 At this point you should be in a world where your cabal version is greater than 1.18. It probably sucked getting here, so thank you for sticking with this!
 
-#### Extra Dependencies
+<br>
 
-You need to run the following commands **only if you are on Linux**:
-
-```bash
-sudo apt-get install ncurses-dev
-```
-
-The REPL needs this for some of the fancier interactions it supports.
-
-
-#### Actually Build Elm Things
+#### 2. Actually Build Elm Things
 
 Find a directory on your machine where you want the Elm Platform to live. You will soon run [a script][script] that creates a directory called `Elm-Platform/0.16/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
 
@@ -54,8 +49,9 @@ Okay, now run these commands:
 
 ```bash
 # If you are on LINUX, you need to install a dependency of elm-repl.
-# Uncomment the following line and run it.
+# Uncomment the following lines and run them.
 # sudo apt-get install libtinfo-dev
+# sudo apt-get install zlib1g-dev
 
 # if you are on windows, or some other place without curl, just download this file manually
 curl https://raw.githubusercontent.com/elm-lang/elm-platform/master/installers/BuildFromSource.hs > BuildFromSource.hs
