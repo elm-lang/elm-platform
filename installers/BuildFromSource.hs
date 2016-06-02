@@ -144,6 +144,7 @@ makeRepos :: FilePath -> String -> [(String, String)] -> IO ()
 makeRepos artifactDirectory version repos =
  do createDirectoryIfMissing True artifactDirectory
     setCurrentDirectory artifactDirectory
+    writeFile "cabal.config" "split-objs: True"
     root <- getCurrentDirectory
     mapM_ (uncurry (makeRepo root)) repos
 
