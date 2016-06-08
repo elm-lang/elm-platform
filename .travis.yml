@@ -38,17 +38,33 @@ install:
   - node --version
   - npm --version
   - travis_retry cabal update
-  - cd installers/npm
-  - npm install
 
 before_script:
   - if [ ${TRAVIS_OS_NAME} == "osx" ];
     then export BINARY_OS_NAME=darwin; else
     export BINARY_OS_NAME=$TRAVIS_OS_NAME;
     fi
-  - cd ..
+  - cd installers
 
 script:
+  - runhaskell BuildFromSource.hs $ELM_VERSION
+  - cd Elm-Platform/*/.cabal-sandbox/bin
+  - ./elm-make --help
+  - ./elm-repl --help
+  - ./elm-package install --help
+  - ./elm-reactor --help
+  - ./elm make --help
+  - ./elm repl --help
+  - ./elm package install --help
+  - ./elm reactor --help
+  - cd ../..
+  - mkdir dist_binaries
+  - cp .cabal-sandbox/bin/elm* dist_binaries
+  - du -hs dist_binaries
+  - tar cvzf binaries.tar.gz dist_binaries
+  - du -hs binaries.tar.gz
+  - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/$BINARY_OS_NAME-x64.tar.gz
+  - cd ../..
   - npm install ./npm
   - node_modules/.bin/elm-make --help
   - node_modules/.bin/elm-repl --help
@@ -58,9 +74,3 @@ script:
   - node_modules/.bin/elm repl --help
   - node_modules/.bin/elm package install --help
   - node_modules/.bin/elm reactor --help
-  - runhaskell BuildFromSource.hs $ELM_VERSION
-  - cd Elm-Platform/*
-  - mkdir dist_binaries
-  - cp .cabal-sandbox/bin/elm* dist_binaries
-  - tar cvzf binaries.tar.gz dist_binaries
-  - curl -T binaries.tar.gz -uelmtravis:$BINTRAY_API_KEY https://api.bintray.com/content/elmlang/elm-platform/npm/$ELM_VERSION/$ELM_VERSION/$BINARY_OS_NAME-x64.tar.gz

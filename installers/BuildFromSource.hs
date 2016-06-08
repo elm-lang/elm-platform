@@ -69,6 +69,14 @@ configs =
         , "elm-repl"     =: "master"
         ]
     ,
+      "0.17.1" =: withAtLeast (GHC $ makeVersion [7, 10])
+        [ "elm-compiler" =: "0.17.1"
+        , "elm-package"  =: "0.17.1"
+        , "elm-make"     =: "0.17.1"
+        , "elm-reactor"  =: "0.17.1"
+        , "elm-repl"     =: "0.17.1"
+        ]
+    ,
       "0.17" =: withAtLeast (GHC $ makeVersion [7, 10])
         [ "elm-compiler" =: "0.17"
         , "elm-package"  =: "0.17"
@@ -179,6 +187,7 @@ makeRepos :: FilePath -> String -> [(String, String)] -> IO ()
 makeRepos artifactDirectory version repos =
  do createDirectoryIfMissing True artifactDirectory
     setCurrentDirectory artifactDirectory
+    writeFile "cabal.config" "split-objs: True"
     root <- getCurrentDirectory
     mapM_ (uncurry (makeRepo root)) repos
 
