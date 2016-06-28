@@ -1,9 +1,5 @@
 sudo: false
 
-os:
-  - osx
-  - linux
-
 addons:
   apt:
     sources:
