@@ -10,6 +10,9 @@ This bundles together a bunch of projects that make it nice to use Elm: [`elm-co
 [repl]: https://github.com/elm-lang/elm-repl
 [package]: https://github.com/elm-lang/elm-package
 
+Install them [here](http://elm-lang.org/install) and learn how to use them [here](http://elm-lang.org/get-started)!
+
+
 <br>
 
 ## Build from Source
