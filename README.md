@@ -29,7 +29,7 @@ There are two phases!
 
 #### 1. Get Haskell Working
 
-You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.10 but Elm versions before 0.17 should build with GHC 7.8 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, [make sure it is going to give you these things](https://www.haskell.org/platform/contents.html).
+You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.10 but Elm versions before 0.16 should build with GHC 7.8 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, [make sure it is going to give you these things](https://www.haskell.org/platform/contents.html).
 
 [hp]: http://hackage.haskell.org/platform/
 
