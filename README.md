@@ -29,7 +29,7 @@ There are two phases!
 
 #### 1. Get Haskell Working
 
-You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.10 but Elm versions before 0.16 should build with GHC 7.8 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, [make sure it is going to give you these things](https://www.haskell.org/platform/contents.html).
+You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.10 but Elm versions before 0.17 should build with GHC 7.8 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, [make sure it is going to give you these things](https://www.haskell.org/platform/contents.html).
 
 [hp]: http://hackage.haskell.org/platform/
 
@@ -41,9 +41,9 @@ At this point you should be in a world where your cabal version is greater than 
 
 #### 2. Actually Build Elm Things
 
-Find a directory on your machine where you want the Elm Platform to live. You will soon run [a script][script] that creates a directory called `Elm-Platform/0.16/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
+Find a directory on your machine where you want the Elm Platform to live. You will soon run [a script][script] that creates a directory called `Elm-Platform/0.17/*` and builds all the necessary things. You should not move `Elm-Platform/` after it is created, so choose carefully before progressing.
 
-Now that you have chosen a home for `Elm-Platform/`, add the absolute path to `Elm-Platform/0.16/.cabal-sandbox/bin` to your `PATH` ([like this][add-path]). This is necessary to successfully build `elm-reactor` which relies on `elm-make`. This will also mean you can use `elm` commands from anywhere!
+Now that you have chosen a home for `Elm-Platform/`, add the absolute path to `Elm-Platform/0.17/.cabal-sandbox/bin` to your `PATH` ([like this][add-path]). This is necessary to successfully build `elm-reactor` which relies on `elm-make`. This will also mean you can use `elm` commands from anywhere!
 
 Okay, now run these commands:
 
@@ -59,7 +59,7 @@ Okay, now run these commands:
 # if you are on windows, or some other place without curl, just download this file manually
 curl https://raw.githubusercontent.com/elm-lang/elm-platform/master/installers/BuildFromSource.hs > BuildFromSource.hs
 
-runhaskell BuildFromSource.hs 0.16
+runhaskell BuildFromSource.hs 0.17
 ```
 
 > **Note:** You can use the `BuildFromSource.hs` script to build any version of the compiler, so you can run the following to build all the latest versions of things: `runhaskell BuildFromSource.hs master`. Be aware, this is where active development happens, so not everything will be working at all times! You will want to change your `PATH` to point to the right thing if you go down this road.
