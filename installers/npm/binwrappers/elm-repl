@@ -2,3 +2,5 @@
 
 var path = require("path");
 var getPathTo = require(path.join("..", "binwrap.js"))("elm-repl");
+
+process.on("SIGINT", function() {});
