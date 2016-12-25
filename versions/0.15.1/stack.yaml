@@ -1,0 +1,29 @@
+flags:
+    blaze-builder-enumerator:
+        newbuilder: False
+packages:
+    - location:
+        git: https://github.com/elm-lang/elm-compiler
+        commit: "0.15.1"
+    - location:
+        git: https://github.com/elm-lang/elm-package
+        commit: "0.5.1"
+    - location:
+        git: https://github.com/elm-lang/elm-make
+        commit: "0.2"
+    - location:
+        git: https://github.com/elm-lang/elm-reactor
+        commit: "0.3.2"
+    - location:
+        git: https://github.com/elm-lang/elm-repl
+        commit: "0.4.2"
+extra-deps:
+    - blaze-builder-0.3.3.4
+    - blaze-builder-enumerator-0.2.1.0
+    - blaze-html-0.7.1.0
+    - blaze-markup-0.6.3.0
+    - fsnotify-0.1.0.3
+    - websockets-snap-0.9.2.0
+resolver: lts-3.2
+ghc-options:
+    elm-package: -XFlexibleContexts
