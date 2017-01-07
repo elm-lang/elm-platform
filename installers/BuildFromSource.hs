@@ -1,6 +1,9 @@
 {-| This script builds any version of the Elm Platform from source.
 Before you use it, make sure you have the Haskell Platform with a recent
-version of cabal.
+version of cabal. To ensure cabal is up to date, run:
+
+    cabal update
+    cabal install cabal-install
 
 To install a released version of Elm, you will run something like this:
 
