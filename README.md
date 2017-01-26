@@ -19,7 +19,7 @@ Install them [here](http://elm-lang.org/install) and learn how to use them [here
 
 First, **if you are on Mac or Windows** just looking to use Elm, definitely use the installers linked [here](http://elm-lang.org/install). Do not put yourself through this process if you do not have to!
 
-Second, **if you are on some linux OS** and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm).
+Second, **if you are on Linux** and just want to use Elm, use [the npm installer](https://www.npmjs.com/package/elm).
 
 Finally, **if you have made it this far**, you are in some unique position where the other options do not cover you for some reason. You are about to actually build from source. **I recommend you read this whole section before you start running anything.**
 
@@ -51,7 +51,7 @@ Okay, now run these commands:
 [add-path]: http://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path
 
 ```bash
-# If you are on LINUX, you need to install a dependency of elm-repl.
+# If you are on Linux, you need to install a dependency of elm-repl.
 # Uncomment the following lines and run them.
 # sudo apt-get install libtinfo-dev
 # sudo apt-get install zlib1g-dev
