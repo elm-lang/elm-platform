@@ -29,13 +29,13 @@ There are two phases!
 
 #### 1. Get Haskell Working
 
-You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.10 but Elm versions before 0.16 should build with GHC 7.8 as well. You also need cabal 1.18 or higher. This will let you create a cabal sandbox which should make the build process much easier. Before getting Haskell Platform, [make sure it is going to give you these things](https://www.haskell.org/platform/contents.html).
+You will need Haskell to build this stuff. On some platforms the [Haskell Platform][hp] will work for you, but read the rest of this paragraph before making any moves. You need GHC to compile the code. Developers typically build with GHC 7.10 but Elm versions before 0.16 should build with GHC 7.8 as well. You also need Cabal 1.18 or higher. This will let you create a Cabal sandbox which should make the build process much easier. Before getting Haskell Platform, [make sure it is going to give you these things](https://www.haskell.org/platform/contents.html).
 
 [hp]: http://hackage.haskell.org/platform/
 
-> **Note:** Sometimes things go bad with cabal, so know that [you can always blow it all up](https://www.reddit.com/r/elm/comments/34np4m/how_to_uninstall_elm/). I sometimes do this after a fresh install of GHC and cabal to make sure there are no globaly installed packages that are going to make things suck for me later.
+> **Note:** Sometimes things go bad with Cabal, so know that [you can always blow it all up](https://www.reddit.com/r/elm/comments/34np4m/how_to_uninstall_elm/). I sometimes do this after a fresh install of GHC and Cabal to make sure there are no globaly installed packages that are going to make things suck for me later.
 
-At this point you should be in a world where your cabal version is greater than 1.18. It probably sucked getting here, so thank you for sticking with this!
+At this point you should be in a world where your Cabal version is greater than 1.18. It probably sucked getting here, so thank you for sticking with this!
 
 <br>
 
