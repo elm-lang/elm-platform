@@ -61,5 +61,6 @@ curl https://raw.githubusercontent.com/elm-lang/elm-platform/master/installers/B
 
 runhaskell BuildFromSource.hs 0.17
 ```
+> **Note:** For Haskell Platform users, if your version of `ghc` is > 7.10.x, you can download an older version of the Haskell Platform and then use `runghc-7.10.x` in place of `runhaskell`.
 
 > **Note:** You can use the `BuildFromSource.hs` script to build any version of the compiler, so you can run the following to build all the latest versions of things: `runhaskell BuildFromSource.hs master`. Be aware, this is where active development happens, so not everything will be working at all times! You will want to change your `PATH` to point to the right thing if you go down this road.
