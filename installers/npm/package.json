@@ -48,9 +48,9 @@
     "elm-repl": "binwrappers/elm-repl"
   },
   "dependencies": {
-    "mkdirp": "0.5.1",
-    "promise": "7.1.1",
-    "tar": "2.2.1",
-    "request": "2.74.0"
+    "mkdirp": "^0.5.1",
+    "promise": "^7.1.1",
+    "tar": "^2.2.1",
+    "request": "^2.74.0"
   }
 }
