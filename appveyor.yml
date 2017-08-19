@@ -1,7 +1,7 @@
 environment:
   matrix:
-  - nodejs_version: "5.0"
-  - nodejs_version: "0.10"
+  - nodejs_version: "6.0"
+  - nodejs_version: "4.0"
 
 platform:
   - x86
@@ -16,7 +16,10 @@ install:
 test_script:
   - node --version
   - npm --version
-  - npm install installers\npm
+  - mkdir tmp
+  - cd tmp
+  - npm init --yes
+  - npm install ..\installers\npm --no-spin
   - node_modules\.bin\elm-make --help
   - node_modules\.bin\elm-repl --help
   - node_modules\.bin\elm-package install --help
@@ -25,5 +28,15 @@ test_script:
   - node_modules\.bin\elm repl --help
   - node_modules\.bin\elm package install --help
   - node_modules\.bin\elm reactor --help
+  - npm remove elm
+  - npm install -g ..\installers\npm --no-spin
+  - elm-make --help
+  - elm-repl --help
+  - elm-package install --help
+  - elm-reactor --help
+  - elm make --help
+  - elm repl --help
+  - elm package install --help
+  - elm reactor --help
 
 build: off
