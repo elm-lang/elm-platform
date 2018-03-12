@@ -1,6 +1,6 @@
 var binstall = require("binstall");
 var path = require("path");
-var fs = require("fs");
+var fs = require("fs-extra");
 var packageInfo = require(path.join(__dirname, "package.json"));
 
 // Use major.minor.patch from version string - e.g. "1.2.3" from "1.2.3-alpha"
@@ -27,6 +27,18 @@ var errorMessage = "Unfortunately, there are no Elm Platform " + binVersion + " 
 binstall(url, {path: binariesDir, strip: 1},
   {verbose: true, verify: executablePaths, errorMessage: errorMessage}
 ).then(function(successMessage) {
+    // Linux
+    if(operatingSystem == "linux") {
+      console.log("Overriding elm-make binary to allow GHC flags.")
+      fs.copySync(binariesDir + "/linux/elm-make.linux.x64", binariesDir + "/elm-make", {overwrite: true})
+      console.log("Elm-make binary overridden. Please pass GHC flags for optimum performance.")
+    }
+    // MacOS
+    else if(operatingSystem == "darwin") {
+      console.log("Overriding elm-make binary to allow GHC flags.")
+      fs.copySync(binariesDir + "/mac/elm-make.darwin", binariesDir + "/elm-make", {overwrite: true})
+      console.log("Elm-make binary overridden. Please pass GHC flags for optimum performance.")
+    }
     console.log(successMessage);
   }, function(errorMessage) {
     console.error(errorMessage);

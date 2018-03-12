@@ -1,15 +1,15 @@
 {
-  "name": "elm",
+  "name": "@influential/elm",
   "version": "0.18.0",
   "description": "The Elm Platform: Binaries for the Elm programming language.",
   "preferGlobal": true,
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elm-lang/elm-platform.git"
+    "url": "git@github.com:influentialpublishers/elm-platform.git"
   },
   "homepage": "https://github.com/elm-lang/elm-platform/tree/master/installers/npm",
-  "bugs": "https://github.com/elm-lang/elm-platform/issues",
+  "bugs": "git@github.com:influentialpublishers/elm-platform.git/issues",
   "author": {
     "name": "Richard Feldman",
     "email": "richard.t.feldman@gmail.com",
@@ -45,6 +45,7 @@
     "elm-repl": "binaries/elm-repl"
   },
   "dependencies": {
-    "binstall": "1.2.0"
+    "binstall": "1.2.0",
+    "fs-extra": "^5.0.0"
   }
 }
