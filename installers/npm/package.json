@@ -1,6 +1,6 @@
 {
   "name": "elm",
-  "version": "0.18.0-exp3",
+  "version": "0.18.0-exp4",
   "description": "The Elm Platform: Binaries for the Elm programming language.",
   "main": "index.js",
   "preferGlobal": true,
