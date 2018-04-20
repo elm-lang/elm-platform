@@ -38,11 +38,11 @@
     "platform"
   ],
   "bin": {
-    "elm": "binaries/elm",
-    "elm-make": "binaries/elm-make",
-    "elm-package": "binaries/elm-package",
-    "elm-reactor": "binaries/elm-reactor",
-    "elm-repl": "binaries/elm-repl"
+    "elm": "bin/elm",
+    "elm-make": "bin/elm-make",
+    "elm-package": "bin/elm-package",
+    "elm-reactor": "bin/elm-reactor",
+    "elm-repl": "bin/elm-repl"
   },
   "dependencies": {
     "binstall": "1.2.0"
