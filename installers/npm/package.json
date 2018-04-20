@@ -25,6 +25,7 @@
   },
   "files": [
     "index.js",
+    "bin",
     "bin/elm",
     "bin/elm-make",
     "bin/elm-package",
