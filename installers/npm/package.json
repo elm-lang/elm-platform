@@ -17,11 +17,11 @@
     "url": "https://github.com/rtfeldman"
   },
   "engines": {
-    "node": ">=5.2.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
-    "install": "npx binwrap-install",
-    "prepublishOnly": "npx binwrap-test"
+    "install": "binwrap-install",
+    "prepublishOnly": "binwrap-test"
   },
   "files": [
     "index.js",
