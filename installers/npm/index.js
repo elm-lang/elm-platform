@@ -13,8 +13,8 @@ module.exports = binwrap({
     "darwin-x64": root + "-macos.tar.gz",
     "win32-x64": root + "-windows.tar.gz",
     "win32-ia32": root + "-windows.tar.gz",
-    "linux-x64": root + "-linux-32bit.tar.gz",
-    "linux-ia32": root + "-linux-64bit.tar.gz"
+    "linux-x64": root + "-linux-64bit.tar.gz",
+    "linux-ia32": root + "-linux-32bit.tar.gz"
   }
 });
 
