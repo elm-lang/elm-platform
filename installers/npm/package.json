@@ -1,7 +1,8 @@
 {
   "name": "elm",
-  "version": "0.18.0",
+  "version": "0.18.0-exp4",
   "description": "The Elm Platform: Binaries for the Elm programming language.",
+  "main": "index.js",
   "preferGlobal": true,
   "license": "BSD-3-Clause",
   "repository": {
@@ -16,14 +17,20 @@
     "url": "https://github.com/rtfeldman"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=5.2.0"
   },
   "scripts": {
-    "install": "node install.js"
+    "install": "npx binwrap-install",
+    "prepublishOnly": "npx binwrap-test"
   },
   "files": [
-    "install.js",
-    "binaries"
+    "index.js",
+    "bin",
+    "bin/elm",
+    "bin/elm-make",
+    "bin/elm-package",
+    "bin/elm-repl",
+    "bin/elm-reactor"
   ],
   "keywords": [
     "bin",
@@ -38,13 +45,13 @@
     "platform"
   ],
   "bin": {
-    "elm": "binaries/elm",
-    "elm-make": "binaries/elm-make",
-    "elm-package": "binaries/elm-package",
-    "elm-reactor": "binaries/elm-reactor",
-    "elm-repl": "binaries/elm-repl"
+    "elm": "bin/elm",
+    "elm-make": "bin/elm-make",
+    "elm-package": "bin/elm-package",
+    "elm-reactor": "bin/elm-reactor",
+    "elm-repl": "bin/elm-repl"
   },
   "dependencies": {
-    "binstall": "1.2.0"
+    "binwrap": "0.1.4"
   }
 }
