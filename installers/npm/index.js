@@ -1,10 +1,11 @@
 var binwrap = require("binwrap");
 var path = require("path");
 
+var packageInfo = require(path.join(__dirname, "package.json"));
 // Use major.minor.patch from version string - e.g. "1.2.3" from "1.2.3-alpha"
 var binVersion = packageInfo.version.replace(/^(\d+\.\d+\.\d+).*$/, "$1");
 
-var root = "https://github.com/elm-lang/elm-platform/releases/download/" + binVersion.version + "/elm-platform";
+var root = "https://github.com/elm-lang/elm-platform/releases/download/" + binVersion + "-exp/elm-platform";
 
 module.exports = binwrap({
   binaries: ["elm", "elm-make", "elm-repl", "elm-reactor", "elm-package"],
