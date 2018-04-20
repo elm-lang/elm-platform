@@ -24,7 +24,12 @@
     "prepublishOnly": "npx binwrap-test"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "bin/elm",
+    "bin/elm-make",
+    "bin/elm-package",
+    "bin/elm-repl",
+    "bin/elm-reactor"
   ],
   "keywords": [
     "bin",
