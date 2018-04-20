@@ -19,11 +19,11 @@
     "node": ">=5.2.0"
   },
   "scripts": {
-    "install": "node install.js"
+    "install": "npx binwrap-install",
+    "prepublishOnly": "npx binwrap-test"
   },
   "files": [
-    "install.js",
-    "binaries"
+    "index.js"
   ],
   "keywords": [
     "bin",
@@ -45,6 +45,6 @@
     "elm-repl": "bin/elm-repl"
   },
   "dependencies": {
-    "binstall": "1.2.0"
+    "binwrap": "0.1.4"
   }
 }
