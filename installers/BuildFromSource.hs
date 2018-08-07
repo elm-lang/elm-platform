@@ -197,7 +197,7 @@ makeRepos artifactDirectory version repos =
 
       -- install all of the packages together in order to resolve transitive dependencies robustly
       -- (install the dependencies a bit more quietly than the elm packages)
-      cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"" ]
+      cabal ([ "install", "-j", "--only-dependencies", "--ghc-options=\"-w\"", "--max-backjumps=-1" ]
              ++ (if version <= "0.15.1" then [ "--constraint=fsnotify<0.2" ] else [])
              ++ map fst repos)
       cabal ([ "install", "-j" ]
