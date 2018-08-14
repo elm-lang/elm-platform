@@ -17,18 +17,16 @@ module.exports = binwrap({
     "darwin-x64": root + "-macos.tar.gz",
     "win32-x64": root + "-windows.tar.gz",
     "win32-ia32": root + "-windows.tar.gz",
-    "linux-x64": root + "-linux-32bit.tar.gz",
-    "linux-ia32": root + "-linux-64bit.tar.gz"
+    "linux-x64": root + "-linux-64bit.tar.gz"
   }
-  });
+});
 ```
 
 If this is the end of your `index.js`, you'll need to create these files:
 
 1. `elm-platform-macos.tar.gz`
 2. `elm-platform-windows.tar.gz`
-3. `elm-platform-linux-32bit.tar.gz`
-4. `elm-platform-linux-64bit.tar.gz`
+3. `elm-platform-linux-64bit.tar.gz`
 
 Each of these tarballs should have **only binaries** inside them - no directories!
 

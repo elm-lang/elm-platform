@@ -1,6 +1,6 @@
 {
   "name": "elm",
-  "version": "0.18.0-exp5",
+  "version": "0.19.0-rc1",
   "description": "The Elm Platform: Binaries for the Elm programming language.",
   "main": "index.js",
   "preferGlobal": true,
@@ -26,30 +26,17 @@
   "files": [
     "index.js",
     "bin",
-    "bin/elm",
-    "bin/elm-make",
-    "bin/elm-package",
-    "bin/elm-repl",
-    "bin/elm-reactor"
+    "bin/elm"
   ],
   "keywords": [
     "bin",
     "binary",
     "binaries",
     "elm",
-    "elm-make",
-    "elm-package",
-    "elm-platform",
-    "elm-reactor",
-    "elm-repl",
     "platform"
   ],
   "bin": {
-    "elm": "bin/elm",
-    "elm-make": "bin/elm-make",
-    "elm-package": "bin/elm-package",
-    "elm-reactor": "bin/elm-reactor",
-    "elm-repl": "bin/elm-repl"
+    "elm": "bin/elm"
   },
   "dependencies": {
     "binwrap": "0.1.4"
