@@ -27,10 +27,23 @@ $ set HTTPS_PROXY=$YourProxyServer$
 $ npm install -g elm
 ```
 
+## Installing on Debian/Ubuntu
+
+1. On Debian/Ubuntu systems, install the nodejs-legacy package and npm packages.
+
+```
+    $ sudo apt-get install nodejs-legacy npm
+```
+
+2. Then [configure npm](https://docs.npmjs.com/getting-started/fixing-npm-permissions#option-two-change-npms-default-directory)
+to do "-g" global installs in your home directory. This is how you avoid using sudo!
+
+3. *Then* `npm install -g elm` should run with no errors.
+
 ## Troubleshooting
 
 1. [Troubleshooting npm](https://github.com/npm/npm/wiki/Troubleshooting)
-2. On Debian/Ubuntu systems, you may have to install the nodejs-legacy package: `apt-get install nodejs-legacy`.
+
 3. If the installer says that it cannot find any usable binaries for your operating system and architecture, check the [Build from Source](https://github.com/elm-lang/elm-platform/blob/master/README.md#build-from-source) documentation.
 
 ## Getting Started
